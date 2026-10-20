@@ -1,0 +1,174 @@
+DEPLOY STEPS: expdevteamweb landing page on port 3200
+=====================================================
+
+This is a static React (Vite) site. After building, it is only HTML/CSS/JS
+files in the dist/ folder. Your other projects stay as they are:
+  - Project 1 -> http://SERVER_IP        (port 80)
+  - Project 2 -> http://SERVER_IP:3100
+  - This site -> http://SERVER_IP:3200   (new)
+
+Replace SERVER_IP and USER below with your real server IP and SSH user.
+These commands assume an Ubuntu/Debian Linux server.
+
+Two ways to do it are below. Use OPTION A (Nginx) if Nginx is already on
+the server (it usually is when a site runs on the plain IP). Use OPTION B
+(PM2) only if you don't want to use Nginx.
+
+
+-----------------------------------------------------
+STEP 1: Check that port 3200 is free (on the server)
+-----------------------------------------------------
+ssh USER@SERVER_IP
+sudo ss -tulpn | grep 3200
+
+If this prints nothing, the port is free. If it prints a line, something is
+already using 3200.
+
+
+-----------------------------------------------------
+STEP 2: Install Node.js 18+ and git (on the server, if missing)
+-----------------------------------------------------
+node -v          # must be v18 or newer
+git --version
+
+If Node is missing or too old:
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs git
+
+
+-----------------------------------------------------
+STEP 3: Get the project onto the server
+-----------------------------------------------------
+Way 1: with git (push your code to GitHub first from your PC):
+  On your PC:
+    git add .
+    git commit -m "Prepare deployment on port 3200"
+    git push origin main
+  On the server:
+    sudo mkdir -p /var/www/expdevteamweb
+    sudo chown -R $USER:$USER /var/www/expdevteamweb
+    git clone <YOUR_GITHUB_REPO_URL> /var/www/expdevteamweb
+
+Way 2: without git (copy from your Windows PC with scp, in PowerShell):
+  First on the server:
+    sudo mkdir -p /var/www/expdevteamweb
+    sudo chown -R USER:USER /var/www/expdevteamweb
+  Then on your PC (in the project folder):
+    scp -r index.html package.json package-lock.json vite.config.js src deploy USER@SERVER_IP:/var/www/expdevteamweb/
+  (If you have a public/ folder, add "public" to that list too.)
+
+
+-----------------------------------------------------
+STEP 4: Install and build (on the server)
+-----------------------------------------------------
+cd /var/www/expdevteamweb
+npm install
+npm run build
+
+This creates /var/www/expdevteamweb/dist
+
+
+=====================================================
+OPTION A: Serve with Nginx on port 3200 (recommended)
+=====================================================
+
+A1. Install Nginx (skip if already installed):
+    sudo apt-get install -y nginx
+
+A2. Add the site config (the file is already in the project):
+    sudo cp /var/www/expdevteamweb/deploy/nginx-3200.conf /etc/nginx/sites-available/expdevteamweb
+    sudo ln -s /etc/nginx/sites-available/expdevteamweb /etc/nginx/sites-enabled/expdevteamweb
+
+    Note: if your server uses /etc/nginx/conf.d/ instead of sites-available, run:
+    sudo cp /var/www/expdevteamweb/deploy/nginx-3200.conf /etc/nginx/conf.d/expdevteamweb.conf
+
+A3. Test and reload Nginx (this does NOT stop your other sites):
+    sudo nginx -t
+    sudo systemctl reload nginx
+
+    Only reload if "nginx -t" says "syntax is ok" and "test is successful".
+
+A4. Make Nginx able to read the files (if you get 403 Forbidden):
+    sudo chmod -R 755 /var/www/expdevteamweb/dist
+
+
+=====================================================
+OPTION B: Run with PM2 on port 3200 (no Nginx)
+=====================================================
+
+B1. Install PM2:
+    sudo npm install -g pm2
+
+B2. Start the site (the "start" script already uses port 3200):
+    cd /var/www/expdevteamweb
+    pm2 start npm --name expdevteamweb -- start
+
+B3. Keep it running after a server reboot:
+    pm2 save
+    pm2 startup      # then run the command it prints
+
+Useful PM2 commands:
+    pm2 list
+    pm2 logs expdevteamweb
+    pm2 restart expdevteamweb
+
+
+-----------------------------------------------------
+STEP 5: Open port 3200 in the firewall
+-----------------------------------------------------
+On the server (UFW):
+    sudo ufw allow 3200/tcp
+    sudo ufw status
+
+If your server is on a cloud provider (AWS, Azure, Google Cloud,
+DigitalOcean, Hostinger, etc.), ALSO open TCP port 3200 in the provider's
+panel (AWS: Security Group > Inbound rules; Azure: Network Security Group;
+GCP: VPC firewall rules).
+
+
+-----------------------------------------------------
+STEP 6: Test
+-----------------------------------------------------
+On the server:
+    curl -I http://localhost:3200      # should show "200 OK"
+
+In your browser:
+    http://SERVER_IP:3200
+
+Also check your other two sites still open:
+    http://SERVER_IP
+    http://SERVER_IP:3100
+
+
+-----------------------------------------------------
+UPDATING THE SITE LATER
+-----------------------------------------------------
+cd /var/www/expdevteamweb
+git pull                 # or copy the changed files again with scp
+npm install
+npm run build
+
+With Nginx (Option A): nothing else to do, it serves the new dist/ right away.
+With PM2 (Option B):   pm2 restart expdevteamweb
+
+
+-----------------------------------------------------
+TROUBLESHOOTING
+-----------------------------------------------------
+Page does not open from browser, but curl on server works
+  -> Port 3200 is blocked. Redo Step 5 (UFW AND cloud provider firewall).
+
+"Address already in use" / port 3200 busy
+  -> sudo ss -tulpn | grep 3200   to see what is using it.
+
+403 Forbidden (Nginx)
+  -> sudo chmod -R 755 /var/www/expdevteamweb/dist
+     and check that "root" in the Nginx config points to the dist folder.
+
+502 / Nginx test fails
+  -> sudo nginx -t   shows the exact line with the error.
+     Logs: sudo tail -n 50 /var/log/nginx/error.log
+
+Blank white page
+  -> Open browser console (F12). Make sure you ran "npm run build" after
+     your last change.
