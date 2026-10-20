@@ -1,0 +1,144 @@
+CI/CD SETUP: automatic deploy with GitHub Actions
+==================================================
+
+What it does
+------------
+Every time you push to the "main" branch on GitHub:
+  1. GitHub builds the project (npm ci + npm run build) to check that it compiles.
+  2. If the build passes, GitHub connects to your server over SSH and runs, in
+     /srv/expdevteamweb:
+        git fetch + git reset --hard origin/main
+        npm ci
+        build into dist-new/, then swap it with dist/
+     Nginx serves the new dist/ straight away on port 3200.
+     If the site runs with PM2 instead, it is restarted automatically.
+
+If the build fails, nothing is deployed and the live site stays as it was.
+
+The workflow file is:  .github/workflows/deploy.yml
+
+You can also run it by hand: GitHub repo > Actions > "Build and deploy" >
+"Run workflow".
+
+Do this setup ONCE. Replace SERVER_IP with your server's IP.
+
+
+-----------------------------------------------------
+STEP 1: Do the first manual deploy (if not done yet)
+-----------------------------------------------------
+Follow DEPLOY_STEPS.txt up to the point where http://SERVER_IP:3200 works.
+The pipeline only updates the existing setup. It does not install Nginx,
+create the folder or open the firewall.
+
+Make sure /srv/expdevteamweb belongs to the deploy user:
+    sudo chown -R deploy:deploy /srv/expdevteamweb
+
+
+-----------------------------------------------------
+STEP 2: Create an SSH key for GitHub Actions (on the server)
+-----------------------------------------------------
+Log in as the deploy user and create a new key used only by GitHub Actions:
+
+    ssh deploy@SERVER_IP
+    ssh-keygen -t ed25519 -C "github-actions-expdevteamweb" -f ~/.ssh/github_actions -N ""
+
+Allow this key to log in as deploy:
+    cat ~/.ssh/github_actions.pub >> ~/.ssh/authorized_keys
+    chmod 600 ~/.ssh/authorized_keys
+
+Show the PRIVATE key (you will paste it into GitHub in Step 3):
+    cat ~/.ssh/github_actions
+
+Copy everything, including the lines
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    -----END OPENSSH PRIVATE KEY-----
+
+Never share this private key or commit it to the repo.
+
+
+-----------------------------------------------------
+STEP 3: Add secrets in GitHub
+-----------------------------------------------------
+Go to: GitHub > rahulrajsolanki/expdevteamweb > Settings >
+       Secrets and variables > Actions > New repository secret
+
+Add these secrets:
+
+  Name              Value
+  ----------------  ------------------------------------------------
+  SSH_HOST          your server IP (for example 123.45.67.89)
+  SSH_USER          deploy
+  SSH_PRIVATE_KEY   the full private key from Step 2
+  SSH_PORT          (optional) only if SSH is NOT on port 22
+
+
+-----------------------------------------------------
+STEP 4: Make sure the server can pull from GitHub
+-----------------------------------------------------
+The server clones with git@github.com:..., so the deploy user needs a key
+that GitHub accepts. You already cloned once, so this should work. Test it:
+
+    ssh deploy@SERVER_IP
+    cd /srv/expdevteamweb
+    git fetch origin main
+
+If this works without asking for a password, you are fine.
+
+If it fails with "Permission denied (publickey)", add a deploy key:
+    ssh-keygen -t ed25519 -C "server-pull" -f ~/.ssh/id_ed25519 -N ""
+    cat ~/.ssh/id_ed25519.pub
+  Then in GitHub: repo > Settings > Deploy keys > Add deploy key
+  Paste the key (leave "Allow write access" unticked).
+
+
+-----------------------------------------------------
+STEP 5: Push the workflow and watch it run
+-----------------------------------------------------
+On your PC, in the project folder:
+    git add .github/workflows/deploy.yml CICD_SETUP.txt
+    git commit -m "Add CI/CD deploy workflow"
+    git push origin main
+
+Then open: GitHub repo > Actions tab
+You should see "Build and deploy" running with two jobs: build, deploy.
+Both should turn green. Then open http://SERVER_IP:3200
+
+
+-----------------------------------------------------
+DAILY USE
+-----------------------------------------------------
+Edit code on your PC, then:
+    git add .
+    git commit -m "your message"
+    git push origin main
+That's it. The site updates in about 1 to 2 minutes.
+
+IMPORTANT: The server folder is reset to match GitHub on every deploy
+(git reset --hard). Do not edit files directly in /srv/expdevteamweb on the
+server; those changes will be lost. Always change code on your PC and push.
+
+
+-----------------------------------------------------
+TROUBLESHOOTING
+-----------------------------------------------------
+"Permission denied (publickey)" in the "Pull, build and switch" step
+  -> The deploy job can't log in to the server. Check SSH_HOST, SSH_USER,
+     and that the public key from Step 2 is in /home/deploy/.ssh/authorized_keys.
+     Check SSH_PRIVATE_KEY was pasted completely (BEGIN and END lines included).
+
+ssh-keyscan fails / connection timed out
+  -> SSH port is wrong or blocked. If SSH is not on 22, set SSH_PORT.
+
+"git fetch" fails on the server with "Permission denied (publickey)"
+  -> The server can't read from GitHub. Do Step 4.
+
+"npm: command not found"
+  -> Node is installed only for interactive shells (for example with nvm).
+     Install Node system-wide with NodeSource (see DEPLOY_STEPS.txt Step 2).
+
+"Permission denied" on /srv/expdevteamweb
+  -> sudo chown -R deploy:deploy /srv/expdevteamweb
+
+Deploy is green but the site didn't change
+  -> Hard refresh the browser (Ctrl+F5). Check that the Nginx "root" is
+     /srv/expdevteamweb/dist.

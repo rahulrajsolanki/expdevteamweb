@@ -1,0 +1,61 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -p "${{ secrets.SSH_PORT || 22 }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Pull, build and switch on server
+        run: |
+          ssh -i ~/.ssh/id_deploy -p "${{ secrets.SSH_PORT || 22 }}" \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" 'bash -se' <<'SCRIPT'
+          set -euo pipefail
+          cd /srv/expdevteamweb
+
+          git fetch origin main
+          git reset --hard origin/main
+
+          npm ci
+          # Build into a separate folder, then swap, so the live site is never empty
+          npx vite build --outDir dist-new --emptyOutDir
+          rm -rf dist-old
+          if [ -d dist ]; then mv dist dist-old; fi
+          mv dist-new dist
+          rm -rf dist-old
+
+          # Only needed if the site runs with PM2 (Option B) instead of Nginx
+          if command -v pm2 >/dev/null && pm2 describe expdevteamweb >/dev/null 2>&1; then
+            pm2 restart expdevteamweb
+          fi
+
+          echo "Deployed commit $(git rev-parse --short HEAD)"
+          SCRIPT
