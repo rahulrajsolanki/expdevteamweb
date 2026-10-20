@@ -45,27 +45,27 @@ Way 1: with git (push your code to GitHub first from your PC):
     git commit -m "Prepare deployment on port 3200"
     git push origin main
   On the server:
-    sudo mkdir -p /var/www/expdevteamweb
-    sudo chown -R $USER:$USER /var/www/expdevteamweb
-    git clone <YOUR_GITHUB_REPO_URL> /var/www/expdevteamweb
+    sudo mkdir -p /srv/expdevteamweb
+    sudo chown -R $USER:$USER /srv/expdevteamweb
+    git clone <YOUR_GITHUB_REPO_URL> /srv/expdevteamweb
 
 Way 2: without git (copy from your Windows PC with scp, in PowerShell):
   First on the server:
-    sudo mkdir -p /var/www/expdevteamweb
-    sudo chown -R USER:USER /var/www/expdevteamweb
+    sudo mkdir -p /srv/expdevteamweb
+    sudo chown -R USER:USER /srv/expdevteamweb
   Then on your PC (in the project folder):
-    scp -r index.html package.json package-lock.json vite.config.js src deploy USER@SERVER_IP:/var/www/expdevteamweb/
+    scp -r index.html package.json package-lock.json vite.config.js src deploy USER@SERVER_IP:/srv/expdevteamweb/
   (If you have a public/ folder, add "public" to that list too.)
 
 
 -----------------------------------------------------
 STEP 4: Install and build (on the server)
 -----------------------------------------------------
-cd /var/www/expdevteamweb
+cd /srv/expdevteamweb
 npm install
 npm run build
 
-This creates /var/www/expdevteamweb/dist
+This creates /srv/expdevteamweb/dist
 
 
 =====================================================
@@ -76,11 +76,11 @@ A1. Install Nginx (skip if already installed):
     sudo apt-get install -y nginx
 
 A2. Add the site config (the file is already in the project):
-    sudo cp /var/www/expdevteamweb/deploy/nginx-3200.conf /etc/nginx/sites-available/expdevteamweb
+    sudo cp /srv/expdevteamweb/deploy/nginx-3200.conf /etc/nginx/sites-available/expdevteamweb
     sudo ln -s /etc/nginx/sites-available/expdevteamweb /etc/nginx/sites-enabled/expdevteamweb
 
     Note: if your server uses /etc/nginx/conf.d/ instead of sites-available, run:
-    sudo cp /var/www/expdevteamweb/deploy/nginx-3200.conf /etc/nginx/conf.d/expdevteamweb.conf
+    sudo cp /srv/expdevteamweb/deploy/nginx-3200.conf /etc/nginx/conf.d/expdevteamweb.conf
 
 A3. Test and reload Nginx (this does NOT stop your other sites):
     sudo nginx -t
@@ -89,7 +89,7 @@ A3. Test and reload Nginx (this does NOT stop your other sites):
     Only reload if "nginx -t" says "syntax is ok" and "test is successful".
 
 A4. Make Nginx able to read the files (if you get 403 Forbidden):
-    sudo chmod -R 755 /var/www/expdevteamweb/dist
+    sudo chmod -R 755 /srv/expdevteamweb/dist
 
 
 =====================================================
@@ -100,7 +100,7 @@ B1. Install PM2:
     sudo npm install -g pm2
 
 B2. Start the site (the "start" script already uses port 3200):
-    cd /var/www/expdevteamweb
+    cd /srv/expdevteamweb
     pm2 start npm --name expdevteamweb -- start
 
 B3. Keep it running after a server reboot:
@@ -143,7 +143,7 @@ Also check your other two sites still open:
 -----------------------------------------------------
 UPDATING THE SITE LATER
 -----------------------------------------------------
-cd /var/www/expdevteamweb
+cd /srv/expdevteamweb
 git pull                 # or copy the changed files again with scp
 npm install
 npm run build
@@ -162,7 +162,7 @@ Page does not open from browser, but curl on server works
   -> sudo ss -tulpn | grep 3200   to see what is using it.
 
 403 Forbidden (Nginx)
-  -> sudo chmod -R 755 /var/www/expdevteamweb/dist
+  -> sudo chmod -R 755 /srv/expdevteamweb/dist
      and check that "root" in the Nginx config points to the dist folder.
 
 502 / Nginx test fails
