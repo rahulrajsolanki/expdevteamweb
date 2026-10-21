@@ -57,7 +57,7 @@ const navItems = [
   { label: "Services", href: "#services" },
   { label: "Products", href: "#products", badge: "New" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Team", href: "#team" },
+  { label: "About", href: "#/about" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
@@ -226,17 +226,6 @@ const aiInsights = [
 
 const aiArt = { id: "ai-art", name: "AI insights", color: "#FF2D75", colorDeep: "#7B3FE4", image: null };
 
-const integrations = [
-  { name: "Payments", initial: "P" },
-  { name: "Email", initial: "E" },
-  { name: "Team chat", initial: "C" },
-  { name: "Cloud storage", initial: "S" },
-  { name: "CRM", initial: "R" },
-  { name: "Payroll", initial: "Y" },
-  { name: "Calendar", initial: "K" },
-  { name: "Code hosting", initial: "G" },
-];
-
 const securityPoints = [
   { title: "End-to-end encryption", text: "Data is encrypted in transit and at rest using industry-standard protocols." },
   { title: "Role-based access", text: "Give each staff member only the screens they need, and see who changed what." },
@@ -355,6 +344,50 @@ const whyPoints = [
     text: "Clear monthly plans with no setup fees and no surprise add-ons.",
   },
 ];
+
+/* ------------------------------------------------------------------
+   ABOUT PAGE CONTENT — used by the #/about page. Placeholder copy:
+   replace the story, milestones and figures with your real details.
+   ------------------------------------------------------------------ */
+const aboutPage = {
+  eyebrow: "About SaaSio",
+  headline: "Business software built around how growing teams really work.",
+  intro: "SaaSio makes software for restaurants, retailers and service businesses. We started with one problem: outlets, staff and books were rarely in sync. Our products connect the whole working day, from the first order to the year-end accounts.",
+  stats: [
+    { v: "10,000+", l: "businesses use SaaSio" },
+    { v: "4.9", l: "average customer rating" },
+    { v: "98%", l: "of customers renew" },
+    { v: "24x7", l: "support, every day" },
+  ],
+  story: {
+    title: "Our story",
+    paragraphs: [
+      "SaaSio began with a single cafe, where the owner was still tallying orders on paper at the end of every shift. We built a simple point-of-sale system to fix that. The cafe team then asked for billing, payroll and reports, and that feedback shaped everything we built next.",
+      "Today our range is Orderly POS, Ledgerly Invoice, Rosterly Payroll and Taskflow. They share one set of data, so a change at the counter shows up in the accounts without anyone typing it twice.",
+    ],
+  },
+  mission: {
+    title: "Our mission",
+    text: "Give every growing business the tools larger companies use, without the complicated setup or the high cost.",
+  },
+  vision: {
+    title: "Our vision",
+    text: "Owners spend their time on customers and growth, while their software keeps everything else in order.",
+  },
+  whyIntro: "What you get with every SaaSio plan.",
+  milestones: [
+    { year: "2018", text: "Launched our first point-of-sale system for a single cafe." },
+    { year: "2020", text: "Added GST-ready invoicing for small and medium businesses." },
+    { year: "2022", text: "Introduced payroll and staff rostering in one place." },
+    { year: "2024", text: "Released multi-outlet analytics and a field service app." },
+    { year: "2026", text: "Serving businesses across India with support every day." },
+  ],
+  teamIntro: "The team that builds, installs and supports your business every day.",
+  cta: {
+    title: "Ready to run your business on SaaSio?",
+    text: "Book a free demo and we will show you how your outlets, staff and books can work together.",
+  },
+};
 
 /* ------------------------------------------------------------------
    PLACEHOLDER ART — original illustration used until `image` is set.
@@ -1505,15 +1538,9 @@ function PortfolioDetail({ project }) {
     <div className="page pd">
       <style>{styles}</style>
 
-      <header className="pd-top">
-        <a className="brand" href="#top" aria-label="SaaSio home">
-          <span className="brand-mark" aria-hidden="true" />
-          SaaSio
-        </a>
-        <a className="pd-back-top" href="#portfolio">All work</a>
-      </header>
+      <SiteHeader solid />
 
-      <main>
+      <main className="inner-main">
         <section className="pd-hero">
           <div className="pd-hero-text">
             <a className="pd-back" href="#portfolio">← Back to portfolio</a>
@@ -1621,21 +1648,15 @@ function PortfolioDetail({ project }) {
         </nav>
       </main>
 
-      <footer className="pd-foot">© {new Date().getFullYear()} SaaSio. All rights reserved.</footer>
+      <SiteFooter />
     </div>
   );
 }
 
-function LandingPage() {
-  const [activeId, setActiveId] = useState(products[0].id);
-  const [submitted, setSubmitted] = useState(false);
+function SiteHeader({ solid = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
-  const tabRefs = useRef({});
-  const heroRef = useRef(null);
-
-  const active = products.find((p) => p.id === activeId) ?? products[0];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -1643,6 +1664,288 @@ function LandingPage() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const closeMenu = () => setMenuOpen(false);
+  const isSolid = solid || scrolled;
+
+  return (
+    <header className={`nav${isSolid ? " is-scrolled" : ""}${menuOpen ? " is-open" : ""}`}>
+      <a className="brand" href="#top" aria-label="Home" onClick={closeMenu}>
+        <span className="brand-mark" aria-hidden="true" />
+        SaaSio
+      </a>
+
+      <nav className="nav-links" aria-label="Main">
+        {navItems.map((item) =>
+          item.label === "Products" ? (
+            <div
+              key={item.label}
+              className={`nav-drop${productsOpen ? " is-open" : ""}`}
+              onMouseEnter={() => setProductsOpen(true)}
+              onMouseLeave={() => setProductsOpen(false)}
+            >
+              <a
+                href={item.href}
+                aria-haspopup="menu"
+                aria-expanded={productsOpen}
+                onFocus={() => setProductsOpen(true)}
+                onClick={() => setProductsOpen(false)}
+              >
+                {item.label}
+                {item.badge && <span className="badge">{item.badge}</span>}
+                <svg className="nav-drop-chev" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true">
+                  <path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+              <div className="nav-drop-menu" role="menu">
+                {products.map((product) => (
+                  <a key={product.id} href={`#/product/${product.id}`} role="menuitem" onClick={closeMenu}>
+                    <span className="drop-dot" style={{ background: product.color }} />
+                    <span>
+                      <strong>{product.name}</strong>
+                      <small>{product.summary}</small>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a key={item.label} href={item.href} onClick={closeMenu}>
+              {item.label}
+              {item.badge && <span className="badge">{item.badge}</span>}
+            </a>
+          )
+        )}
+      </nav>
+
+      <div className="nav-actions">
+        <a className="btn btn-dark btn-small nav-cta" href="#contact" onClick={closeMenu}>
+          Sign up
+        </a>
+        <button
+          type="button"
+          className="menu-toggle"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      <div className="mobile-menu" id="mobile-menu">
+        {navItems.map((item) => (
+          <div key={item.label} className="mobile-group">
+            <a href={item.href} onClick={closeMenu}>
+              {item.label}
+              {item.badge && <span className="badge">{item.badge}</span>}
+            </a>
+            {item.label === "Products" &&
+              products.map((product) => (
+                <a key={product.id} className="mobile-sub" href={`#/product/${product.id}`} onClick={closeMenu}>
+                  {product.name}
+                </a>
+              ))}
+          </div>
+        ))}
+        <a className="btn btn-dark" href="#contact" onClick={closeMenu}>Sign up</a>
+      </div>
+    </header>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div className="sf-top">
+        <div className="sf-brand">
+          <a className="brand" href="#top" aria-label="SaaSio home">
+            <span className="brand-mark" aria-hidden="true" />
+            SaaSio
+          </a>
+          <p>Business software that keeps your outlets, staff and books in sync, from the first sale to the year end.</p>
+          <div className="sf-social">
+            <a href="#top" aria-label="LinkedIn">in</a>
+            <a href="#top" aria-label="X">X</a>
+            <a href="#top" aria-label="Instagram">IG</a>
+            <a href="#top" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+
+        <div className="sf-col">
+          <h4>Products</h4>
+          <ul>
+            {products.map((product) => (
+              <li key={product.id}>
+                <a href={`#/product/${product.id}`}>{product.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="sf-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#/about">About us</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div className="sf-col">
+          <h4>Contact</h4>
+          <ul className="sf-contact">
+            <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+            <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+            <li>Mon to Sat, 9am to 7pm</li>
+            <li>Your street address, City, State</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="sf-bottom">
+        <span>© {new Date().getFullYear()} SaaSio. All rights reserved.</span>
+        <span className="sf-legal">
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#cookies">Cookies</a>
+        </span>
+      </div>
+    </footer>
+  );
+}
+
+function AboutPage() {
+  return (
+    <div className="page pd about-page">
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main">
+        <section className="about-hero">
+          <span className="about-eyebrow">{aboutPage.eyebrow}</span>
+          <h1>{aboutPage.headline}</h1>
+          <p>{aboutPage.intro}</p>
+          <div className="about-hero-actions">
+            <a className="btn btn-dark" href="#contact">Book a Free Demo</a>
+            <a className="btn btn-light" href="#products">See our products</a>
+          </div>
+        </section>
+
+        <section className="about-stats" aria-label="SaaSio at a glance">
+          {aboutPage.stats.map((stat) => (
+            <div key={stat.l} className="about-stat">
+              <strong>{stat.v}</strong>
+              <span>{stat.l}</span>
+            </div>
+          ))}
+        </section>
+
+        <section className="about-story" aria-labelledby="about-story-heading">
+          <div>
+            <h2 id="about-story-heading">{aboutPage.story.title}</h2>
+            {aboutPage.story.paragraphs.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
+          </div>
+          <div className="about-notes">
+            {[
+              { note: aboutPage.mission, accent: "#1E5BFF" },
+              { note: aboutPage.vision, accent: "#FF2D75" },
+            ].map(({ note, accent }) => (
+              <article key={note.title} className="about-note" style={{ "--accent": accent }}>
+                <h3>{note.title}</h3>
+                <p>{note.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="about-why" aria-labelledby="about-why-heading">
+          <div className="section-head centered">
+            <h2 id="about-why-heading">Why choose us</h2>
+            <p>{aboutPage.whyIntro}</p>
+          </div>
+          <div className="about-why-grid">
+            {whyPoints.map((point, i) => (
+              <article key={point.title} className="about-why-card">
+                <div
+                  className="about-why-icon"
+                  style={{ "--from": whyStyles[i].from, "--to": whyStyles[i].to }}
+                >
+                  <WhyIcon name={whyStyles[i].icon} />
+                </div>
+                <h3>{point.title}</h3>
+                <p>{point.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="about-timeline" aria-labelledby="about-timeline-heading">
+          <div className="section-head">
+            <h2 id="about-timeline-heading">Our journey</h2>
+          </div>
+          <ol className="about-timeline-list">
+            {aboutPage.milestones.map((milestone) => (
+              <li key={milestone.year}>
+                <span className="about-year">{milestone.year}</span>
+                <p>{milestone.text}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="team about-team" aria-labelledby="about-team-heading">
+          <div className="section-head centered">
+            <h2 id="about-team-heading">The people behind SaaSio</h2>
+            <p>{aboutPage.teamIntro}</p>
+          </div>
+          <div className="team-grid">
+            {teamMembers.map((member) => (
+              <article
+                className="team-card"
+                key={member.name}
+                style={{ "--from": member.from, "--to": member.to }}
+              >
+                <div className="team-avatar" aria-hidden="true">{member.initials}</div>
+                <h3>{member.name}</h3>
+                <p className="team-role">{member.role}</p>
+                <p className="team-bio">{member.bio}</p>
+                <div className="team-social">
+                  <a href="#/about" aria-label={`${member.name} on LinkedIn`}>in</a>
+                  <a href="#/about" aria-label={`${member.name} on X`}>x</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="about-cta" aria-labelledby="about-cta-heading">
+          <h2 id="about-cta-heading">{aboutPage.cta.title}</h2>
+          <p>{aboutPage.cta.text}</p>
+          <a className="btn btn-light" href="#contact">Book a Free Demo</a>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+function LandingPage() {
+  const [activeId, setActiveId] = useState(products[0].id);
+  const [submitted, setSubmitted] = useState(false);
+  const tabRefs = useRef({});
+  const heroRef = useRef(null);
+
+  const active = products.find((p) => p.id === activeId) ?? products[0];
 
   const handleHeroMove = (event) => {
     const el = heroRef.current;
@@ -1675,97 +1978,11 @@ function LandingPage() {
     setSubmitted(true);
   };
 
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <div className="page">
       <style>{styles}</style>
 
-      <header className={`nav${scrolled ? " is-scrolled" : ""}${menuOpen ? " is-open" : ""}`}>
-        <a className="brand" href="#top" aria-label="Home" onClick={closeMenu}>
-          <span className="brand-mark" aria-hidden="true" />
-          SaaSio
-        </a>
-
-        <nav className="nav-links" aria-label="Main">
-          {navItems.map((item) =>
-            item.label === "Products" ? (
-              <div
-                key={item.label}
-                className={`nav-drop${productsOpen ? " is-open" : ""}`}
-                onMouseEnter={() => setProductsOpen(true)}
-                onMouseLeave={() => setProductsOpen(false)}
-              >
-                <a
-                  href={item.href}
-                  aria-haspopup="menu"
-                  aria-expanded={productsOpen}
-                  onFocus={() => setProductsOpen(true)}
-                  onClick={() => setProductsOpen(false)}
-                >
-                  {item.label}
-                  {item.badge && <span className="badge">{item.badge}</span>}
-                  <svg className="nav-drop-chev" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true">
-                    <path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-                <div className="nav-drop-menu" role="menu">
-                  {products.map((product) => (
-                    <a key={product.id} href={`#/product/${product.id}`} role="menuitem" onClick={closeMenu}>
-                      <span className="drop-dot" style={{ background: product.color }} />
-                      <span>
-                        <strong>{product.name}</strong>
-                        <small>{product.summary}</small>
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <a key={item.label} href={item.href} onClick={closeMenu}>
-                {item.label}
-                {item.badge && <span className="badge">{item.badge}</span>}
-              </a>
-            )
-          )}
-        </nav>
-
-        <div className="nav-actions">
-          <a className="btn btn-dark btn-small nav-cta" href="#contact" onClick={closeMenu}>
-            Sign up
-          </a>
-          <button
-            type="button"
-            className="menu-toggle"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-
-        <div className="mobile-menu" id="mobile-menu">
-          {navItems.map((item) => (
-            <div key={item.label} className="mobile-group">
-              <a href={item.href} onClick={closeMenu}>
-                {item.label}
-                {item.badge && <span className="badge">{item.badge}</span>}
-              </a>
-              {item.label === "Products" &&
-                products.map((product) => (
-                  <a key={product.id} className="mobile-sub" href={`#/product/${product.id}`} onClick={closeMenu}>
-                    {product.name}
-                  </a>
-                ))}
-            </div>
-          ))}
-          <a className="btn btn-dark" href="#contact" onClick={closeMenu}>Sign up</a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main id="top">
         <section className="hero" ref={heroRef} onMouseMove={handleHeroMove}>
@@ -2133,63 +2350,7 @@ function LandingPage() {
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="sf-top">
-          <div className="sf-brand">
-            <a className="brand" href="#top" aria-label="SaaSio home">
-              <span className="brand-mark" aria-hidden="true" />
-              SaaSio
-            </a>
-            <p>Business software that keeps your outlets, staff and books in sync, from the first sale to the year end.</p>
-            <div className="sf-social">
-              <a href="#top" aria-label="LinkedIn">in</a>
-              <a href="#top" aria-label="X">X</a>
-              <a href="#top" aria-label="Instagram">IG</a>
-              <a href="#top" aria-label="YouTube">YT</a>
-            </div>
-          </div>
-
-          <div className="sf-col">
-            <h4>Products</h4>
-            <ul>
-              {products.map((product) => (
-                <li key={product.id}>
-                  <a href={`#/product/${product.id}`}>{product.name}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="sf-col">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#team">Team</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-            </ul>
-          </div>
-
-          <div className="sf-col">
-            <h4>Contact</h4>
-            <ul className="sf-contact">
-              <li><a href="mailto:hello@example.com">hello@example.com</a></li>
-              <li><a href="tel:+910000000000">+91 00000 00000</a></li>
-              <li>Mon to Sat, 9am to 7pm</li>
-              <li>Your street address, City, State</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="sf-bottom">
-          <span>© {new Date().getFullYear()} SaaSio. All rights reserved.</span>
-          <span className="sf-legal">
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
-            <a href="#cookies">Cookies</a>
-          </span>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
@@ -2207,6 +2368,15 @@ const productPages = {
     breakdown: [82, 13, 3, 1, 1],
     headline: "Restaurant POS made simple.",
     description: "Take orders at the table, send tickets to the kitchen and close bills in three clicks, with every outlet synced in real time.",
+    overview: "Orderly POS runs the front of house and the kitchen on one connected system. Staff take orders on tablets at the table, tickets reach the kitchen screens in order, and every paid bill flows into your sales reports. It keeps working during internet drops and syncs once the connection returns.",
+    facts: [{ label: "Best for", value: "Caf\u00e9s, restaurants and bars" }, { label: "Devices", value: "Tablets, desktop and kitchen screens" }, { label: "Setup time", value: "Usually live within 1 day" }, { label: "Works offline", value: "Yes, with automatic sync" }],
+    howToUse: [
+      { title: "Set up your floor", text: "Draw your tables and sections in the layout editor, then add your menu and prices." },
+      { title: "Take orders", text: "Staff tap a table, add items and send the order to the kitchen in one step." },
+      { title: "Run the kitchen", text: "Tickets appear on kitchen screens by station. Mark items ready as they are cooked." },
+      { title: "Bill and close", text: "Split or merge bills, apply discounts and take card, UPI or cash. The receipt prints or emails automatically." },
+      { title: "Review sales", text: "Check daily totals and top items on the dashboard, or compare outlets side by side." },
+    ],
     stats: [
       { v: "1,000+", l: "outlets live" },
       { v: "3 clicks", l: "to punch a bill" },
@@ -2243,6 +2413,15 @@ const productPages = {
     breakdown: [76, 17, 4, 2, 1],
     headline: "Billing and books that stay current.",
     description: "Create compliant invoices in seconds, track stock as it moves and see profit and loss without waiting for month end.",
+    overview: "Ledgerly Invoice keeps billing, stock and books in step. Create GST-ready invoices, record payments as they arrive, and track stock as it sells. Profit and loss and cash flow update automatically, so your accountant gets clean records at month end.",
+    facts: [{ label: "Best for", value: "Retail, wholesale and service businesses" }, { label: "Devices", value: "Desktop, tablet and phone" }, { label: "Setup time", value: "Usually live within 2 days" }, { label: "Accounting", value: "Exports to common accountant tools" }],
+    howToUse: [
+      { title: "Add your business details", text: "Enter GST details, tax rates and invoice numbering once." },
+      { title: "Create products and stock", text: "Add items with prices and opening stock. Batch and expiry dates can be added where needed." },
+      { title: "Send invoices", text: "Create an invoice in seconds and send it by email or share the link. Stock updates as you bill." },
+      { title: "Get paid faster", text: "Turn on payment reminders and record payments by card, UPI or bank transfer." },
+      { title: "Close the month", text: "Download the profit and loss and cash flow reports, then export them to your accountant." },
+    ],
     stats: [
       { v: "5 days", l: "saved every month" },
       { v: "100%", l: "GST-compliant bills" },
@@ -2279,6 +2458,15 @@ const productPages = {
     breakdown: [88, 9, 2, 1, 0],
     headline: "Attendance and payroll, without spreadsheets.",
     description: "Connect biometric punches to payroll. Shifts, leave balances and salary runs update automatically, with payslips sent by email.",
+    overview: "Rosterly Payroll brings attendance, leave and salary into one place. Staff check in on their own, leave requests go to the right manager, and salary runs use the attendance already recorded. Statutory deductions and payslips are calculated automatically.",
+    facts: [{ label: "Best for", value: "Restaurants, hotels, retail and manufacturing teams" }, { label: "Devices", value: "Web dashboard, plus an app for staff" }, { label: "Setup time", value: "Usually 3 to 5 days, including salary structures" }, { label: "Compliance", value: "Statutory filings and full audit history" }],
+    howToUse: [
+      { title: "Add your team", text: "Import staff details and assign them to outlets, shifts and salary structures." },
+      { title: "Set attendance rules", text: "Choose check-in methods such as biometric, geo-fenced or manual, and set late and overtime limits." },
+      { title: "Set leave policies", text: "Define leave types and balances. Staff request leave in the app and managers approve it." },
+      { title: "Run payroll", text: "Review attendance, then run salaries. Deductions are calculated for you." },
+      { title: "Send payslips and reports", text: "Payslips go to staff by email, and statutory reports are ready for filing." },
+    ],
     stats: [
       { v: "2 days", l: "saved each pay cycle" },
       { v: "0", l: "manual salary errors" },
@@ -2315,6 +2503,15 @@ const productPages = {
     breakdown: [71, 19, 6, 3, 1],
     headline: "Daily work, checked and done.",
     description: "Give each team member a checklist for their shift. Supervisors verify completion with photos and get reports they can share.",
+    overview: "Taskflow turns daily checklists into verified work. Managers set recurring tasks for each shift, staff complete them on their phones with photo proof, and supervisors sign off. Reports show what was done, when and by whom, across every outlet.",
+    facts: [{ label: "Best for", value: "Restaurants, gyms, salons, hotels and venues" }, { label: "Devices", value: "Android and iOS app, plus a web dashboard" }, { label: "Setup time", value: "Usually live within 1 day" }, { label: "Proof of work", value: "Photos, comments and sign-offs" }],
+    howToUse: [
+      { title: "Create task templates", text: "Build checklists for opening, closing and cleaning, and set how often they repeat." },
+      { title: "Assign by shift", text: "Tasks go to the right team on each shift, with due times and reminders." },
+      { title: "Complete and prove", text: "Staff tick tasks off in the app and add a photo where you need proof." },
+      { title: "Supervise and sign off", text: "Supervisors review each task, approve it, or reopen it with a comment." },
+      { title: "Review performance", text: "See completion by shift and outlet, and download weekly PDF summaries." },
+    ],
     stats: [
       { v: "40%", l: "fewer missed tasks" },
       { v: "Photo", l: "proof on every task" },
@@ -2348,6 +2545,17 @@ const productPages = {
 
 const chipColors = ["#E8553D", "#1F7A6D", "#4B5BD6", "#C98A12", "#7B3FE4", "#FF2D75"];
 
+function groupArtFor(product, i, group) {
+  const flip = i % 2 === 1;
+  return {
+    ...product,
+    id: `${product.id}-group-${i}`,
+    color: flip ? product.colorDeep : product.color,
+    colorDeep: flip ? product.color : product.colorDeep,
+    image: group.image ?? product.image ?? null,
+  };
+}
+
 function ProductDetail({ product }) {
   const d = productPages[product.id];
   const [enabled, setEnabled] = useState({});
@@ -2368,20 +2576,9 @@ function ProductDetail({ product }) {
     <div className="page pd pdp">
       <style>{styles}</style>
 
-      <header className="pd-top">
-        <a className="brand" href="#top" aria-label="SaaSio home">
-          <span className="brand-mark" aria-hidden="true" />
-          SaaSio
-        </a>
-        <div className="pdp-top-actions">
-          <a className="pd-back-top" href="#products">All products</a>
-          <button type="button" className="btn btn-dark btn-small" onClick={() => scrollToId("pdp-demo")}>
-            Book a Free Demo
-          </button>
-        </div>
-      </header>
+      <SiteHeader solid />
 
-      <main>
+      <main className="inner-main">
         <section className="pd-hero">
           <div className="pd-hero-text">
             <a className="pd-back" href="#products">← Back to products</a>
@@ -2420,6 +2617,24 @@ function ProductDetail({ product }) {
           ))}
         </section>
 
+        <section className="pdp-section pdp-about" aria-labelledby="pdp-about-heading">
+          <div className="pdp-about-grid">
+            <div>
+              <span className="rv-eyebrow">Overview</span>
+              <h2 id="pdp-about-heading">About {product.name}</h2>
+              <p>{d.overview}</p>
+            </div>
+            <dl className="pdp-facts">
+              {d.facts.map((fact) => (
+                <div key={fact.label}>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
         <section className="pdp-section pdp-features" id="pdp-features" aria-labelledby="pdp-features-heading">
           <div className="pdp-head">
             <span className="rv-eyebrow">Features</span>
@@ -2437,6 +2652,9 @@ function ProductDetail({ product }) {
             <div className="pdp-groups">
               {d.featureGroups.map((group, i) => (
                 <article key={group.group} id={`pdp-g-${i}`} className="pdp-group">
+                  <div className="pdp-group-art">
+                    <ProductArt product={groupArtFor(product, i, group)} />
+                  </div>
                   <h3>
                     <i style={{ background: product.color }} aria-hidden="true" />
                     {group.group}
@@ -2453,6 +2671,25 @@ function ProductDetail({ product }) {
               ))}
             </div>
           </div>
+        </section>
+
+        <section className="pdp-section pdp-howto" aria-labelledby="pdp-howto-heading">
+          <div className="pdp-head">
+            <span className="rv-eyebrow">How to use</span>
+            <h2 id="pdp-howto-heading">Getting started with {product.name}</h2>
+            <p>The usual path from setup to everyday use.</p>
+          </div>
+          <ol className="pdp-steps">
+            {d.howToUse.map((step, i) => (
+              <li key={step.title}>
+                <span className="pdp-step-num" style={{ background: product.color }}>{i + 1}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section className="pdp-section pdp-featured" aria-labelledby="pdp-featured-heading">
@@ -2648,7 +2885,7 @@ function ProductDetail({ product }) {
         </nav>
       </main>
 
-      <footer className="pd-foot">© {new Date().getFullYear()} SaaSio. All rights reserved.</footer>
+      <SiteFooter />
     </div>
   );
 }
@@ -2674,6 +2911,7 @@ export default function App() {
     }
   }, [hash, isProjectRoute]);
 
+  if (hash === "#/about") return <AboutPage />;
   if (isProjectRoute && project) return <PortfolioDetail project={project} />;
   if (isProductRoute && product) return <ProductDetail product={product} />;
   return <LandingPage />;
@@ -3527,18 +3765,6 @@ img { max-width: 100%; }
 
 /* ---------- Portfolio detail page ---------- */
 .pd { min-height: 100vh; background: var(--paper); color: var(--ink); }
-.pd-top {
-  position: sticky; top: 0; z-index: 40; display: flex; justify-content: space-between; align-items: center;
-  padding: 16px clamp(20px, 5vw, 80px); background: rgba(245, 246, 251, .88);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
-}
-.pd-top .brand { color: var(--ink); }
-.pd-top .brand-mark { background: linear-gradient(135deg, #1E5BFF, #FF2D75); }
-.pd-back-top {
-  padding: 10px 18px; border-radius: 999px; background: #FFFFFF; color: var(--ink); font-weight: 600; text-decoration: none;
-  box-shadow: 0 8px 20px rgba(20, 27, 51, .08); transition: transform .3s var(--ease), background-color .3s, color .3s;
-}
-.pd-back-top:hover { background: var(--ink); color: #FFFFFF; transform: translateY(-2px); }
 
 .pd-hero {
   display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: center;
@@ -3587,6 +3813,7 @@ img { max-width: 100%; }
 .pd-cols h3 { margin: 0 0 12px; font-size: 22px; font-weight: 800; }
 .pd-cols p { margin: 0; line-height: 1.7; color: var(--ink-soft); }
 .pd-results { background: linear-gradient(150deg, #1E5BFF, #7B3FE4 55%, #FF2D75); border-color: transparent !important; color: #FFFFFF; }
+.pd-cols .pd-results { background: linear-gradient(150deg, #1E5BFF, #7B3FE4 55%, #FF2D75); color: #FFFFFF; }
 .pd-results h3 { color: #FFFFFF; }
 .pd-results > div { padding: 12px 0; border-top: 1px solid rgba(255, 255, 255, .25); }
 .pd-results > div strong { display: block; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
@@ -3600,7 +3827,7 @@ img { max-width: 100%; }
 
 .pd-gallery { padding: 0 clamp(20px, 5vw, 80px) clamp(48px, 6vw, 80px); }
 .pd-gallery h2 { margin: 0 0 28px; font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; letter-spacing: -0.02em; }
-.pd-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+.pd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .pd-shot {
   position: relative; overflow: hidden; padding: 0; border: 0; border-radius: 26px; cursor: zoom-in;
   background: #FFFFFF; box-shadow: 0 20px 44px rgba(20, 27, 51, .12);
@@ -3609,7 +3836,6 @@ img { max-width: 100%; }
 .pd-shot:hover { transform: translateY(-6px); box-shadow: 0 34px 70px rgba(20, 27, 51, .2); }
 .pd-shot .art-img { display: block; width: 100%; height: auto; transition: transform .8s var(--ease); }
 .pd-shot:hover .art-img { transform: scale(1.05); }
-.pd-shot:nth-child(3) { grid-column: 1 / -1; }
 .pd-shot-cap {
   position: absolute; left: 16px; bottom: 16px; padding: 10px 16px; border-radius: 999px;
   background: rgba(255, 255, 255, .94); color: var(--ink); font-size: 14px; font-weight: 600;
@@ -3665,13 +3891,10 @@ img { max-width: 100%; }
   box-shadow: 0 18px 36px rgba(123, 63, 228, .35); transition: transform .6s var(--ease), box-shadow .4s;
 }
 .pd-pager-center:hover .pd-circle { transform: rotate(90deg) scale(1.08); box-shadow: 0 26px 50px rgba(123, 63, 228, .45); }
-.pd-foot { padding: 24px clamp(20px, 5vw, 80px); border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
 
 @media (max-width: 900px) {
   .pd-hero { grid-template-columns: 1fr; }
   .pd-cols { grid-template-columns: 1fr; }
-  .pd-grid { grid-template-columns: 1fr; }
-  .pd-shot:nth-child(3) { grid-column: auto; }
 }
 @media (max-width: 560px) {
   .pd-meta { grid-template-columns: 1fr; }
@@ -3686,7 +3909,6 @@ img { max-width: 100%; }
 }
 
 /* ---------- Product detail page ---------- */
-.pdp-top-actions { display: flex; align-items: center; gap: 12px; }
 .pdp-tag { margin-bottom: 4px; }
 .pdp-media {
   position: relative; overflow: hidden; border-radius: 30px; box-shadow: 0 40px 80px rgba(20, 27, 51, .18);
@@ -3896,7 +4118,6 @@ img { max-width: 100%; }
   .pdp-feat-nav { grid-template-columns: 1fr; }
   .pdp-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
   .pdp-stats strong { font-size: 26px; }
-  .pdp-top-actions .pd-back-top { display: none; }
   .pdp-demo { margin-inline: 12px; border-radius: 24px; }
 }
 
@@ -4128,4 +4349,62 @@ img { max-width: 100%; }
   .why-item { padding: 24px; }
   .footer { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- Shared inner pages: About, case studies, products ---------- */
+.inner-main { padding-top: 84px; }
+.about-page { background: var(--paper); color: var(--ink); }
+.about-hero { max-width: 1180px; padding: clamp(48px, 7vw, 96px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px); }
+.about-eyebrow { display: inline-block; margin-bottom: 18px; font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #7B3FE4; }
+.about-hero h1 { margin: 0 0 22px; max-width: 900px; font-size: clamp(38px, 5.5vw, 68px); line-height: 1.04; font-weight: 800; letter-spacing: -0.03em; }
+.about-hero p { margin: 0 0 34px; max-width: 680px; font-size: 19px; line-height: 1.6; color: var(--ink-soft); }
+.about-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 0 clamp(20px, 5vw, 80px); }
+.about-stat { display: flex; flex-direction: column; gap: 6px; padding: 28px; border-radius: 24px; background: #FFFFFF; box-shadow: 0 20px 50px rgba(20, 27, 51, .08); }
+.about-stat strong { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; }
+.about-stat span { font-size: 15px; color: var(--ink-soft); }
+.about-story { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; padding: clamp(64px, 9vw, 110px) clamp(20px, 5vw, 80px) 0; }
+.about-story h2, .about-why h2, .about-timeline h2 { margin: 0 0 20px; font-size: clamp(28px, 3.4vw, 42px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; }
+.about-story p { margin: 0 0 16px; font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
+.about-notes { display: grid; gap: 20px; }
+.about-note { padding: 28px; border-radius: 24px; background: #FFFFFF; border-left: 6px solid var(--accent); box-shadow: 0 20px 50px rgba(20, 27, 51, .08); }
+.about-note h3 { margin: 0 0 8px; font-size: 21px; font-weight: 800; }
+.about-note p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+.about-why, .about-timeline { padding: clamp(64px, 9vw, 110px) clamp(20px, 5vw, 80px) 0; }
+.about-timeline .section-head { margin-bottom: 0; }
+.about-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 52px; }
+.about-why-card { padding: 32px; border-radius: 26px; background: #FFFFFF; box-shadow: 0 20px 50px rgba(20, 27, 51, .08); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.about-why-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(20, 27, 51, .14); }
+.about-why-icon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 22px; border-radius: 20px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.about-why-card h3 { margin: 0 0 10px; font-size: 21px; font-weight: 800; }
+.about-why-card p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+.about-timeline-list { display: grid; gap: 32px; max-width: 760px; margin: 52px 0 0; padding: 0 0 0 36px; list-style: none; border-left: 3px solid rgba(123, 63, 228, .25); }
+.about-timeline-list li { position: relative; }
+.about-timeline-list li::before { content: ""; position: absolute; left: -46px; top: 6px; width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #1E5BFF, #FF2D75); box-shadow: 0 0 0 6px var(--paper); }
+.about-year { display: block; margin-bottom: 6px; font-size: 22px; font-weight: 800; }
+.about-timeline-list p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+.about-cta { margin: clamp(64px, 9vw, 110px) clamp(20px, 5vw, 80px); padding: clamp(40px, 6vw, 72px); border-radius: 32px; text-align: center; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75); }
+.about-cta h2 { margin: 0 0 14px; font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; letter-spacing: -0.02em; }
+.about-cta p { max-width: 560px; margin: 0 auto 30px; font-size: 18px; line-height: 1.6; opacity: .92; }
+@media (max-width: 900px) { .about-story { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .about-stats { grid-template-columns: repeat(2, 1fr); } .about-stat strong { font-size: 28px; } }
+@media (max-width: 560px) { .inner-main { padding-top: 76px; } }
+
+/* Product page: about, how to use, feature images; three-column gallery */
+.pdp-about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.pdp-about h2 { margin: 14px 0 16px; font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.06; }
+.pdp-about > .pdp-about-grid > div > p { margin: 0; font-size: 18px; line-height: 1.7; color: var(--ink-soft); }
+.pdp-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 0; }
+.pdp-facts > div { padding: 22px; border-radius: 22px; background: #FFFFFF; box-shadow: 0 16px 40px rgba(20, 27, 51, .06); }
+.pdp-facts dt { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.pdp-facts dd { margin: 8px 0 0; font-size: 17px; font-weight: 700; line-height: 1.4; }
+.pdp-howto { background: var(--paper); }
+.pdp-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+.pdp-steps li { display: flex; flex-direction: column; gap: 18px; padding: 28px; border-radius: 24px; background: #FFFFFF; box-shadow: 0 16px 40px rgba(20, 27, 51, .06); }
+.pdp-step-num { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; color: #FFFFFF; font-size: 18px; font-weight: 800; }
+.pdp-steps h3 { margin: 0 0 8px; font-size: 19px; font-weight: 800; }
+.pdp-steps p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.pdp-group-art { margin: -30px -30px 22px; border-radius: 26px 26px 0 0; overflow: hidden; }
+.pdp-group-art .art-img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) { .pdp-about-grid { grid-template-columns: 1fr; } .pd-grid { gap: 16px; } }
+@media (max-width: 560px) { .pdp-facts { grid-template-columns: 1fr; } .pdp-steps { grid-template-columns: 1fr; } .pd-grid { grid-template-columns: 1fr; } }
 `;
