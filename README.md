@@ -1,4 +1,4 @@
-# SaaSio Landing Page Test
+# SaaSio Landing Page
 
 A single-page React landing page with a hero, services (dark particle section),
 product showcase, portfolio with parallax and tilt, team, pricing,

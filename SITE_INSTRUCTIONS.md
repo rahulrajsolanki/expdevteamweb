@@ -70,6 +70,7 @@ Almost all text, images and lists are plain JavaScript arrays near the top of
 | What | Array name | Fields |
 |------|-----------|--------|
 | Navigation links | `navItems` | `label`, `href`, optional `badge` |
+| About page | `aboutPage` | `eyebrow`, `headline`, `intro`, `stats` (`v`, `l`), `story` (`title`, `paragraphs`), `mission`, `vision` (`title`, `text`), `whyIntro`, `milestones` (`year`, `text`), `teamIntro`, `cta` (`title`, `text`). The why-us and team cards use `whyPoints`, `whyStyles` and `teamMembers`. |
 | Products | `products` | `id`, `name`, `summary`, `description`, `features` (list), `color`, `colorDeep`, `image`, optional `isNew` |
 | Partner logos | `partnerLogos` | Array of names |
 | Feature rows | `featureRows` | `id`, `name`, `title`, `text`, `color`, `colorDeep` |
@@ -168,6 +169,7 @@ These are placeholders in the current build:
 - **Company name:** "SaaSio" and "YourBrand" appear in the header, footer and copyright.
 - **Contact details:** `hello@example.com`, `+91 00000 00000`, the address and the business hours.
 - **Social links:** the footer links point to `#top`. Replace them with real profile URLs.
+- **About page:** the story, mission, vision, milestones and figures in `aboutPage` are placeholder copy. Replace them with your real history.
 - **Statistics and claims:** "10,000+ businesses", "4.9 average rating", "1,200+ reviews",
   "98% renew", "3 days to go live", "24x7 support", and the security claims. Replace them with verified figures.
 - **Testimonials, team bios and client names:** these are fictional. Use real, approved content.
@@ -238,6 +240,7 @@ These are placeholders in the current build:
 | Add a review | Add an object to `testimonials`. |
 | Add an FAQ | Add `{ q, a }` to `faqs`. |
 | Add an industry circle | Add `{ name, color }` to `industries`. |
+| Edit the About page | Change `aboutPage` (copy, figures, milestones). Team and why-us cards come from `teamMembers` and `whyPoints`. |
 | Add a navigation link | Add to `navItems`, and make sure the target section has the matching `id`. |
 | Change the brand name | Search for "SaaSio" and "YourBrand" and replace them. |
 | Change colours | Edit the `:root` variables, or the gradient values inside each component. |
@@ -298,3 +301,18 @@ Connect it the same way as the home page demo form (section 10).
 
 **Adding a product:** add it to `products`, then add a matching `productPages` entry with the same id.
 Without the `productPages` entry the product's detail page will not render.
+
+---
+
+## 17. About page and shared header and footer
+
+The About us page opens at `#/about`. It contains a hero, stats, story with mission and vision,
+why choose us, a journey timeline, the team, and a call to action. Its content comes from `aboutPage`.
+
+Every page uses the same header and footer, defined once as `SiteHeader` and `SiteFooter` in
+`src/LandingPage.jsx`. These are used on the home page, the About page, every case study page
+(`#/portfolio/<id>`) and every product page (`#/product/<id>`). Change them there and the change
+appears everywhere. Navigation links come from `navItems`. The footer's Company column includes an
+About us link.
+
+On inner pages the header always uses its solid background, because the page background is light.

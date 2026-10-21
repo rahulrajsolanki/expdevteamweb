@@ -1,12 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+// base "./" makes the built site work from any folder, including when opened directly.
 export default defineConfig({
+  base: "./",
   plugins: [react()],
-  // Production server port (used by `npm start` / `npm run preview`)
-  preview: {
-    host: "0.0.0.0",
-    port: 3200,
-    strictPort: true,
-  },
 });
