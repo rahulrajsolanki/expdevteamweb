@@ -54,63 +54,22 @@ const products = [
 ];
 
 const navItems = [
-  { label: "Services", href: "#services" },
+  { label: "Services", href: "#/services" },
   { label: "Products", href: "#products", badge: "New" },
-  { label: "Portfolio", href: "#portfolio" },
+  { label: "Portfolio", href: "#/portfolio" },
   { label: "About", href: "#/about" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "#/contact" },
 ];
 
 const services = [
-  {
-    id: "setup",
-    title: "Setup and installation",
-    text: "We configure the software, hardware and menus for your outlet so you can start selling on day one.",
-    icon: "setup",
-  },
-  {
-    id: "training",
-    title: "Staff training",
-    text: "Hands-on sessions for owners and staff, plus recordings that new hires can revisit anytime.",
-    icon: "users",
-  },
-  {
-    id: "migration",
-    title: "Data migration",
-    text: "Move your menus, customers and sales history from your old system without losing a record.",
-    icon: "cloud",
-  },
-  {
-    id: "integration",
-    title: "Custom integrations",
-    text: "Connect delivery apps, payment gateways and accounting tools to one source of truth.",
-    icon: "code",
-  },
-  {
-    id: "support",
-    title: "24x7 support",
-    text: "Call, chat or email anytime. Our team resolves most issues within the hour.",
-    icon: "shield",
-  },
-  {
-    id: "consulting",
-    title: "Growth consulting",
-    text: "Monthly reviews of your sales, costs and staffing, with clear next steps for the month ahead.",
-    icon: "chart",
-  },
-  {
-    id: "menu",
-    title: "Menu and branding",
-    text: "Digital menus, price lists and receipt designs that match your brand and update in one place.",
-    icon: "setup",
-  },
-  {
-    id: "hardware",
-    title: "Hardware sourcing",
-    text: "We recommend, install and test printers, tablets and card readers that work with your software.",
-    icon: "device",
-  },
+  { id: "web", title: "Web Development", text: "Fast, secure websites and web apps built to turn visitors into customers.", icon: "web" },
+  { id: "mobile", title: "Mobile App Development", text: "Cross-platform and native apps for phones and tablets, from idea to store launch.", icon: "mobile" },
+  { id: "flutter", title: "Flutter Apps", text: "One codebase for polished Android and iOS apps with smooth, fast performance.", icon: "flutter" },
+  { id: "laravel", title: "Laravel Development", text: "Custom web applications, admin panels and APIs built on the Laravel framework.", icon: "laravel" },
+  { id: "wordpress", title: "WordPress Development", text: "Custom themes, plugins and WooCommerce stores that are easy for you to manage.", icon: "wordpress" },
+  { id: "shopify", title: "Shopify Stores", text: "Online stores with custom themes, product setup and payment integration.", icon: "shopify" },
+  { id: "ios", title: "iOS App Development", text: "Native iPhone and iPad apps, tested on real devices and ready for the App Store.", icon: "ios" },
+  { id: "android", title: "Android App Development", text: "Native Android apps designed and tested for smooth performance on Google Play.", icon: "android" },
 ];
 
 const portfolioProjects = [
@@ -754,6 +713,51 @@ function ServiceIcon({ name }) {
       <>
         <rect x="6" y="3" width="12" height="18" rx="3" />
         <path d="M11 18h2" />
+      </>
+    ),
+    web: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" />
+      </>
+    ),
+    mobile: (
+      <>
+        <rect x="7" y="2.5" width="10" height="19" rx="2.5" />
+        <path d="M10 7h4M10 11h4M10 15h4" />
+      </>
+    ),
+    flutter: <path d="M14 3L5 12l4 4 9-9h-4zM9 16l5 5h5l-5-5z" />,
+    laravel: (
+      <>
+        <path d="M7 3v14a4 4 0 0 0 4 4h8" />
+        <path d="M14 9c1.5 1 2.5 2.5 2.5 4.5" />
+      </>
+    ),
+    wordpress: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M7 9l2.2 6.5L12 9l2.8 6.5L17 9" />
+      </>
+    ),
+    shopify: (
+      <>
+        <path d="M5 8h14l-1 12.5H6z" />
+        <path d="M9 8a3 3 0 0 1 6 0" />
+      </>
+    ),
+    ios: (
+      <>
+        <rect x="6" y="2.5" width="12" height="19" rx="3" />
+        <text x="12" y="14" textAnchor="middle" fontSize="5.5" fontWeight="700" fill="currentColor" stroke="none" fontFamily="Outfit, Arial, sans-serif">iOS</text>
+      </>
+    ),
+    android: (
+      <>
+        <path d="M6.5 10.5a5.5 5.5 0 0 1 11 0V19a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1z" />
+        <path d="M9 5l-1.5-2.5M15 5l1.5-2.5" />
+        <circle cx="9.7" cy="13" r=".6" fill="currentColor" />
+        <circle cx="14.3" cy="13" r=".6" fill="currentColor" />
       </>
     ),
   };
@@ -1751,7 +1755,7 @@ function SiteHeader({ solid = false }) {
               ))}
           </div>
         ))}
-        <a className="btn btn-dark" href="#contact" onClick={closeMenu}>Sign up</a>
+        <a className="btn btn-dark" href="#/contact" onClick={closeMenu}>Sign up</a>
       </div>
     </header>
   );
@@ -1789,9 +1793,10 @@ function SiteFooter() {
         <div className="sf-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#/services">Services</a></li>
+            <li><a href="#/portfolio">Portfolio</a></li>
             <li><a href="#/about">About us</a></li>
+            <li><a href="#/contact">Contact</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#pricing">Pricing</a></li>
           </ul>
@@ -1820,117 +1825,700 @@ function SiteFooter() {
   );
 }
 
-function AboutPage() {
+const aboutExtras = {
+  marquee: ["Built for growth", "Works offline", "Trusted across India", "Support every day", "Secure by default", "Simple to learn"],
+  values: [
+    { title: "Simple first", text: "We design for the person at the counter, not the person in the boardroom.", icon: "setup", from: "#1E5BFF", to: "#7B3FE4" },
+    { title: "Honest pricing", text: "One clear monthly price, with add-ons you choose. No surprise fees at go-live.", icon: "chart", from: "#7B3FE4", to: "#FF2D75" },
+    { title: "Built to last", text: "Secure data, daily backups and software that keeps working during internet drops.", icon: "shield", from: "#FF2D75", to: "#FF8A2B" },
+    { title: "People who answer", text: "Real people help you set up, train your team and stay on for updates.", icon: "users", from: "#FF8A2B", to: "#F5B100" },
+  ],
+};
+
+/* 3D tilt card: the card leans toward the pointer and shows a light glare. */
+function TiltCard({ children, className = "", innerClassName = "", radius = 26 }) {
+  const ref = useRef(null);
+
+  const handleMove = (event) => {
+    const el = ref.current;
+    const rect = el.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    el.style.setProperty("--rx", `${(-y * 12).toFixed(2)}deg`);
+    el.style.setProperty("--ry", `${(x * 14).toFixed(2)}deg`);
+    el.style.setProperty("--gx", `${((x + 0.5) * 100).toFixed(1)}%`);
+    el.style.setProperty("--gy", `${((y + 0.5) * 100).toFixed(1)}%`);
+  };
+
+  const handleLeave = () => {
+    const el = ref.current;
+    el.style.setProperty("--rx", "0deg");
+    el.style.setProperty("--ry", "0deg");
+  };
+
   return (
-    <div className="page pd about-page">
+    <div
+      ref={ref}
+      className={`tilt ${className}`}
+      style={{ borderRadius: radius }}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+    >
+      <div className={`tilt-inner ${innerClassName}`} style={{ borderRadius: radius }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* Counts up to a figure such as "10,000+" or "4.9" when it scrolls into view. */
+function CountUp({ value }) {
+  const ref = useRef(null);
+  const [text, setText] = useState(value);
+
+  useEffect(() => {
+    const match = value.match(/^([\d,]*\.?\d+)([+%]?)$/);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!match || reduce || !("IntersectionObserver" in window)) return undefined;
+
+    const numberText = match[1];
+    const suffix = match[2];
+    const target = parseFloat(numberText.replace(/,/g, ""));
+    const decimals = (numberText.split(".")[1] || "").length;
+    const useCommas = numberText.includes(",");
+    const format = (v) => {
+      const body = useCommas
+        ? Math.round(v).toLocaleString("en-US")
+        : decimals ? v.toFixed(decimals) : Math.round(v).toString();
+      return body + suffix;
+    };
+
+    let started = false;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started) return;
+        started = true;
+        io.disconnect();
+        const t0 = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - t0) / 1400, 1);
+          setText(format(target * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.5 }
+    );
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [value]);
+
+  return <span ref={ref}>{text}</span>;
+}
+
+function AboutPage() {
+  const pageRef = useRef(null);
+
+  useEffect(() => {
+    const items = pageRef.current ? pageRef.current.querySelectorAll(".ab-reveal") : [];
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) {
+      items.forEach((el) => el.classList.add("is-in"));
+      return undefined;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  /* Parallax: floating layers move opposite to the pointer inside their section. */
+  const moveParallax = (event) => {
+    const el = event.currentTarget;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3));
+    el.style.setProperty("--my", ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3));
+  };
+  const resetParallax = (event) => {
+    event.currentTarget.style.setProperty("--mx", "0");
+    event.currentTarget.style.setProperty("--my", "0");
+  };
+
+  return (
+    <div className="page pd ab-page" ref={pageRef}>
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main ab-main">
+        {/* Hero */}
+        <section className="ab-hero" onMouseMove={moveParallax} onMouseLeave={resetParallax}>
+          <span className="ab-blob ab-blob-a" aria-hidden="true" />
+          <span className="ab-blob ab-blob-b" aria-hidden="true" />
+          <div className="ab-hero-grid">
+            <div className="ab-hero-text">
+              <span className="about-eyebrow ab-rise">{aboutPage.eyebrow}</span>
+              <h1 className="ab-title">
+                {aboutPage.headline.split(" ").map((word, i) => (
+                  <span key={`${word}-${i}`} className="ab-word" style={{ animationDelay: `${0.1 + i * 0.07}s` }}>
+                    {word}
+                  </span>
+                ))}
+              </h1>
+              <p className="ab-lead ab-rise" style={{ animationDelay: ".5s" }}>{aboutPage.intro}</p>
+              <div className="ab-hero-actions ab-rise" style={{ animationDelay: ".65s" }}>
+                <a className="btn btn-dark" href="#/contact">Book a Free Demo</a>
+                <a className="btn btn-light" href="#products">See our products</a>
+              </div>
+            </div>
+
+            <div className="ab-stack" aria-hidden="true">
+              <div className="ab-float ab-pos-a" style={{ "--d": 1 }}>
+                <TiltCard innerClassName="ab-glass">
+                  <span className="ab-chip">Since 2018</span>
+                  <strong>Software for busy outlets</strong>
+                  <p>Orders, staff and books in one connected system.</p>
+                </TiltCard>
+              </div>
+              <div className="ab-float ab-pos-b" style={{ "--d": -0.6 }}>
+                <TiltCard innerClassName="ab-glass ab-glass-dark">
+                  <strong>4.9 / 5</strong>
+                  <p>Average customer rating</p>
+                </TiltCard>
+              </div>
+              <div className="ab-float ab-pos-c" style={{ "--d": 0.5 }}>
+                <TiltCard innerClassName="ab-glass ab-glass-grad">
+                  <strong>98%</strong>
+                  <p>of customers renew each year</p>
+                </TiltCard>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Scrolling strip */}
+        <div className="ab-marquee" aria-hidden="true">
+          <div className="ab-marquee-track">
+            {[...aboutExtras.marquee, ...aboutExtras.marquee].map((word, i) => (
+              <span key={`${word}-${i}`}>
+                {word}
+                <i />
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats */}
+        <section className="ab-stats" aria-label="SaaSio at a glance">
+          {aboutPage.stats.map((stat, i) => (
+            <div key={stat.l} className="ab-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+              <TiltCard innerClassName="ab-stat">
+                <strong>
+                  <CountUp value={stat.v} />
+                </strong>
+                <span>{stat.l}</span>
+              </TiltCard>
+            </div>
+          ))}
+        </section>
+
+        {/* Story, mission and vision */}
+        <section className="ab-story ab-dark">
+          <div className="ab-reveal from-left">
+            <span className="about-eyebrow">About us</span>
+            <h2 className="ab-h2">{aboutPage.story.title}</h2>
+            {aboutPage.story.paragraphs.map((text) => (
+              <p key={text} className="ab-lead">{text}</p>
+            ))}
+          </div>
+          <div className="ab-notes">
+            {[
+              { note: aboutPage.mission, from: "#1E5BFF", to: "#7B3FE4" },
+              { note: aboutPage.vision, from: "#FF2D75", to: "#FF8A2B" },
+            ].map(({ note, from, to }, i) => (
+              <div key={note.title} className="ab-reveal" style={{ transitionDelay: `${0.15 + i * 0.12}s` }}>
+                <TiltCard className="ab-note-tilt" innerClassName="ab-note" radius={28}>
+                  <span className="ab-note-bar" style={{ background: `linear-gradient(180deg, ${from}, ${to})` }} />
+                  <h3>{note.title}</h3>
+                  <p>{note.text}</p>
+                </TiltCard>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Values */}
+        <section className="ab-values" aria-labelledby="ab-values-heading">
+          <div className="ab-head ab-reveal">
+            <span className="about-eyebrow">What we stand for</span>
+            <h2 id="ab-values-heading" className="ab-h2">Four ideas behind every product</h2>
+          </div>
+          <div className="ab-value-grid">
+            {aboutExtras.values.map((value, i) => (
+              <div key={value.title} className="ab-reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <TiltCard innerClassName="ab-value">
+                  <span className="ab-value-icon" style={{ "--from": value.from, "--to": value.to }}>
+                    <ServiceIcon name={value.icon} />
+                  </span>
+                  <h3>{value.title}</h3>
+                  <p>{value.text}</p>
+                </TiltCard>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Why choose us */}
+        <section className="ab-why ab-dark" aria-labelledby="ab-why-heading">
+          <div className="ab-head centered ab-reveal">
+            <span className="about-eyebrow">Why choose us</span>
+            <h2 id="ab-why-heading" className="ab-h2">Why teams choose SaaSio</h2>
+            <p>{aboutPage.whyIntro}</p>
+          </div>
+          <div className="ab-why-grid">
+            {whyPoints.map((point, i) => (
+              <div key={point.title} className="ab-reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <TiltCard innerClassName="ab-why-card">
+                  <div className="ab-why-icon" style={{ "--from": whyStyles[i].from, "--to": whyStyles[i].to }}>
+                    <WhyIcon name={whyStyles[i].icon} />
+                  </div>
+                  <h3>{point.title}</h3>
+                  <p>{point.text}</p>
+                </TiltCard>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Team */}
+        <section className="ab-team" aria-labelledby="ab-team-heading">
+          <div className="ab-head centered ab-reveal">
+            <span className="about-eyebrow">Our team</span>
+            <h2 id="ab-team-heading" className="ab-h2">The people behind SaaSio</h2>
+            <p>{aboutPage.teamIntro}</p>
+          </div>
+          <div className="ab-team-grid">
+            {teamMembers.map((member, i) => (
+              <div key={member.name} className="ab-reveal" style={{ transitionDelay: `${(i % 4) * 0.08}s` }}>
+                <TiltCard innerClassName="ab-team-card">
+                  <span className="ab-avatar" style={{ background: `linear-gradient(135deg, ${member.from}, ${member.to})` }}>
+                    {member.initials}
+                  </span>
+                  <h3>{member.name}</h3>
+                  <p className="ab-role">{member.role}</p>
+                  <p className="ab-bio">{member.bio}</p>
+                </TiltCard>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Call to action */}
+        <section className="ab-cta" onMouseMove={moveParallax} onMouseLeave={resetParallax} aria-labelledby="ab-cta-heading">
+          <span className="ab-cta-orb ab-float" style={{ "--d": 1.4 }} aria-hidden="true" />
+          <span className="ab-cta-orb2 ab-float" style={{ "--d": -1 }} aria-hidden="true" />
+          <div className="ab-cta-inner ab-reveal">
+            <h2 id="ab-cta-heading" className="ab-cta-title">{aboutPage.cta.title}</h2>
+            <p>{aboutPage.cta.text}</p>
+            <div className="ab-hero-actions">
+              <a className="btn btn-light" href="#/contact">Book a Free Demo</a>
+              <a className="btn ab-ghost" href="#/services">Explore services</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------
+   SERVICES, PORTFOLIO AND CONTACT PAGES — routes #/services,
+   #/portfolio and #/contact. Shared header and footer.
+   ------------------------------------------------------------------ */
+const serviceProcess = [
+  { title: "Discover", text: "We learn your goals, users and existing tools in a short discovery call.", icon: "chart" },
+  { title: "Design", text: "You see screens and a plan before we write code, so changes stay quick and cheap.", icon: "device" },
+  { title: "Build and test", text: "We build in short cycles and test on real devices and browsers.", icon: "code" },
+  { title: "Launch and support", text: "We publish, train your team and stay on for updates and fixes.", icon: "cloud" },
+];
+
+const serviceColors = [
+  ["#1E5BFF", "#7B3FE4"],
+  ["#7B3FE4", "#FF2D75"],
+  ["#FF2D75", "#FF8A2B"],
+  ["#FF8A2B", "#F5B100"],
+  ["#0EA5C6", "#1E5BFF"],
+];
+
+function ServicesPage() {
+  return (
+    <div className="page pd svc-page">
       <style>{styles}</style>
 
       <SiteHeader solid />
 
       <main className="inner-main">
-        <section className="about-hero">
-          <span className="about-eyebrow">{aboutPage.eyebrow}</span>
-          <h1>{aboutPage.headline}</h1>
-          <p>{aboutPage.intro}</p>
-          <div className="about-hero-actions">
-            <a className="btn btn-dark" href="#contact">Book a Free Demo</a>
-            <a className="btn btn-light" href="#products">See our products</a>
+        <section className="svc-hero">
+          <span className="about-eyebrow">Services</span>
+          <h1>Websites, apps and online stores, built to grow with you.</h1>
+          <p>Choose a service below or tell us what you need. We will suggest the right technology and a clear plan.</p>
+          <div className="svc-hero-actions">
+            <a className="btn btn-dark" href="#/contact">Book a free call</a>
+            <a className="btn btn-light" href="#/portfolio">See our work</a>
           </div>
         </section>
 
-        <section className="about-stats" aria-label="SaaSio at a glance">
-          {aboutPage.stats.map((stat) => (
-            <div key={stat.l} className="about-stat">
-              <strong>{stat.v}</strong>
-              <span>{stat.l}</span>
-            </div>
-          ))}
-        </section>
-
-        <section className="about-story" aria-labelledby="about-story-heading">
-          <div>
-            <h2 id="about-story-heading">{aboutPage.story.title}</h2>
-            {aboutPage.story.paragraphs.map((text) => (
-              <p key={text}>{text}</p>
-            ))}
-          </div>
-          <div className="about-notes">
-            {[
-              { note: aboutPage.mission, accent: "#1E5BFF" },
-              { note: aboutPage.vision, accent: "#FF2D75" },
-            ].map(({ note, accent }) => (
-              <article key={note.title} className="about-note" style={{ "--accent": accent }}>
-                <h3>{note.title}</h3>
-                <p>{note.text}</p>
-              </article>
-            ))}
+        <section className="svc-grid-section" aria-label="All services">
+          <div className="svc-grid">
+            {services.map((service, i) => {
+              const [from, to] = serviceColors[i % serviceColors.length];
+              return (
+                <article key={service.id} className="svc-card">
+                  <span className="svc-icon" style={{ "--from": from, "--to": to }}>
+                    <ServiceIcon name={service.icon} />
+                  </span>
+                  <h2>{service.title}</h2>
+                  <p>{service.text}</p>
+                  <a className="svc-link" href="#/contact">
+                    Book this service <ArrowIcon />
+                  </a>
+                </article>
+              );
+            })}
           </div>
         </section>
 
-        <section className="about-why" aria-labelledby="about-why-heading">
-          <div className="section-head centered">
-            <h2 id="about-why-heading">Why choose us</h2>
-            <p>{aboutPage.whyIntro}</p>
+        <section className="svc-process" aria-labelledby="svc-process-heading">
+          <span className="svc-process-glow" aria-hidden="true" />
+          <div className="svc-process-head">
+            <span className="about-eyebrow">Our process</span>
+            <h2 id="svc-process-heading">How we work</h2>
+            <p>Four clear steps from the first call to a live, supported product.</p>
           </div>
-          <div className="about-why-grid">
-            {whyPoints.map((point, i) => (
-              <article key={point.title} className="about-why-card">
-                <div
-                  className="about-why-icon"
-                  style={{ "--from": whyStyles[i].from, "--to": whyStyles[i].to }}
-                >
-                  <WhyIcon name={whyStyles[i].icon} />
-                </div>
-                <h3>{point.title}</h3>
-                <p>{point.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="about-timeline" aria-labelledby="about-timeline-heading">
-          <div className="section-head">
-            <h2 id="about-timeline-heading">Our journey</h2>
-          </div>
-          <ol className="about-timeline-list">
-            {aboutPage.milestones.map((milestone) => (
-              <li key={milestone.year}>
-                <span className="about-year">{milestone.year}</span>
-                <p>{milestone.text}</p>
-              </li>
-            ))}
+          <ol className="svc-flow">
+            {serviceProcess.map((step, i) => {
+              const [from, to] = serviceColors[i % serviceColors.length];
+              return (
+                <li key={step.title} className="svc-flow-step">
+                  <div className="svc-flow-node" style={{ "--from": from, "--to": to }}>
+                    <svg className="svc-ring" viewBox="0 0 120 120" aria-hidden="true">
+                      <circle cx="60" cy="60" r="58" />
+                    </svg>
+                    <span className="svc-num">{String(i + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className="svc-flow-card">
+                    <span className="svc-flow-icon"><ServiceIcon name={step.icon} /></span>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                  {i < serviceProcess.length - 1 && (
+                    <svg className="svc-arrow" viewBox="0 0 44 24" aria-hidden="true">
+                      <path d="M2 12 H38 M30 4 L40 12 L30 20" />
+                    </svg>
+                  )}
+                </li>
+              );
+            })}
           </ol>
         </section>
 
-        <section className="team about-team" aria-labelledby="about-team-heading">
-          <div className="section-head centered">
-            <h2 id="about-team-heading">The people behind SaaSio</h2>
-            <p>{aboutPage.teamIntro}</p>
+        <section className="ab-cta svc-cta" aria-labelledby="svc-cta-heading">
+          <span className="ab-cta-orb ab-float" aria-hidden="true" />
+          <span className="ab-cta-orb2 ab-float" aria-hidden="true" />
+          <span className="cta-rings" aria-hidden="true" />
+          <div className="ab-cta-inner">
+            <h2 id="svc-cta-heading" className="ab-cta-title">Not sure which service you need?</h2>
+            <p>Tell us about your business and we will recommend the right approach, with no obligation.</p>
+            <div className="ab-hero-actions">
+              <a className="btn btn-light" href="#/contact">Talk to our team</a>
+              <a className="btn ab-ghost" href="#/portfolio">See our work</a>
+            </div>
           </div>
-          <div className="team-grid">
-            {teamMembers.map((member) => (
-              <article
-                className="team-card"
-                key={member.name}
-                style={{ "--from": member.from, "--to": member.to }}
-              >
-                <div className="team-avatar" aria-hidden="true">{member.initials}</div>
-                <h3>{member.name}</h3>
-                <p className="team-role">{member.role}</p>
-                <p className="team-bio">{member.bio}</p>
-                <div className="team-social">
-                  <a href="#/about" aria-label={`${member.name} on LinkedIn`}>in</a>
-                  <a href="#/about" aria-label={`${member.name} on X`}>x</a>
-                </div>
-              </article>
-            ))}
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+function PortfolioPage() {
+  const moveParallax = (event) => {
+    const el = event.currentTarget;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3));
+    el.style.setProperty("--my", ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3));
+  };
+  const resetParallax = (event) => {
+    event.currentTarget.style.setProperty("--mx", "0");
+    event.currentTarget.style.setProperty("--my", "0");
+  };
+
+  return (
+    <div className="page pd pf-page">
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main">
+        <section className="pf-hero" onMouseMove={moveParallax} onMouseLeave={resetParallax}>
+          <span className="pf-blob pf-blob-a" aria-hidden="true" />
+          <span className="pf-blob pf-blob-b" aria-hidden="true" />
+          <span className="pf-blob pf-blob-c" aria-hidden="true" />
+          <span className="pf-ring pf-ring-a" aria-hidden="true" />
+          <span className="pf-ring pf-ring-b" aria-hidden="true" />
+          <div className="pf-hero-inner">
+            <span className="pf-kicker"><i aria-hidden="true" />Portfolio</span>
+            <h1 className="pf-title">
+              <span className="ct-title-line">Real projects,</span>
+              <span className="ct-title-line"><span className="pf-title-grad">real results.</span></span>
+            </h1>
+            <p className="ab-rise" style={{ animationDelay: ".5s" }}>
+              Browse our case studies across restaurants, retail and service businesses. Open any project to see the challenge, the solution and the results.
+            </p>
+            <div className="pf-chips ab-rise" style={{ animationDelay: ".65s" }}>
+              {["Restaurants", "Retail", "Service businesses"].map((chip) => (
+                <span key={chip} className="pf-chip">{chip}</span>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="about-cta" aria-labelledby="about-cta-heading">
-          <h2 id="about-cta-heading">{aboutPage.cta.title}</h2>
-          <p>{aboutPage.cta.text}</p>
-          <a className="btn btn-light" href="#contact">Book a Free Demo</a>
+        <Portfolio />
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+const whatNext = [
+  { title: "We reply", text: "Within one working day, with questions and next steps." },
+  { title: "We talk", text: "A 15-minute call to understand your goals and users." },
+  { title: "You get a plan", text: "A clear scope, timeline and quote before any work starts." },
+];
+
+const contactBudgets = ["Under Rs 50,000", "Rs 50,000 to Rs 2 lakh", "Above Rs 2 lakh", "Not sure yet"];
+
+function ContactPage() {
+  const [step, setStep] = useState(0);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", business: "", budget: "", details: "" });
+  const [picked, setPicked] = useState([]);
+  const [error, setError] = useState("");
+  const [done, setDone] = useState(false);
+  const stepLabels = ["About you", "What you need", "Project details"];
+
+  const update = (key) => (event) => setForm((current) => ({ ...current, [key]: event.target.value }));
+  const togglePick = (title) =>
+    setPicked((current) => (current.includes(title) ? current.filter((t) => t !== title) : [...current, title]));
+
+  const next = () => {
+    if (step === 0 && (!form.name.trim() || !/^\S+@\S+\.\S+$/.test(form.email))) {
+      setError("Please add your name and a valid email address.");
+      return;
+    }
+    setError("");
+    setStep((current) => Math.min(current + 1, stepLabels.length - 1));
+  };
+
+  const back = () => {
+    setError("");
+    setStep((current) => Math.max(current - 1, 0));
+  };
+
+  const submit = (event) => {
+    event.preventDefault();
+    if (step < stepLabels.length - 1) {
+      next();
+      return;
+    }
+    setDone(true);
+  };
+
+  return (
+    <div className="page pd ct-page">
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main">
+        <section className="ct-hero">
+          <span className="ct-blob ct-blob-a" aria-hidden="true" />
+          <span className="ct-blob ct-blob-b" aria-hidden="true" />
+          <div className="ct-hero-text">
+            <span className="about-eyebrow">Contact</span>
+            <h1 className="ct-title">
+              <span className="ct-title-line">Let’s build</span>
+              <span className="ct-title-line">
+                something{" "}
+                <span className="ct-title-grad">
+                  people love
+                  <svg className="ct-scribble" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M4 13 C 40 3, 70 17, 110 9 S 180 4, 220 11 S 280 6, 296 9" />
+                  </svg>
+                </span>
+                .
+              </span>
+            </h1>
+            <p>Share a few details and we will reply within one working day with ideas, a plan and a clear quote.</p>
+            <div className="ct-badge" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <defs>
+                  <path id="ct-badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
+                </defs>
+                <text>
+                  <textPath href="#ct-badge-circle">FREE 15-MIN DEMO • REPLY IN 1 DAY • </textPath>
+                </text>
+              </svg>
+              <span>✦</span>
+            </div>
+          </div>
+          <div className="ct-tiles">
+            <a className="ct-tile" href="mailto:hello@example.com">
+              <span className="ct-tile-icon"><ServiceIcon name="cloud" /></span>
+              <span><strong>Email us</strong><small>hello@example.com</small></span>
+            </a>
+            <a className="ct-tile" href="tel:+910000000000">
+              <span className="ct-tile-icon"><ServiceIcon name="device" /></span>
+              <span><strong>Call us</strong><small>+91 00000 00000</small></span>
+            </a>
+            <div className="ct-tile">
+              <span className="ct-tile-icon"><ServiceIcon name="chart" /></span>
+              <span><strong>Business hours</strong><small>Mon to Sat, 9:30 AM to 7:00 PM IST</small></span>
+            </div>
+            <div className="ct-tile">
+              <span className="ct-tile-icon"><ServiceIcon name="shield" /></span>
+              <span><strong>Visit us</strong><small>Office address to be added</small></span>
+            </div>
+          </div>
+        </section>
+
+        <section className="ct-form-section" aria-labelledby="ct-form-heading">
+          <div className="ct-card">
+            <h2 id="ct-form-heading" className="ct-form-title">Start your project</h2>
+
+            {done ? (
+              <div className="ct-thanks" role="status">
+                <h3>Thanks, {form.name.trim() || "there"}!</h3>
+                <p>We have your details. Someone from the team will reach out within one working day.</p>
+              </div>
+            ) : (
+              <form onSubmit={submit} noValidate>
+                <div className="ct-progress-label">
+                  <span>Step {step + 1} of {stepLabels.length}: {stepLabels[step]}</span>
+                </div>
+                <div className="ct-progress" aria-hidden="true">
+                  <span style={{ width: `${((step + 1) / stepLabels.length) * 100}%` }} />
+                </div>
+
+                {step === 0 && (
+                  <div className="ct-step">
+                    <label className="ct-field">
+                      Your name
+                      <input type="text" value={form.name} onChange={update("name")} autoComplete="name" />
+                    </label>
+                    <label className="ct-field">
+                      Work email
+                      <input type="email" value={form.email} onChange={update("email")} autoComplete="email" />
+                    </label>
+                    <label className="ct-field">
+                      Phone (optional)
+                      <input type="tel" value={form.phone} onChange={update("phone")} autoComplete="tel" />
+                    </label>
+                  </div>
+                )}
+
+                {step === 1 && (
+                  <div className="ct-step">
+                    <p className="ct-hint">Pick everything that applies.</p>
+                    <div className="ct-chips">
+                      {services.map((service) => (
+                        <button
+                          key={service.id}
+                          type="button"
+                          className="ct-chip"
+                          aria-pressed={picked.includes(service.title)}
+                          onClick={() => togglePick(service.title)}
+                        >
+                          {service.title}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {step === 2 && (
+                  <div className="ct-step">
+                    <label className="ct-field">
+                      Business name (optional)
+                      <input type="text" value={form.business} onChange={update("business")} />
+                    </label>
+                    <p className="ct-hint">Approximate budget</p>
+                    <div className="ct-chips">
+                      {contactBudgets.map((budget) => (
+                        <button
+                          key={budget}
+                          type="button"
+                          className="ct-chip"
+                          aria-pressed={form.budget === budget}
+                          onClick={() => setForm((current) => ({ ...current, budget }))}
+                        >
+                          {budget}
+                        </button>
+                      ))}
+                    </div>
+                    <label className="ct-field">
+                      Tell us about the project
+                      <textarea rows={4} value={form.details} onChange={update("details")} />
+                    </label>
+                  </div>
+                )}
+
+                {error && <p className="ct-error" role="alert">{error}</p>}
+
+                <div className="ct-actions">
+                  <button type="button" className="ct-back" onClick={back} disabled={step === 0}>
+                    Back
+                  </button>
+                  <button type="submit" className="btn btn-dark">
+                    {step < stepLabels.length - 1 ? "Next" : "Send my request"} <ArrowIcon />
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+
+          <aside className="wn" aria-labelledby="wn-heading">
+            <span className="wn-orb wn-orb-a" aria-hidden="true" />
+            <span className="wn-orb wn-orb-b" aria-hidden="true" />
+            <span className="wn-eyebrow">Your next steps</span>
+            <h2 id="wn-heading">What happens next</h2>
+            <ol className="wn-steps">
+              {whatNext.map((item, i) => (
+                <li key={item.title} className="wn-step">
+                  <span className="wn-num">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <strong>{item.title}</strong>
+                    <span>{item.text}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <a className="wn-cta" href="mailto:hello@example.com">
+              Email hello@example.com <ArrowIcon />
+            </a>
+          </aside>
         </section>
       </main>
 
@@ -2094,8 +2682,8 @@ function LandingPage() {
           <ParticleField />
 
           <div className="section-head centered">
-            <h2 id="services-heading">Services that get you running fast</h2>
-            <p>From setup to ongoing support, our team works alongside yours at every step.</p>
+            <h2 id="services-heading">Services that get your business online</h2>
+            <p>From websites and mobile apps to online stores, our team builds and supports every step.</p>
           </div>
           <div className="service-grid">
             {services.map((service) => (
@@ -2105,11 +2693,14 @@ function LandingPage() {
                 </span>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a className="text-link" href="#contact">
+                <a className="text-link" href="#/contact">
                   Book this service <ArrowIcon />
                 </a>
               </article>
             ))}
+          </div>
+          <div className="svc-more">
+            <a className="btn btn-light" href="#/services">View all services <ArrowIcon /></a>
           </div>
         </section>
 
@@ -2890,7 +3481,7 @@ function ProductDetail({ product }) {
   );
 }
 
-export default function App() {
+function Routes() {
   const hash = useHashRoute();
   const isProjectRoute = hash.startsWith("#/portfolio/");
   const projectId = isProjectRoute ? hash.slice("#/portfolio/".length) : "";
@@ -2912,9 +3503,154 @@ export default function App() {
   }, [hash, isProjectRoute]);
 
   if (hash === "#/about") return <AboutPage />;
+  if (hash === "#/services") return <ServicesPage />;
+  if (hash === "#/portfolio") return <PortfolioPage />;
+  if (hash === "#/contact") return <ContactPage />;
   if (isProjectRoute && project) return <PortfolioDetail project={project} />;
   if (isProductRoute && product) return <ProductDetail product={product} />;
   return <LandingPage />;
+}
+
+/* ------------------------------------------------------------------
+   CUSTOM CURSOR — a dot with a trailing ring, mouse users only.
+   Header links show their name in a pill and pull gently toward the
+   pointer. Buttons grow the ring, cards show a label, and form fields
+   turn it into a text caret. Hidden on touch screens.
+   ------------------------------------------------------------------ */
+// Set to true to turn the custom cursor back on.
+const CUSTOM_CURSOR_ENABLED = false;
+
+const cursorLabels = [
+  [".pf-link", "View case"],
+  [".pd-shot", "Open"],
+  [".svc-card, .service-card", "Book"],
+  [".team-card", "Say hi"],
+  [".pdp-group", "Explore"],
+];
+
+function CustomCursor() {
+  const ringRef = useRef(null);
+  const dotRef = useRef(null);
+  const labelRef = useRef(null);
+
+  useEffect(() => {
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!fine) return undefined;
+
+    const root = document.documentElement;
+    const ring = ringRef.current;
+    const dot = dotRef.current;
+    const label = labelRef.current;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ease = reduce ? 1 : 0.2;
+
+    root.classList.add("has-cursor");
+    let x = -100, y = -100, rx = -100, ry = -100, frame;
+    let shown = false, outside = false, hideDot = false;
+    const magnets = new Set();
+
+    const paint = () => {
+      const visible = shown && !outside;
+      ring.style.opacity = visible ? "1" : "0";
+      dot.style.opacity = visible && !hideDot ? "1" : "0";
+    };
+
+    const setMode = (mode, text = "") => {
+      hideDot = mode === "text" || mode === "label";
+      ring.dataset.mode = mode;
+      label.textContent = text;
+      paint();
+    };
+
+    const onMove = (event) => {
+      x = event.clientX;
+      y = event.clientY;
+      dot.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      if (!shown || outside) {
+        shown = true;
+        outside = false;
+        paint();
+      }
+
+      // Magnetic header links and buttons: they lean toward the pointer.
+      const target = event.target instanceof Element ? event.target.closest(".nav a, .btn") : null;
+      magnets.forEach((el) => {
+        if (el !== target) {
+          el.style.translate = "";
+          magnets.delete(el);
+        }
+      });
+      if (target) {
+        const rect = target.getBoundingClientRect();
+        const dx = (x - (rect.left + rect.width / 2)) * 0.22;
+        const dy = (y - (rect.top + rect.height / 2)) * 0.3;
+        target.style.translate = `${dx.toFixed(1)}px ${dy.toFixed(1)}px`;
+        magnets.add(target);
+      }
+    };
+
+    const onOver = (event) => {
+      const t = event.target;
+      if (!(t instanceof Element)) return;
+      if (t.closest("input, textarea, select")) return setMode("text");
+      const navLink = t.closest(".nav a");
+      if (navLink) return setMode("label", navLink.textContent.replace("New", "").trim());
+      const card = cursorLabels.find(([selector]) => t.closest(selector));
+      if (card) return setMode("label", card[1]);
+      if (t.closest("a, button, [role='button'], label, summary, .btn")) return setMode("link");
+      setMode("default");
+    };
+
+    const onLeave = () => { outside = true; paint(); };
+    const onEnter = () => { outside = false; paint(); };
+    const onDown = () => ring.classList.add("is-down");
+    const onUp = () => ring.classList.remove("is-down");
+
+    const loop = () => {
+      rx += (x - rx) * ease;
+      ry += (y - ry) * ease;
+      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+      frame = requestAnimationFrame(loop);
+    };
+    frame = requestAnimationFrame(loop);
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    document.addEventListener("pointerover", onOver);
+    root.addEventListener("mouseleave", onLeave);
+    root.addEventListener("mouseenter", onEnter);
+    window.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointerup", onUp);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      root.classList.remove("has-cursor");
+      window.removeEventListener("pointermove", onMove);
+      document.removeEventListener("pointerover", onOver);
+      root.removeEventListener("mouseleave", onLeave);
+      root.removeEventListener("mouseenter", onEnter);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      magnets.forEach((el) => { el.style.translate = ""; });
+    };
+  }, []);
+
+  return (
+    <>
+      <div ref={ringRef} className="cursor-ring" data-mode="default" aria-hidden="true">
+        <span ref={labelRef} className="cursor-label" />
+      </div>
+      <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      {CUSTOM_CURSOR_ENABLED && <CustomCursor />}
+      <Routes />
+    </>
+  );
 }
 
 const styles = `
@@ -4407,4 +5143,352 @@ img { max-width: 100%; }
 .pdp-group-art .art-img { display: block; width: 100%; height: auto; }
 @media (max-width: 900px) { .pdp-about-grid { grid-template-columns: 1fr; } .pd-grid { gap: 16px; } }
 @media (max-width: 560px) { .pdp-facts { grid-template-columns: 1fr; } .pdp-steps { grid-template-columns: 1fr; } .pd-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Services, portfolio and contact pages ---------- */
+.svc-page, .pf-page, .ct-page { background: var(--paper); color: var(--ink); }
+.svc-hero { max-width: 1180px; padding: clamp(48px, 7vw, 96px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px); }
+.svc-hero h1 { margin: 0 0 22px; max-width: 860px; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.04; font-weight: 800; letter-spacing: -0.03em; }
+.svc-hero p { margin: 0 0 34px; max-width: 680px; font-size: 19px; line-height: 1.6; color: var(--ink-soft); }
+.svc-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.svc-grid-section { padding: 0 clamp(20px, 5vw, 80px) clamp(40px, 6vw, 72px); }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+.svc-card { display: flex; flex-direction: column; padding: 30px; border-radius: 26px; background: #FFFFFF; box-shadow: 0 20px 50px rgba(20, 27, 51, .08); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.svc-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(20, 27, 51, .14); }
+.svc-icon { display: grid; place-items: center; width: 60px; height: 60px; margin-bottom: 22px; border-radius: 18px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.svc-icon svg { width: 28px; height: 28px; }
+.svc-card h2 { margin: 0 0 10px; font-size: 21px; font-weight: 800; line-height: 1.2; }
+.svc-card p { flex: 1; margin: 0 0 22px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.svc-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.svc-process { padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 80px); background: #FFFFFF; }
+.svc-process h2 { margin: 0 0 40px; font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; letter-spacing: -0.02em; }
+.svc-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+.svc-steps li { padding: 28px; border-radius: 24px; background: var(--paper); }
+.svc-steps strong { display: block; margin-bottom: 10px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #7B3FE4; }
+.svc-steps h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+.svc-steps p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.svc-more { margin-top: 40px; text-align: center; }
+
+/* Contact page */
+.ct-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 5vw, 72px); align-items: center; max-width: 1180px; padding: clamp(48px, 7vw, 96px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px); }
+.ct-hero-text { position: relative; z-index: 1; }
+.ct-hero h1 { margin: 0 0 22px; font-size: clamp(38px, 5.5vw, 66px); line-height: 1.04; font-weight: 800; letter-spacing: -0.03em; }
+.ct-hero p { margin: 0; max-width: 560px; font-size: 19px; line-height: 1.6; color: var(--ink-soft); }
+.ct-blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .45; pointer-events: none; animation: ct-float 14s ease-in-out infinite; }
+.ct-blob-a { width: 380px; height: 380px; right: -80px; top: -60px; background: #7B3FE4; }
+.ct-blob-b { width: 300px; height: 300px; left: -60px; bottom: -80px; background: #FF2D75; animation-delay: -6s; }
+@keyframes ct-float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -24px); } }
+.ct-tiles { position: relative; z-index: 1; display: grid; gap: 14px; }
+.ct-tile { display: flex; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 22px; background: rgba(255, 255, 255, .8); backdrop-filter: blur(10px); box-shadow: 0 16px 40px rgba(20, 27, 51, .07); color: var(--ink); text-decoration: none; transition: transform .35s var(--ease); }
+.ct-tile:hover { transform: translateX(8px); }
+.ct-tile span { display: grid; gap: 4px; }
+.ct-tile strong { font-size: 16px; font-weight: 800; }
+.ct-tile small { font-size: 15px; color: var(--ink-soft); }
+.ct-tile-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 16px; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #FF2D75); }
+.ct-tile-icon svg { width: 24px; height: 24px; }
+.ct-form-section { display: grid; grid-template-columns: 1.4fr .8fr; gap: 24px; align-items: start; max-width: 1180px; padding: 0 clamp(20px, 5vw, 80px) clamp(64px, 9vw, 110px); }
+.ct-card { padding: clamp(24px, 4vw, 44px); border-radius: 30px; background: #FFFFFF; box-shadow: 0 30px 70px rgba(20, 27, 51, .1); }
+.ct-form-title { margin: 0 0 24px; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+.ct-progress-label { margin-bottom: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.ct-progress { height: 8px; margin-bottom: 28px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.ct-progress span { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, #1E5BFF, #7B3FE4, #FF2D75); transition: width .5s var(--ease); }
+.ct-step { display: block; }
+.ct-hint { margin: 0 0 12px; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+.ct-field { display: grid; gap: 8px; margin-bottom: 18px; font-size: 14px; font-weight: 600; }
+.ct-field input, .ct-field textarea { font: inherit; font-weight: 500; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); }
+.ct-field input:focus, .ct-field textarea:focus { outline: none; border-color: #7B3FE4; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(123, 63, 228, .15); }
+.ct-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+.ct-chip { font: inherit; font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: 99px; border: 1.5px solid var(--line); background: #FFFFFF; color: var(--ink); cursor: pointer; transition: transform .25s var(--ease), background-color .25s, color .25s; }
+.ct-chip:hover { transform: translateY(-2px); }
+.ct-chip[aria-pressed="true"] { border-color: transparent; color: #FFFFFF; background: linear-gradient(120deg, #1E5BFF, #7B3FE4); }
+.ct-error { margin: 0 0 14px; font-size: 14px; font-weight: 600; color: #D6245A; }
+.ct-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; }
+.ct-back { font: inherit; font-weight: 700; padding: 12px 18px; border-radius: 99px; border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; }
+.ct-back:disabled { opacity: .35; cursor: default; }
+.ct-thanks h3 { margin: 0 0 10px; font-size: 28px; font-weight: 800; }
+.ct-thanks p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+.ct-next { position: sticky; top: 110px; padding: 36px; border-radius: 30px; color: #FFFFFF; background: linear-gradient(150deg, #1E5BFF, #7B3FE4 55%, #FF2D75); box-shadow: 0 30px 70px rgba(123, 63, 228, .25); }
+.ct-next h2 { margin: 0 0 22px; font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+.ct-next ol { display: grid; gap: 22px; margin: 0 0 28px; padding: 0; list-style: none; }
+.ct-next li { display: grid; gap: 4px; }
+.ct-next li strong { font-size: 17px; font-weight: 800; }
+.ct-next li span { font-size: 15px; line-height: 1.55; opacity: .92; }
+.ct-direct { font-weight: 700; color: #FFFFFF; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) { .ct-hero, .ct-form-section { grid-template-columns: 1fr; } .ct-next { position: static; } }
+@media (prefers-reduced-motion: reduce) { .ct-blob { animation: none; } }
+
+/* ---------- Custom cursor (desktop with a mouse) ---------- */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+.cursor-dot, .cursor-ring { position: fixed; left: 0; top: 0; pointer-events: none; opacity: 0; mix-blend-mode: difference; }
+.cursor-dot { z-index: 10000; width: 8px; height: 8px; border-radius: 50%; background: #FFFFFF; transition: opacity .2s; }
+.cursor-ring {
+  z-index: 9999; display: grid; place-items: center; box-sizing: border-box;
+  width: 40px; height: 40px; border: 1.5px solid #FFFFFF; border-radius: 50%;
+  transition: width .35s var(--ease), height .35s var(--ease), border-radius .35s var(--ease), background-color .3s, border-color .3s, opacity .2s, padding .35s var(--ease);
+}
+.cursor-ring.is-down { width: 26px; height: 26px; }
+.cursor-ring[data-mode="link"] { width: 64px; height: 64px; background: rgba(255, 255, 255, .14); }
+.cursor-ring[data-mode="label"] { width: auto; height: 44px; min-width: 44px; padding: 0 18px; border-radius: 99px; background: #141B33; border-color: #141B33; mix-blend-mode: normal; box-shadow: 0 12px 30px rgba(20, 27, 51, .3); }
+.cursor-ring[data-mode="label"].is-down { width: auto; height: 40px; }
+.cursor-ring[data-mode="text"] { width: 3px; height: 26px; border: 0; border-radius: 2px; background: #FFFFFF; }
+.cursor-label { color: #FFFFFF; font: 700 13px/1 var(--font); letter-spacing: .02em; white-space: nowrap; opacity: 0; transition: opacity .2s; }
+.cursor-ring[data-mode="label"] .cursor-label { opacity: 1; }
+@media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
+
+/* Contact heading, badge and spacing */
+.ct-title { margin: 0 0 22px; font-size: clamp(40px, 6vw, 76px); line-height: 1.02; font-weight: 800; letter-spacing: -0.035em; }
+.ct-title-line { display: block; animation: ct-rise .9s var(--ease) both; }
+.ct-title-line + .ct-title-line { animation-delay: .12s; }
+@keyframes ct-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.ct-title-grad { position: relative; display: inline-block; padding-bottom: 6px; background: linear-gradient(90deg, #1E5BFF, #7B3FE4, #FF2D75, #FF8A2B, #1E5BFF); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: ct-grad 7s linear infinite; }
+@keyframes ct-grad { from { background-position: 0% 50%; } to { background-position: 300% 50%; } }
+.ct-scribble { position: absolute; left: 0; right: 0; bottom: -4px; width: 100%; height: 18px; overflow: visible; }
+.ct-scribble path { fill: none; stroke: #FF2D75; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 320; stroke-dashoffset: 320; animation: ct-draw 1.4s .8s var(--ease) forwards; }
+@keyframes ct-draw { to { stroke-dashoffset: 0; } }
+.ct-badge { position: relative; display: inline-grid; place-items: center; width: 124px; height: 124px; margin-top: 34px; color: var(--ink); }
+.ct-badge svg { width: 124px; height: 124px; animation: ct-spin 16s linear infinite; }
+.ct-badge text { font: 800 11px/1 var(--font); letter-spacing: .14em; fill: var(--ink); }
+.ct-badge > span { position: absolute; font-size: 26px; color: #FF2D75; }
+@keyframes ct-spin { to { transform: rotate(360deg); } }
+
+/* Full width, no gap under the header, more space at the bottom */
+.ct-page .inner-main { padding-top: 0; }
+.ct-hero { padding-top: clamp(112px, 12vw, 140px); }
+.ct-form-section { padding-top: clamp(16px, 3vw, 40px); padding-bottom: clamp(120px, 14vw, 180px); }
+
+/* What happens next */
+.wn { position: relative; overflow: hidden; isolation: isolate; padding: 40px 36px; border: 2px solid transparent; border-radius: 32px; color: #FFFFFF; background: linear-gradient(#141B33, #141B33) padding-box, linear-gradient(135deg, #1E5BFF, #7B3FE4, #FF2D75) border-box; box-shadow: 0 40px 80px rgba(20, 27, 51, .3); }
+.wn-orb { position: absolute; z-index: -1; border-radius: 50%; filter: blur(50px); opacity: .55; pointer-events: none; animation: ct-float 12s ease-in-out infinite; }
+.wn-orb-a { width: 220px; height: 220px; right: -70px; top: -60px; background: #7B3FE4; }
+.wn-orb-b { width: 200px; height: 200px; left: -60px; bottom: -70px; background: #FF2D75; animation-delay: -5s; }
+.wn-eyebrow { display: inline-block; margin-bottom: 14px; padding: 6px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255, 255, 255, .1); }
+.wn h2 { margin: 0 0 26px; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+.wn-steps { position: relative; display: grid; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; }
+.wn-steps::before { content: ""; position: absolute; left: 41px; top: 40px; bottom: 40px; width: 2px; background: linear-gradient(#1E5BFF, #FF2D75); opacity: .6; }
+.wn-step { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: center; padding: 12px; border-radius: 20px; transition: background-color .3s, transform .4s var(--ease); }
+.wn-step:hover { background: rgba(255, 255, 255, .07); transform: translateX(8px); }
+.wn-num { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 18px; font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1E5BFF, #FF2D75); box-shadow: 0 12px 30px rgba(30, 91, 255, .45); }
+.wn-step strong { display: block; margin-bottom: 4px; font-size: 18px; font-weight: 800; }
+.wn-step span:last-child { display: block; font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, .8); }
+.wn-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 99px; font-weight: 700; color: #141B33; background: #FFFFFF; text-decoration: none; box-shadow: 0 14px 30px rgba(0, 0, 0, .25); transition: transform .3s var(--ease); }
+.wn-cta:hover { transform: translateY(-3px); }
+@media (max-width: 900px) { .wn { position: static; } }
+@media (prefers-reduced-motion: reduce) { .wn-orb { animation: none; } }
+
+/* ---------- About page: stylish version ---------- */
+.ab-page { background-color: var(--paper); color: var(--ink); background-image: radial-gradient(rgba(20, 27, 51, .055) 1px, transparent 1px); background-size: 24px 24px; }
+.ab-main { overflow: hidden; }
+
+/* Parallax floats: move opposite to the pointer, by a depth factor set in --d */
+.ab-float { position: absolute; will-change: transform; transform: translate3d(calc(var(--mx, 0) * var(--d, 1) * -26px), calc(var(--my, 0) * var(--d, 1) * -26px), 0); transition: transform .6s var(--ease); }
+
+/* 3D tilt */
+.tilt { position: relative; transform-style: preserve-3d; transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--ease); will-change: transform; }
+.tilt-inner { position: relative; height: 100%; transform: translateZ(26px); transform-style: preserve-3d; transition: box-shadow .4s var(--ease); }
+.tilt::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .4s; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 60%); }
+.tilt:hover::after { opacity: 1; }
+.tilt:hover .tilt-inner { box-shadow: 0 40px 70px rgba(20, 27, 51, .18); }
+
+/* Hero */
+.ab-hero { position: relative; overflow: hidden; padding: clamp(56px, 8vw, 110px) clamp(20px, 5vw, 80px) clamp(64px, 8vw, 110px); }
+.ab-hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
+.ab-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .5; pointer-events: none; transform: translate3d(calc(var(--mx, 0) * -40px), calc(var(--my, 0) * -40px), 0); transition: transform .8s var(--ease); }
+.ab-blob-a { width: 460px; height: 460px; right: -120px; top: -120px; background: #7B3FE4; }
+.ab-blob-b { width: 380px; height: 380px; left: -120px; bottom: -140px; background: #FF2D75; }
+.ab-title { margin: 0 0 24px; font-size: clamp(42px, 6vw, 80px); line-height: 1.02; font-weight: 800; letter-spacing: -0.035em; }
+.ab-word { display: inline-block; margin-right: .22em; opacity: 0; transform: translateY(40px) rotate(4deg); animation: ab-word-in .9s var(--ease) forwards; }
+@keyframes ab-word-in { to { opacity: 1; transform: none; } }
+.ab-rise { opacity: 0; transform: translateY(20px); animation: ab-fade .9s var(--ease) forwards; }
+@keyframes ab-fade { to { opacity: 1; transform: none; } }
+.ab-lead { margin: 0 0 16px; font-size: 18px; line-height: 1.7; color: var(--ink-soft); }
+.ab-hero .ab-lead { max-width: 560px; margin-bottom: 34px; }
+.ab-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.ab-stack { position: relative; height: 470px; }
+.ab-pos-a { left: 0; top: 40px; width: 74%; z-index: 2; }
+.ab-pos-b { right: -12px; top: 0; width: 40%; z-index: 3; }
+.ab-pos-c { left: 12%; bottom: 0; width: 50%; z-index: 1; }
+.ab-float > .tilt { width: 100%; }
+.ab-glass { padding: 26px; background: rgba(255, 255, 255, .78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, .9); box-shadow: 0 30px 60px rgba(20, 27, 51, .14); }
+.ab-glass strong { display: block; margin: 12px 0 8px; font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+.ab-glass p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+.ab-glass-dark { background: #141B33; border-color: #141B33; }
+.ab-glass-dark strong { color: #FFFFFF; }
+.ab-glass-dark p { color: rgba(255, 255, 255, .75); }
+.ab-glass-grad { background: linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75); border-color: transparent; }
+.ab-glass-grad strong { color: #FFFFFF; }
+.ab-glass-grad p { color: rgba(255, 255, 255, .9); }
+.ab-chip { display: inline-block; padding: 6px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #FFFFFF; background: linear-gradient(120deg, #1E5BFF, #7B3FE4); }
+
+/* Scrolling strip */
+.ab-marquee { overflow: hidden; padding: 22px 0; background: #FFFFFF; border-block: 1px solid var(--line); }
+.ab-marquee-track { display: flex; gap: 44px; width: max-content; animation: ab-scroll 30s linear infinite; }
+.ab-marquee-track span { display: inline-flex; align-items: center; gap: 44px; white-space: nowrap; font-size: clamp(22px, 3vw, 34px); font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
+.ab-marquee-track i { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #1E5BFF, #FF2D75); }
+@keyframes ab-scroll { to { transform: translateX(-50%); } }
+
+/* Stats */
+.ab-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 80px) 0; }
+.ab-stat { padding: 30px; border-radius: 26px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); }
+.ab-stat strong { display: block; font-size: clamp(34px, 4vw, 48px); font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(120deg, #1E5BFF, #7B3FE4 50%, #FF2D75); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ab-stat > span { display: block; margin-top: 6px; font-size: 15px; color: var(--ink-soft); }
+
+/* Story */
+.ab-story { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: center; padding: clamp(72px, 9vw, 120px) clamp(20px, 5vw, 80px) 0; }
+.ab-h2 { margin: 14px 0 22px; font-size: clamp(32px, 4vw, 52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.06; }
+.ab-notes { display: grid; gap: 22px; }
+.ab-note { position: relative; overflow: hidden; padding: 34px 34px 34px 40px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); }
+.ab-note h3 { margin: 0 0 10px; font-size: 22px; font-weight: 800; }
+.ab-note p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--ink-soft); }
+.ab-note-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; }
+
+/* Values, why us, journey, team sections */
+.ab-values, .ab-why, .ab-journey, .ab-team { padding: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) 0; }
+.ab-head { max-width: 760px; margin-bottom: 52px; }
+.ab-head.centered { margin-left: auto; margin-right: auto; text-align: center; }
+.ab-head p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--ink-soft); }
+.ab-value-grid, .ab-why-grid, .ab-team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.ab-value, .ab-why-card, .ab-team-card { height: 100%; box-sizing: border-box; padding: 32px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); }
+.ab-value-icon, .ab-why-icon { display: grid; place-items: center; width: 62px; height: 62px; margin-bottom: 22px; border-radius: 20px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 14px 30px rgba(20, 27, 51, .18); }
+.ab-value-icon svg, .ab-why-icon svg { width: 28px; height: 28px; }
+.ab-value h3, .ab-why-card h3 { margin: 0 0 10px; font-size: 21px; font-weight: 800; }
+.ab-value p, .ab-why-card p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+
+/* Journey */
+.ab-timeline { position: relative; display: grid; gap: 28px; margin: 0; padding: 0; list-style: none; }
+.ab-timeline::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; transform: translateX(-50%); border-radius: 3px; background: linear-gradient(180deg, #1E5BFF, #7B3FE4, #FF2D75); opacity: .35; }
+.ab-tl-item { position: relative; display: grid; grid-template-columns: 1fr 1fr; }
+.ab-tl-tilt { width: 100%; max-width: 440px; border-radius: 26px; }
+.ab-tl-item.is-left .ab-tl-tilt { grid-column: 1; justify-self: end; }
+.ab-tl-item.is-right .ab-tl-tilt { grid-column: 2; justify-self: start; }
+.ab-tl-dot { position: absolute; left: 50%; top: 36px; width: 20px; height: 20px; border-radius: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #1E5BFF, #FF2D75); box-shadow: 0 0 0 8px var(--paper), 0 0 0 9px rgba(123, 63, 228, .25); }
+.ab-tl-inner { padding: 28px 30px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); }
+.ab-year { display: block; margin-bottom: 8px; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(120deg, #1E5BFF, #FF2D75); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ab-tl-inner p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
+
+/* Team */
+.ab-avatar { display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: 20px; border-radius: 22px; color: #FFFFFF; font-size: 24px; font-weight: 800; box-shadow: 0 14px 30px rgba(20, 27, 51, .2); }
+.ab-team-card h3 { margin: 0 0 4px; font-size: 20px; font-weight: 800; }
+.ab-role { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: #7B3FE4; }
+.ab-bio { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+
+/* Call to action */
+.ab-cta { position: relative; overflow: hidden; isolation: isolate; margin: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) clamp(64px, 8vw, 110px); padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 72px); border-radius: 36px; text-align: center; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75); }
+.ab-cta-orb { width: 320px; height: 320px; left: -80px; top: -100px; border-radius: 50%; background: rgba(255, 255, 255, .14); }
+.ab-cta-orb2 { width: 260px; height: 260px; right: -60px; bottom: -90px; border-radius: 50%; background: rgba(255, 255, 255, .12); }
+.ab-cta-inner { position: relative; z-index: 1; }
+.ab-cta-title { margin: 0 0 16px; font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.ab-cta p { max-width: 560px; margin: 0 auto 32px; font-size: 18px; line-height: 1.6; opacity: .92; }
+.ab-cta .ab-hero-actions { justify-content: center; }
+.ab-ghost { background: transparent; color: #FFFFFF; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .7); }
+
+/* Reveal on scroll */
+.ab-reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.ab-reveal.from-left { transform: translateX(-50px); }
+.ab-reveal.is-in { opacity: 1; transform: none; }
+
+@media (max-width: 1024px) { .ab-stats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) {
+  .ab-hero-grid, .ab-story { grid-template-columns: 1fr; }
+  .ab-stack { height: 420px; }
+  .ab-pos-a { width: 80%; }
+}
+@media (max-width: 760px) {
+  .ab-timeline::before { left: 14px; }
+  .ab-tl-item { grid-template-columns: 1fr; padding-left: 44px; }
+  .ab-tl-item .ab-tl-tilt { grid-column: 1 !important; justify-self: start !important; }
+  .ab-tl-dot { left: 14px; }
+  .ab-stack { height: 380px; }
+  .ab-pos-b { width: 60%; }
+  .ab-pos-c { width: 62%; left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ab-word, .ab-rise { animation: none; opacity: 1; transform: none; }
+  .ab-marquee-track { animation: none; }
+  .ab-reveal { opacity: 1; transform: none; transition: none; }
+  .tilt { transform: none !important; }
+}
+
+/* About page: no gap under the header */
+.ab-page .inner-main { padding-top: 0; }
+.ab-hero { padding-top: clamp(112px, 12vw, 140px); }
+
+/* Timeline: keep cards clear of the centre line and dots */
+.ab-tl-item.is-left .ab-tl-tilt { margin-right: 44px; }
+.ab-tl-item.is-right .ab-tl-tilt { margin-left: 44px; }
+.ab-tl-dot { z-index: 2; }
+.ab-tl-tilt { z-index: 1; }
+@media (max-width: 760px) { .ab-tl-item .ab-tl-tilt { margin: 0 !important; } }
+
+/* Contact page: full width layout */
+.ct-hero, .ct-form-section { max-width: none; }
+
+/* Portfolio page header */
+.pf-hero { position: relative; overflow: hidden; isolation: isolate; padding: clamp(120px, 12vw, 150px) clamp(20px, 5vw, 80px) clamp(72px, 8vw, 110px); background: linear-gradient(180deg, #F5F6FB 0%, #ECEEFA 100%); }
+.pf-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(rgba(20, 27, 51, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 27, 51, .06) 1px, transparent 1px); background-size: 56px 56px; -webkit-mask-image: radial-gradient(circle at 70% 40%, #000 25%, transparent 75%); mask-image: radial-gradient(circle at 70% 40%, #000 25%, transparent 75%); }
+.pf-blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(90px); opacity: .6; pointer-events: none; transform: translate3d(calc(var(--mx, 0) * -50px), calc(var(--my, 0) * -50px), 0); transition: transform .8s var(--ease); animation: pf-drift 16s ease-in-out infinite; }
+.pf-blob-a { width: 520px; height: 520px; right: -100px; top: -160px; background: #7B3FE4; }
+.pf-blob-b { width: 440px; height: 440px; left: -120px; bottom: -200px; background: #FF2D75; animation-delay: -8s; }
+.pf-blob-c { width: 360px; height: 360px; left: 46%; top: 8%; background: #1E5BFF; opacity: .35; animation-delay: -4s; }
+@keyframes pf-drift { 0%, 100% { translate: 0 0; } 50% { translate: 30px -24px; } }
+.pf-ring { position: absolute; z-index: -1; border-radius: 50%; border: 1.5px dashed rgba(123, 63, 228, .35); pointer-events: none; animation: pf-spin 40s linear infinite; }
+.pf-ring-a { width: 420px; height: 420px; right: 8%; top: 14%; }
+.pf-ring-b { width: 220px; height: 220px; left: 6%; bottom: 14%; border-color: rgba(255, 45, 117, .35); animation-duration: 28s; animation-direction: reverse; }
+@keyframes pf-spin { to { rotate: 360deg; } }
+.pf-hero-inner { position: relative; z-index: 1; max-width: 960px; }
+.pf-kicker { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 99px; background: #FFFFFF; box-shadow: 0 10px 30px rgba(20, 27, 51, .08); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.pf-kicker i { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #1E5BFF, #FF2D75); animation: pf-pulse 2s ease-in-out infinite; }
+@keyframes pf-pulse { 50% { box-shadow: 0 0 0 8px rgba(255, 45, 117, 0); } 0% { box-shadow: 0 0 0 0 rgba(255, 45, 117, .35); } }
+.pf-title { margin: 26px 0 22px; font-size: clamp(50px, 8.4vw, 118px); line-height: .96; font-weight: 800; letter-spacing: -0.045em; }
+.pf-title-grad { display: inline-block; padding-right: .06em; background: linear-gradient(90deg, #1E5BFF, #7B3FE4, #FF2D75, #FF8A2B, #1E5BFF); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: ct-grad 7s linear infinite; }
+.pf-hero p { margin: 0 0 30px; max-width: 620px; font-size: 19px; line-height: 1.65; color: var(--ink-soft); }
+.pf-chips { display: flex; flex-wrap: wrap; gap: 12px; }
+.pf-chip { padding: 10px 18px; border-radius: 99px; border: 1px solid rgba(255, 255, 255, .9); background: rgba(255, 255, 255, .75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 10px 25px rgba(20, 27, 51, .07); font-size: 14px; font-weight: 700; transition: transform .3s var(--ease); }
+.pf-chip:hover { transform: translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .pf-blob, .pf-ring, .pf-kicker i { animation: none; } }
+
+/* Services: creative process */
+.svc-process { position: relative; overflow: hidden; isolation: isolate; color: #FFFFFF; background: #141B33; padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 80px); }
+.svc-process-glow { position: absolute; z-index: -1; width: 700px; height: 700px; left: -200px; top: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(123, 63, 228, .4), rgba(123, 63, 228, 0) 65%); pointer-events: none; }
+.svc-process .about-eyebrow { color: #B9A7FF; }
+.svc-process-head { max-width: 760px; margin: 0 auto 72px; text-align: center; }
+.svc-process-head h2 { margin: 14px 0 16px; font-size: clamp(34px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+.svc-process-head p { margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255, 255, 255, .72); }
+.svc-flow { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 56px; margin: 0; padding: 0; list-style: none; }
+.svc-flow-step { position: relative; display: grid; grid-template-rows: auto 1fr; justify-items: center; text-align: center; gap: 26px; }
+.svc-flow-node { position: relative; display: grid; place-items: center; width: 112px; height: 112px; border-radius: 50%; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 20px 50px rgba(0, 0, 0, .35), 0 0 0 10px rgba(255, 255, 255, .04); transition: transform .5s var(--ease); }
+.svc-flow-step:hover .svc-flow-node { transform: scale(1.08) rotate(-6deg); }
+.svc-num { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+.svc-ring { position: absolute; inset: -14px; width: calc(100% + 28px); height: calc(100% + 28px); fill: none; stroke: rgba(255, 255, 255, .4); stroke-width: 1.2; stroke-dasharray: 5 7; animation: pf-spin 22s linear infinite; }
+.svc-flow-card { width: 100%; height: 100%; box-sizing: border-box; padding: 26px 24px; border-radius: 24px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: transform .5s var(--ease), background-color .4s; }
+.svc-flow-step:hover .svc-flow-card { transform: translateY(-8px); background: rgba(255, 255, 255, .1); }
+.svc-flow-icon { display: grid; place-items: center; width: 46px; height: 46px; margin: 0 auto 16px; border-radius: 15px; color: #FFFFFF; background: rgba(255, 255, 255, .12); }
+.svc-flow-icon svg { width: 22px; height: 22px; }
+.svc-flow-card h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+.svc-flow-card p { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, .72); }
+.svc-arrow { position: absolute; top: 56px; left: calc(100% + 6px); width: 44px; height: 24px; overflow: visible; fill: none; stroke: #FF8A2B; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.svc-arrow { animation: svc-nudge 2.2s ease-in-out infinite; }
+@keyframes svc-nudge { 0%, 100% { opacity: .45; transform: translateX(0); } 50% { opacity: 1; transform: translateX(6px); } }
+@media (max-width: 1024px) { .svc-flow { grid-template-columns: repeat(2, 1fr); row-gap: 56px; } .svc-arrow { display: none; } }
+@media (max-width: 560px) { .svc-flow { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .svc-ring, .svc-arrow path { animation: none; } }
+
+/* Services CTA rings */
+.cta-rings { position: absolute; z-index: 0; left: 50%; top: 50%; width: 640px; height: 640px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .2); box-shadow: 0 0 0 80px rgba(255, 255, 255, .04), 0 0 0 160px rgba(255, 255, 255, .03); transform: translate(-50%, -50%); pointer-events: none; }
+.svc-cta .ab-cta-inner { position: relative; z-index: 1; }
+
+/* About: dark sections, alternated with light ones */
+.ab-marquee { background: #141B33; border-color: rgba(255, 255, 255, .08); }
+.ab-marquee-track span { color: #FFFFFF; }
+.ab-dark { position: relative; overflow: hidden; isolation: isolate; color: #FFFFFF; background: #141B33; padding-bottom: clamp(88px, 10vw, 130px); }
+.ab-dark::before { content: ""; position: absolute; z-index: 0; width: 620px; height: 620px; right: -180px; top: -200px; border-radius: 50%; background: radial-gradient(circle, rgba(123, 63, 228, .55), rgba(123, 63, 228, 0) 65%); pointer-events: none; }
+.ab-dark::after { content: ""; position: absolute; z-index: 0; width: 520px; height: 520px; left: -200px; bottom: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 45, 117, .35), rgba(255, 45, 117, 0) 65%); pointer-events: none; }
+.ab-dark > * { position: relative; z-index: 1; }
+.ab-dark .ab-h2, .ab-dark .ab-head h2 { color: #FFFFFF; }
+.ab-dark .ab-lead, .ab-dark .ab-head p { color: rgba(255, 255, 255, .75); }
+.ab-dark .about-eyebrow { color: #B9A7FF; }
+.ab-dark .ab-note, .ab-dark .ab-why-card { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); box-shadow: none; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.ab-dark .ab-note h3, .ab-dark .ab-why-card h3 { color: #FFFFFF; }
+.ab-dark .ab-note p, .ab-dark .ab-why-card p { color: rgba(255, 255, 255, .72); }
+
+/* Portfolio page: no gap under the header */
+.pf-page .inner-main { padding-top: 0; }
 `;

@@ -316,3 +316,34 @@ appears everywhere. Navigation links come from `navItems`. The footer's Company 
 About us link.
 
 On inner pages the header always uses its solid background, because the page background is light.
+
+### Services, portfolio and contact pages
+
+- **Services** (`#/services`): lists every item in the `services` array with its icon, plus a "How we work" section (`serviceProcess`). The home page services section uses the same array, and its "View all services" button opens this page.
+- **Portfolio** (`#/portfolio`): the portfolio grid with its filters, under a page header. Project cards still open `#/portfolio/<id>`.
+- **Contact** (`#/contact`): a split hero with contact tiles and a three-step enquiry form. The "What happens next" panel is on the right. Contact details are placeholders until replaced.
+- The top menu order is Services, Products, Portfolio, About, Contact. Pricing has been removed from the menu, but its section is still on the home page.
+- Service icons are set per service with `icon` (`web`, `mobile`, `flutter`, `laravel`, `wordpress`, `shopify`, `ios`, `android`), and drawn in `ServiceIcon`.
+
+### Custom cursor (currently turned off)
+
+Set `CUSTOM_CURSOR_ENABLED` to `true` in `src/LandingPage.jsx` to turn it back on. The site uses the normal pointer while it is `false`. When enabled, on desktop with a mouse, the default pointer is replaced by a dot and a trailing ring (`CustomCursor` in `src/LandingPage.jsx`). Header links show their name in a pill and move slightly toward the pointer. Buttons grow the ring. Cards show a label set in `cursorLabels`. Form fields turn the ring into a text caret. It is turned off on touch screens, and it uses a simpler motion if the operating system asks for reduced motion.
+
+### Products (current)
+
+The three products are LegalDesk (`law`, law firms), StayDesk (`hotel`, hotels) and ClassDesk (`school`, schools). Each one is set in the `products` array, with its page content in `productPages` under the same id. The industries list and the About page copy have been updated to match. The product names and the sample content are placeholders to be replaced.
+
+The portfolio case studies, team bios and reviews still use earlier restaurant examples and can be replaced later.
+
+### About and contact pages (current)
+
+- **About** (`#/about`): animated headline, a floating 3D card stack that moves with the pointer, a scrolling strip, counting statistics, tilt cards (`TiltCard`) for mission, vision, values, why-us and team, a zig-zag journey timeline, and a parallax call to action. Content comes from `aboutPage` and `aboutExtras`.
+- **Contact** (`#/contact`): full-width layout with no gap under the header, and a "What happens next" panel from `whatNext`.
+- Products are the original four (Orderly POS, Ledgerly Invoice, Rosterly Payroll, Taskflow).
+
+### Latest section updates
+
+- **Portfolio** (`#/portfolio`): new header with animated glows, drifting grid, rotating rings and glass chips. The headline and background shift slightly with the pointer.
+- **Services** (`#/services`): "How we work" is a dark section with four numbered steps, joined by animated arrows. The steps come from `serviceProcess`. The CTA uses the same design as the About page call to action.
+- **About** (`#/about`): the "Our journey" section has been removed. Sections alternate between light and dark. The story and why-us sections are dark. Use the class `ab-dark` on a section to make it dark.
+
