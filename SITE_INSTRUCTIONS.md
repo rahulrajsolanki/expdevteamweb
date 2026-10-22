@@ -52,7 +52,6 @@ Requirements: Node.js 18 or newer.
 | 8 | AI assistant | — | Short description with insight points and an illustration. |
 | 9 | Portfolio | `#portfolio` | Filterable project grid with parallax artwork, 3D tilt on hover and a hover overlay. |
 | 10 | Why teams choose us | `#why` | Four icon cards. Hovering raises a panel over the artwork to show the description. |
-| 11 | Team | `#team` | Member cards with gradient avatars and social links. |
 | 12 | Security | — | Animated shield visual with status chips, and three hover-highlight rows. |
 | 13 | Pricing | `#pricing` | Three plans. The middle plan is highlighted as "Most popular." |
 | 14 | Reviews | — | Floating background particles, a stats header, and two counter-scrolling rows of review cards. |
@@ -307,7 +306,7 @@ Without the `productPages` entry the product's detail page will not render.
 ## 17. About page and shared header and footer
 
 The About us page opens at `#/about`. It contains a hero, stats, story with mission and vision,
-why choose us, a journey timeline, the team, and a call to action. Its content comes from `aboutPage`.
+why choose us, the team (moved here from the home page), and a call to action. Its content comes from `aboutPage`.
 
 Every page uses the same header and footer, defined once as `SiteHeader` and `SiteFooter` in
 `src/LandingPage.jsx`. These are used on the home page, the About page, every case study page
@@ -337,7 +336,7 @@ The portfolio case studies, team bios and reviews still use earlier restaurant e
 
 ### About and contact pages (current)
 
-- **About** (`#/about`): animated headline, a floating 3D card stack that moves with the pointer, a scrolling strip, counting statistics, tilt cards (`TiltCard`) for mission, vision, values, why-us and team, a zig-zag journey timeline, and a parallax call to action. Content comes from `aboutPage` and `aboutExtras`.
+- **About** (`#/about`): animated headline, a floating 3D card stack that moves with the pointer, a scrolling strip, counting statistics, tilt cards (`TiltCard`) for mission, vision, values, why-us and team, a numbered values grid, a featured founder card with spinning gradient avatars and social links in the team section (`#team`), and a parallax call to action with an animated gradient. Content comes from `aboutPage` and `aboutExtras`.
 - **Contact** (`#/contact`): full-width layout with no gap under the header, and a "What happens next" panel from `whatNext`.
 - Products are the original four (Orderly POS, Ledgerly Invoice, Rosterly Payroll, Taskflow).
 
