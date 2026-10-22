@@ -2,16 +2,15 @@ import { useState, useRef, useEffect } from "react";
 
 /* ------------------------------------------------------------------
    PRODUCTS — the only place you need to edit to add a product.
-   Set `image` to a real screenshot path (e.g. "/images/orderly.png")
+   Set `image` to a real screenshot path (e.g. "/images/restaurant-pos.png")
    once you have one. Until then, a placeholder illustration is shown.
    ------------------------------------------------------------------ */
 const products = [
   {
-    id: "orderly",
-    name: "Orderly POS",
-    summary: "Tables, orders and kitchen tickets on one screen.",
-    description:
-      "A point-of-sale built for busy floors. Take orders, split bills and send tickets to the kitchen without leaving the table.",
+    id: "restaurant-pos",
+    name: "Restaurant POS Management System",
+    summary: "Tables, orders, kitchen and billing on one screen.",
+    description: "A point-of-sale and back-office system for cafes, restaurants and bars. Take orders at the table, run the kitchen and close bills without leaving the floor.",
     features: ["Table and floor layout", "Kitchen display tickets", "Offline order sync"],
     color: "#E8553D",
     colorDeep: "#9E2F1B",
@@ -19,43 +18,41 @@ const products = [
     isNew: true,
   },
   {
-    id: "ledgerly",
-    name: "Ledgerly Invoice",
-    summary: "GST-ready billing with live stock tracking.",
-    description:
-      "Create compliant invoices in seconds, track inventory as it moves, and see sales and expenses in one clear report.",
-    features: ["GST-compliant invoices", "Inventory alerts", "Profit and loss summary"],
+    id: "school",
+    name: "School Management System",
+    summary: "Admissions, attendance, fees and exams in one place.",
+    description: "Run admissions, timetables, attendance, fee collection and report cards for schools, with parents and teachers connected through one portal.",
+    features: ["Admissions and records", "Attendance and timetables", "Fee collection and receipts"],
     color: "#1F7A6D",
     colorDeep: "#0C3B35",
     image: null,
   },
   {
-    id: "rosterly",
-    name: "Rosterly Payroll",
-    summary: "Attendance, leave and payroll without the spreadsheets.",
-    description:
-      "Connect biometric punches to payroll. Shifts, leave balances and salary runs update automatically.",
-    features: ["Biometric attendance", "Leave management", "Automated payslips"],
+    id: "university",
+    name: "University Management System",
+    summary: "Courses, results, hostels and fees across every department.",
+    description: "Manage programmes, course registration, examinations, results, hostels and fee payments across colleges, departments and campuses.",
+    features: ["Course and semester planning", "Exams and results", "Hostel and fee management"],
     color: "#4B5BD6",
     colorDeep: "#222F87",
     image: null,
   },
   {
-    id: "taskflow",
-    name: "Taskflow",
-    summary: "Assign, check and verify daily work across teams.",
-    description:
-      "Give every staff member a checklist for their shift. Supervisors verify completion with photos and get downloadable reports.",
-    features: ["Recurring task templates", "Photo verification", "Downloadable reports"],
-    color: "#C98A12",
-    colorDeep: "#6E4A05",
+    id: "law",
+    name: "Law Management System",
+    summary: "Cases, hearings, documents and billing for law firms.",
+    description: "Track matters, court hearings, deadlines, client documents and time-based billing for law firms and in-house legal teams.",
+    features: ["Case and matter tracking", "Hearing and deadline alerts", "Time tracking and invoices"],
+    color: "#7B3FE4",
+    colorDeep: "#3F1D7A",
     image: null,
   },
 ];
 
+
 const navItems = [
   { label: "Services", href: "#/services" },
-  { label: "Products", href: "#products", badge: "New" },
+  { label: "Products", href: "#/products", badge: "New" },
   { label: "Portfolio", href: "#/portfolio" },
   { label: "About", href: "#/about" },
   { label: "Contact", href: "#/contact" },
@@ -322,7 +319,7 @@ const aboutPage = {
     title: "Our story",
     paragraphs: [
       "SaaSio began with a single cafe, where the owner was still tallying orders on paper at the end of every shift. We built a simple point-of-sale system to fix that. The cafe team then asked for billing, payroll and reports, and that feedback shaped everything we built next.",
-      "Today our range is Orderly POS, Ledgerly Invoice, Rosterly Payroll and Taskflow. They share one set of data, so a change at the counter shows up in the accounts without anyone typing it twice.",
+      "Today our range is Restaurant POS, School Management, University Management and Law Management. They share one set of data, so a change at the counter shows up in the accounts without anyone typing it twice.",
     ],
   },
   mission: {
@@ -1723,8 +1720,8 @@ function SiteHeader({ solid = false }) {
       </nav>
 
       <div className="nav-actions">
-        <a className="btn btn-dark btn-small nav-cta" href="#contact" onClick={closeMenu}>
-          Sign up
+        <a className="btn btn-dark btn-small nav-cta" href="#/contact" onClick={closeMenu}>
+          Request a Demo
         </a>
         <button
           type="button"
@@ -1755,7 +1752,7 @@ function SiteHeader({ solid = false }) {
               ))}
           </div>
         ))}
-        <a className="btn btn-dark" href="#/contact" onClick={closeMenu}>Sign up</a>
+        <a className="btn btn-dark" href="#/contact" onClick={closeMenu}>Request a Demo</a>
       </div>
     </header>
   );
@@ -1799,6 +1796,7 @@ function SiteFooter() {
             <li><a href="#/contact">Contact</a></li>
             <li><a href="#/about">Team</a></li>
             <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#/about">FAQ</a></li>
           </ul>
         </div>
 
@@ -1977,30 +1975,17 @@ function AboutPage() {
               <p className="ab-lead ab-rise" style={{ animationDelay: ".5s" }}>{aboutPage.intro}</p>
               <div className="ab-hero-actions ab-rise" style={{ animationDelay: ".65s" }}>
                 <a className="btn btn-dark" href="#/contact">Book a Free Demo</a>
-                <a className="btn btn-light" href="#products">See our products</a>
+                <a className="btn btn-light" href="#/products">See our products</a>
               </div>
             </div>
 
-            <div className="ab-stack" aria-hidden="true">
-              <div className="ab-float ab-pos-a" style={{ "--d": 1 }}>
-                <TiltCard innerClassName="ab-glass">
-                  <span className="ab-chip">Since 2018</span>
-                  <strong>Software for busy outlets</strong>
-                  <p>Orders, staff and books in one connected system.</p>
-                </TiltCard>
-              </div>
-              <div className="ab-float ab-pos-b" style={{ "--d": -0.6 }}>
-                <TiltCard innerClassName="ab-glass ab-glass-dark">
-                  <strong>4.9 / 5</strong>
-                  <p>Average customer rating</p>
-                </TiltCard>
-              </div>
-              <div className="ab-float ab-pos-c" style={{ "--d": 0.5 }}>
-                <TiltCard innerClassName="ab-glass ab-glass-grad">
-                  <strong>98%</strong>
-                  <p>of customers renew each year</p>
-                </TiltCard>
-              </div>
+            <div className="ab-photo-wrap">
+              <TiltCard className="ab-photo" innerClassName="ab-photo-frame" radius={36}>
+                <div className="ab-photo-art" aria-hidden="true"><HeroArt /></div>
+              </TiltCard>
+              <span className="ab-photo-glow" aria-hidden="true" />
+              <span className="ab-photo-badge ab-float" style={{ "--d": 1 }}>Since 2018</span>
+              <span className="ab-photo-badge2 ab-float" style={{ "--d": -0.8 }}>10,000+ businesses</span>
             </div>
           </div>
         </section>
@@ -2016,45 +2001,6 @@ function AboutPage() {
             ))}
           </div>
         </div>
-
-        {/* Stats */}
-        <section className="ab-stats" aria-label="SaaSio at a glance">
-          {aboutPage.stats.map((stat, i) => (
-            <div key={stat.l} className="ab-reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
-              <TiltCard innerClassName="ab-stat">
-                <strong>
-                  <CountUp value={stat.v} />
-                </strong>
-                <span>{stat.l}</span>
-              </TiltCard>
-            </div>
-          ))}
-        </section>
-
-        {/* Story, mission and vision */}
-        <section className="ab-story ab-dark">
-          <div className="ab-reveal from-left">
-            <span className="about-eyebrow">About us</span>
-            <h2 className="ab-h2">{aboutPage.story.title}</h2>
-            {aboutPage.story.paragraphs.map((text) => (
-              <p key={text} className="ab-lead">{text}</p>
-            ))}
-          </div>
-          <div className="ab-notes">
-            {[
-              { note: aboutPage.mission, from: "#1E5BFF", to: "#7B3FE4" },
-              { note: aboutPage.vision, from: "#FF2D75", to: "#FF8A2B" },
-            ].map(({ note, from, to }, i) => (
-              <div key={note.title} className="ab-reveal" style={{ transitionDelay: `${0.15 + i * 0.12}s` }}>
-                <TiltCard className="ab-note-tilt" innerClassName="ab-note" radius={28}>
-                  <span className="ab-note-bar" style={{ background: `linear-gradient(180deg, ${from}, ${to})` }} />
-                  <h3>{note.title}</h3>
-                  <p>{note.text}</p>
-                </TiltCard>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* Values */}
         <section className="ab-values" aria-labelledby="ab-values-heading">
@@ -2106,29 +2052,52 @@ function AboutPage() {
             <h2 id="ab-team-heading" className="ab-h2">The people behind your software</h2>
             <p>{aboutPage.teamIntro}</p>
           </div>
-          <div className="ab-team-grid">
+          <div className="team-grid">
             {teamMembers.map((member, i) => (
-              <div
-                key={member.name}
-                className={`ab-reveal${i === 0 ? " ab-team-lead" : ""}`}
-                style={{ transitionDelay: `${(i % 4) * 0.08}s` }}
-              >
-                <TiltCard innerClassName="ab-team-card" radius={28}>
-                  <div className="ab-avatar-wrap" style={{ "--from": member.from, "--to": member.to }}>
-                    <span className="ab-avatar" aria-hidden="true">{member.initials}</span>
+              <div key={member.name} className="ab-reveal" style={{ transitionDelay: `${(i % 4) * 0.08}s` }}>
+                <article className="team-card" style={{ "--from": member.from, "--to": member.to }}>
+                  <div className="team-avatar" aria-hidden="true">{member.initials}</div>
+                  <h3>{member.name}</h3>
+                  <p className="team-role">{member.role}</p>
+                  <p className="team-bio">{member.bio}</p>
+                  <div className="team-social">
+                    <a href="#" aria-label={`${member.name} on LinkedIn`}>in</a>
+                    <a href="#" aria-label={`${member.name} on X`}>x</a>
                   </div>
-                  <div className="ab-team-body">
-                    <h3>{member.name}</h3>
-                    <span className="ab-role">{member.role}</span>
-                    <p className="ab-bio">{member.bio}</p>
-                    <div className="ab-social">
-                      <a href="#" aria-label={`${member.name} on LinkedIn`}>in</a>
-                      <a href="#" aria-label={`${member.name} on X`}>x</a>
-                    </div>
-                  </div>
-                </TiltCard>
+                </article>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* FAQ (moved here from the home page) */}
+        <section className="faq ab-faq" id="faq" aria-labelledby="faq-heading">
+          <div className="faq-visual" aria-hidden="true">
+            <span className="faq-visual-glow" />
+            <div className="faq-visual-card">
+              <span className="faq-visual-icon"><ServiceIcon name="users" /></span>
+              <strong>Questions answered</strong>
+              <span>Real people reply within one working day.</span>
+            </div>
+          </div>
+          <div className="faq-box">
+          <div className="faq-intro">
+            <h2 id="faq-heading">Frequently asked questions</h2>
+            <p>
+              Can&apos;t find what you need? <a href="#/contact">Talk to our team.</a>
+            </p>
+          </div>
+          <div className="faq-list">
+            {faqs.map((item) => (
+              <details key={item.q} className="faq-item">
+                <summary>
+                  {item.q}
+                  <span className="faq-icon" aria-hidden="true" />
+                </summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
           </div>
         </section>
 
@@ -2172,6 +2141,17 @@ const serviceColors = [
 ];
 
 function ServicesPage() {
+  const moveParallax = (event) => {
+    const el = event.currentTarget;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3));
+    el.style.setProperty("--my", ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3));
+  };
+  const resetParallax = (event) => {
+    event.currentTarget.style.setProperty("--mx", "0");
+    event.currentTarget.style.setProperty("--my", "0");
+  };
+
   return (
     <div className="page pd svc-page">
       <style>{styles}</style>
@@ -2179,68 +2159,44 @@ function ServicesPage() {
       <SiteHeader solid />
 
       <main className="inner-main">
-        <section className="svc-hero">
-          <span className="about-eyebrow">Services</span>
-          <h1>Websites, apps and online stores, built to grow with you.</h1>
-          <p>Choose a service below or tell us what you need. We will suggest the right technology and a clear plan.</p>
-          <div className="svc-hero-actions">
-            <a className="btn btn-dark" href="#/contact">Book a free call</a>
-            <a className="btn btn-light" href="#/portfolio">See our work</a>
+        <section className="pf-hero svc-hero-pf" onMouseMove={moveParallax} onMouseLeave={resetParallax}>
+          <span className="pf-blob pf-blob-a" aria-hidden="true" />
+          <span className="pf-blob pf-blob-b" aria-hidden="true" />
+          <span className="pf-blob pf-blob-c" aria-hidden="true" />
+          <span className="pf-ring pf-ring-a" aria-hidden="true" />
+          <span className="pf-ring pf-ring-b" aria-hidden="true" />
+          <div className="pf-hero-inner">
+            <span className="pf-kicker"><i aria-hidden="true" />Services</span>
+            <h1 className="pf-title">
+              <span className="ct-title-line">Websites, apps and stores</span>
+              <span className="ct-title-line"><span className="pf-title-grad">built to grow with you.</span></span>
+            </h1>
+            <p className="ab-rise" style={{ animationDelay: ".5s" }}>
+              Choose a service below or tell us what you need. We will suggest the right technology and a clear plan.
+            </p>
+            <div className="svc-hero-actions ab-rise" style={{ animationDelay: ".65s" }}>
+              <a className="btn btn-dark" href="#/contact">Book a free call</a>
+              <a className="btn btn-light" href="#/portfolio">See our work</a>
+            </div>
           </div>
         </section>
 
-        <section className="svc-grid-section" aria-label="All services">
-          <div className="svc-grid">
-            {services.map((service, i) => {
-              const [from, to] = serviceColors[i % serviceColors.length];
-              return (
-                <article key={service.id} className="svc-card">
-                  <span className="svc-icon" style={{ "--from": from, "--to": to }}>
-                    <ServiceIcon name={service.icon} />
-                  </span>
-                  <h2>{service.title}</h2>
-                  <p>{service.text}</p>
-                  <a className="svc-link" href="#/contact">
-                    Book this service <ArrowIcon />
-                  </a>
-                </article>
-              );
-            })}
+        <section className="services svc-services" aria-label="All services">
+          <ParticleField />
+          <div className="service-grid">
+            {services.map((service) => (
+              <article className="service-card" key={service.id}>
+                <span className="service-icon">
+                  <ServiceIcon name={service.icon} />
+                </span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <a className="text-link" href={`#/services/${service.id}`}>
+                  View details <ArrowIcon />
+                </a>
+              </article>
+            ))}
           </div>
-        </section>
-
-        <section className="svc-process" aria-labelledby="svc-process-heading">
-          <span className="svc-process-glow" aria-hidden="true" />
-          <div className="svc-process-head">
-            <span className="about-eyebrow">Our process</span>
-            <h2 id="svc-process-heading">How we work</h2>
-            <p>Four clear steps from the first call to a live, supported product.</p>
-          </div>
-          <ol className="svc-flow">
-            {serviceProcess.map((step, i) => {
-              const [from, to] = serviceColors[i % serviceColors.length];
-              return (
-                <li key={step.title} className="svc-flow-step">
-                  <div className="svc-flow-node" style={{ "--from": from, "--to": to }}>
-                    <svg className="svc-ring" viewBox="0 0 120 120" aria-hidden="true">
-                      <circle cx="60" cy="60" r="58" />
-                    </svg>
-                    <span className="svc-num">{String(i + 1).padStart(2, "0")}</span>
-                  </div>
-                  <div className="svc-flow-card">
-                    <span className="svc-flow-icon"><ServiceIcon name={step.icon} /></span>
-                    <h3>{step.title}</h3>
-                    <p>{step.text}</p>
-                  </div>
-                  {i < serviceProcess.length - 1 && (
-                    <svg className="svc-arrow" viewBox="0 0 44 24" aria-hidden="true">
-                      <path d="M2 12 H38 M30 4 L40 12 L30 20" />
-                    </svg>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
         </section>
 
         <section className="ab-cta svc-cta" aria-labelledby="svc-cta-heading">
@@ -2601,7 +2557,7 @@ function LandingPage() {
               <a className="btn btn-light" href="#contact">
                 Try it for free <ArrowIcon />
               </a>
-              <a className="btn btn-glass" href="#products">Explore products</a>
+              <a className="btn btn-glass" href="#/products">Explore products</a>
             </div>
 
             <ul className="hero-checks">
@@ -2712,6 +2668,40 @@ function LandingPage() {
           <div className="svc-more">
             <a className="btn btn-light" href="#/services">View all services <ArrowIcon /></a>
           </div>
+        </section>
+
+        <section className="svc-process" aria-labelledby="svc-process-heading">
+          <span className="svc-process-glow" aria-hidden="true" />
+          <div className="svc-process-head">
+            <span className="about-eyebrow">Our process</span>
+            <h2 id="svc-process-heading">How we work</h2>
+            <p>Four clear steps from the first call to a live, supported product.</p>
+          </div>
+          <ol className="svc-flow">
+            {serviceProcess.map((step, i) => {
+              const [from, to] = serviceColors[i % serviceColors.length];
+              return (
+                <li key={step.title} className="svc-flow-step">
+                  <div className="svc-flow-node" style={{ "--from": from, "--to": to }}>
+                    <svg className="svc-ring" viewBox="0 0 120 120" aria-hidden="true">
+                      <circle cx="60" cy="60" r="58" />
+                    </svg>
+                    <span className="svc-num">{String(i + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className="svc-flow-card">
+                    <span className="svc-flow-icon"><ServiceIcon name={step.icon} /></span>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                  {i < serviceProcess.length - 1 && (
+                    <svg className="svc-arrow" viewBox="0 0 44 24" aria-hidden="true">
+                      <path d="M2 12 H38 M30 4 L40 12 L30 20" />
+                    </svg>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
         </section>
 
         <section className="industries" id="industries" aria-labelledby="industries-heading">
@@ -2858,27 +2848,11 @@ function LandingPage() {
 
         <ReviewWall />
 
-        <section className="faq" id="faq" aria-labelledby="faq-heading">
-          <div className="faq-intro">
-            <h2 id="faq-heading">Frequently asked questions</h2>
-            <p>
-              Can&apos;t find what you need? <a href="#contact">Talk to our team.</a>
-            </p>
-          </div>
-          <div className="faq-list">
-            {faqs.map((item) => (
-              <details key={item.q} className="faq-item">
-                <summary>
-                  {item.q}
-                  <span className="faq-icon" aria-hidden="true" />
-                </summary>
-                <p>{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
         <section className="contact" id="contact" aria-labelledby="contact-heading">
+          <div className="contact-visual" aria-hidden="true">
+            <HeroArt />
+          </div>
+          <div className="contact-side">
           <div className="contact-intro">
             <h2 id="contact-heading">Book a 15-minute demo</h2>
             <p>Tell us a little about your business and we will show you the parts that matter to you.</p>
@@ -2923,6 +2897,332 @@ function LandingPage() {
               <button type="submit" className="btn btn-light btn-full">Request demo</button>
             </form>
           )}
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------
+   SERVICE DETAIL PAGES — route #/services/<id>. Edit the copy here.
+   Each service needs an entry with the same id as `services`.
+   ------------------------------------------------------------------ */
+const serviceDetails = {
+  web: {
+    lead: "Fast, secure websites that turn visitors into customers.",
+    headline: "Websites that load fast and convert well.",
+    overview: "We design and build websites and web apps that are quick on any device, easy to update, and set up to be found on search engines. Every project starts with the goals of the business, not just the look.",
+    deliverables: ["Responsive design for phone, tablet and desktop", "Content management so you can edit pages yourself", "Search engine setup and analytics", "Security, hosting and monthly support"],
+    highlights: [
+      { title: "Fast by default", text: "Optimised images, lean code and caching keep pages quick on slow connections." },
+      { title: "Built to convert", text: "Clear calls to action, forms and tracking show what is working." },
+      { title: "Easy to manage", text: "A simple dashboard lets your team update text, photos and offers." },
+    ],
+    tech: ["React", "Next.js", "Node.js", "Tailwind CSS"],
+  },
+  mobile: {
+    lead: "Cross-platform and native apps, from idea to store launch.",
+    headline: "Mobile apps your customers will keep.",
+    overview: "We plan, design and build mobile apps for customers and staff. We test on real devices, handle store submissions, and keep the app updated after launch.",
+    deliverables: ["Product plan and clickable prototype", "Android and iOS builds from one codebase", "Store listing and submission support", "Analytics, crash reports and updates"],
+    highlights: [
+      { title: "One idea, two platforms", text: "Share code between Android and iOS to launch faster and save cost." },
+      { title: "Tested on real devices", text: "We check each release on a range of phones before it reaches users." },
+      { title: "Ready for the stores", text: "We handle the paperwork, screenshots and review process." },
+    ],
+    tech: ["React Native", "Expo", "Firebase", "REST APIs"],
+  },
+  flutter: {
+    lead: "One codebase for polished Android and iOS apps.",
+    headline: "Smooth apps that look the same everywhere.",
+    overview: "Flutter lets us build a single app that feels native on Android and iOS, with custom animations and fast performance. It is a strong choice for apps that need a distinct design.",
+    deliverables: ["UI design system for your brand", "Android and iOS apps from one project", "Offline support and local storage", "Release builds and store submission"],
+    highlights: [
+      { title: "Beautiful interfaces", text: "Custom animations and layouts without the usual compromises." },
+      { title: "Fast performance", text: "Compiled code and smooth 60fps rendering on mid-range phones." },
+      { title: "Lower cost to maintain", text: "One team and one codebase means fewer updates to ship." },
+    ],
+    tech: ["Flutter", "Dart", "Firebase", "REST APIs"],
+  },
+  laravel: {
+    lead: "Custom web applications, admin panels and APIs.",
+    headline: "Reliable back ends for growing businesses.",
+    overview: "We build custom web applications on Laravel, a mature and secure framework. From admin panels to customer portals and APIs, the systems are structured for change as your business grows.",
+    deliverables: ["Custom web application or admin panel", "REST or GraphQL API for apps and partners", "Role-based access and audit logs", "Deployment, backups and monitoring"],
+    highlights: [
+      { title: "Secure by design", text: "Authentication, permissions and input checks are built in from day one." },
+      { title: "Built to change", text: "Clean structure makes new features quicker to add over time." },
+      { title: "Reports and dashboards", text: "Turn your data into the views your team actually needs." },
+    ],
+    tech: ["Laravel", "PHP", "MySQL", "Redis"],
+  },
+  wordpress: {
+    lead: "Custom themes, plugins and stores that are easy to manage.",
+    headline: "WordPress sites your team can run.",
+    overview: "We build custom WordPress themes and plugins, or set up WooCommerce stores, with a focus on speed, security and an editing experience your team will enjoy.",
+    deliverables: ["Custom theme built to your design", "Plugins for bookings, forms or memberships", "WooCommerce store setup", "Training and handover documentation"],
+    highlights: [
+      { title: "Custom, not bloated", text: "We build only what you need, so the site stays fast and secure." },
+      { title: "Simple editing", text: "Your team can publish pages and products without help." },
+      { title: "Ongoing care", text: "Updates, backups and security checks are handled for you." },
+    ],
+    tech: ["WordPress", "WooCommerce", "PHP", "ACF"],
+  },
+  shopify: {
+    lead: "Online stores with custom themes and smooth payments.",
+    headline: "A Shopify store that sells.",
+    overview: "We set up and customise Shopify stores with product pages, checkout, shipping and payment integrations, so buying from you is quick and simple on every device.",
+    deliverables: ["Store setup and custom theme", "Product catalogue and collections", "Payments, shipping and tax settings", "Marketing integrations and analytics"],
+    highlights: [
+      { title: "Designed for buyers", text: "Product pages and checkout that make it easy to order on a phone." },
+      { title: "Easy catalogue", text: "Add products, variants and offers without developer help." },
+      { title: "Reliable payments", text: "Trusted gateways and clear order tracking for you and your customers." },
+    ],
+    tech: ["Shopify", "Liquid", "Shopify Payments", "Klaviyo"],
+  },
+  ios: {
+    lead: "Native iPhone and iPad apps, ready for the App Store.",
+    headline: "Native iOS apps built for Apple users.",
+    overview: "For apps that need the best iPhone and iPad experience, we build native iOS apps in Swift. We design for Apple's guidelines and test on real devices before submitting to the App Store.",
+    deliverables: ["Native iPhone and iPad app", "Apple design guideline review", "TestFlight beta and feedback rounds", "App Store submission and updates"],
+    highlights: [
+      { title: "Native performance", text: "Smooth animations and full access to iPhone features." },
+      { title: "Tested on real devices", text: "We cover recent and older iPhones and iPads before release." },
+      { title: "App Store ready", text: "We prepare screenshots, metadata and review notes." },
+    ],
+    tech: ["Swift", "SwiftUI", "Core Data", "Firebase"],
+  },
+  android: {
+    lead: "Native Android apps for smooth performance on Google Play.",
+    headline: "Android apps that feel at home on any phone.",
+    overview: "We build native Android apps in Kotlin, designed for the wide range of Android devices. We test across screen sizes and manufacturers, then handle the Google Play release.",
+    deliverables: ["Native Android app in Kotlin", "Material design UI for your brand", "Testing across devices and Android versions", "Google Play release and updates"],
+    highlights: [
+      { title: "Works on every screen", text: "Layouts adapt from small budget phones to large tablets." },
+      { title: "Reliable background work", text: "Sync and notifications that respect battery and data limits." },
+      { title: "Smooth releases", text: "Staged rollouts and crash monitoring from the first day." },
+    ],
+    tech: ["Kotlin", "Jetpack Compose", "Room", "Firebase"],
+  },
+};
+
+/* ------------------------------------------------------------------
+   SERVICE DETAIL PAGE — route #/services/<id>, with previous and next.
+   ------------------------------------------------------------------ */
+function ServiceDetailPage({ service }) {
+  const index = services.findIndex((item) => item.id === service.id);
+  const prev = services[(index - 1 + services.length) % services.length];
+  const next = services[(index + 1) % services.length];
+  const detail = serviceDetails[service.id];
+  const [from, to] = serviceColors[index % serviceColors.length];
+
+  return (
+    <div className="page pd sd-page">
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main">
+        <section className="sd-hero" style={{ "--from": from, "--to": to }}>
+          <span className="sd-blob sd-blob-a" aria-hidden="true" />
+          <span className="sd-blob sd-blob-b" aria-hidden="true" />
+          <div className="sd-hero-inner">
+            <a className="sd-all" href="#/services" aria-label="Back to all services">
+              <span className="pd-circle">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <rect x="4" y="4" width="6" height="6" rx="1.5" />
+                <rect x="14" y="4" width="6" height="6" rx="1.5" />
+                <rect x="4" y="14" width="6" height="6" rx="1.5" />
+                <rect x="14" y="14" width="6" height="6" rx="1.5" />
+              </svg>
+              </span>
+              <small>All services</small>
+            </a>
+            <h1 className="sd-title">{service.title}</h1>
+            <p className="sd-lead ab-rise" style={{ animationDelay: ".5s" }}>{detail.lead}</p>
+            <div className="svc-hero-actions ab-rise" style={{ animationDelay: ".65s" }}>
+              <a className="btn btn-dark" href="#/contact">Book this service</a>
+              <a className="btn btn-light" href="#/portfolio">See our work</a>
+            </div>
+          </div>
+          <div className="sd-hero-icon" aria-hidden="true">
+            <ServiceIcon name={service.icon} />
+          </div>
+        </section>
+
+        <section className="sd-overview">
+          <div className="sd-overview-text">
+            <span className="about-eyebrow">Overview</span>
+            <h2>{detail.headline}</h2>
+            <p>{detail.overview}</p>
+          </div>
+          <ul className="sd-deliverables">
+            <li className="sd-deliverables-head">What you get</li>
+            {detail.deliverables.map((item) => (
+              <li key={item}>
+                <CheckIcon />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="sd-highlights" aria-label="Highlights">
+          {detail.highlights.map((item, i) => (
+            <div key={item.title}>
+              <TiltCard innerClassName="sd-card" radius={28}>
+                <span className="sd-card-num" style={{ "--from": from, "--to": to }}>{String(i + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </TiltCard>
+            </div>
+          ))}
+        </section>
+
+        <section className="sd-tech" aria-label="Technologies">
+          <span className="about-eyebrow">Built with</span>
+          <div className="sd-tech-chips">
+            {detail.tech.map((item) => (
+              <span key={item} className="sd-tech-chip">{item}</span>
+            ))}
+          </div>
+        </section>
+
+        <nav className="pd-pager" aria-label="Browse services">
+          <a className="pd-pager-side is-prev" href={`#/services/${prev.id}`}>
+            <span className="pd-arrow" aria-hidden="true">←</span>
+            <span>
+              <small>Previous service</small>
+              <strong>{prev.title}</strong>
+            </span>
+          </a>
+          <a className="pd-pager-center" href="#/services" aria-label="Back to all services">
+            <span className="pd-circle">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <rect x="4" y="4" width="6" height="6" rx="1.5" />
+                <rect x="14" y="4" width="6" height="6" rx="1.5" />
+                <rect x="4" y="14" width="6" height="6" rx="1.5" />
+                <rect x="14" y="14" width="6" height="6" rx="1.5" />
+              </svg>
+            </span>
+            <small>All services</small>
+          </a>
+          <a className="pd-pager-side is-next" href={`#/services/${next.id}`}>
+            <span>
+              <small>Next service</small>
+              <strong>{next.title}</strong>
+            </span>
+            <span className="pd-arrow" aria-hidden="true">→</span>
+          </a>
+        </nav>
+
+        <section className="ab-cta sd-cta" aria-labelledby="sd-cta-heading">
+          <span className="ab-cta-orb ab-float" aria-hidden="true" />
+          <span className="ab-cta-orb2 ab-float" aria-hidden="true" />
+          <div className="ab-cta-inner">
+            <h2 id="sd-cta-heading" className="ab-cta-title">Ready to start your {service.title.toLowerCase()} project?</h2>
+            <p>Tell us what you have in mind and we will reply with a plan, a timeline and a clear price.</p>
+            <div className="ab-hero-actions">
+              <a className="btn btn-light" href="#/contact">Book a free call</a>
+              <a className="btn ab-ghost" href="#/services">Explore other services</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------
+   PRODUCTS PAGE — route #/products. Four products, each with its own effect.
+   ------------------------------------------------------------------ */
+const productIcons = ["device", "cloud", "chart", "shield"];
+
+function ProductsPage() {
+  const moveParallax = (event) => {
+    const el = event.currentTarget;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3));
+    el.style.setProperty("--my", ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3));
+  };
+  const resetParallax = (event) => {
+    event.currentTarget.style.setProperty("--mx", "0");
+    event.currentTarget.style.setProperty("--my", "0");
+  };
+
+  return (
+    <div className="page pd pp-page">
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main">
+        <section className="pf-hero" onMouseMove={moveParallax} onMouseLeave={resetParallax}>
+          <span className="pf-blob pf-blob-a" aria-hidden="true" />
+          <span className="pf-blob pf-blob-b" aria-hidden="true" />
+          <span className="pf-blob pf-blob-c" aria-hidden="true" />
+          <span className="pf-ring pf-ring-a" aria-hidden="true" />
+          <span className="pf-ring pf-ring-b" aria-hidden="true" />
+          <div className="pf-hero-inner">
+            <span className="pf-kicker"><i aria-hidden="true" />Products</span>
+            <h1 className="pf-title">
+              <span className="ct-title-line">Four products,</span>
+              <span className="ct-title-line"><span className="pf-title-grad">one connected business.</span></span>
+            </h1>
+            <p className="ab-rise" style={{ animationDelay: ".5s" }}>
+              Software for restaurants, schools, universities and law firms. Each product is built for its own daily work and can be set up on its own.
+            </p>
+            <div className="pf-chips ab-rise" style={{ animationDelay: ".65s" }}>
+              {["Restaurants", "Schools", "Universities", "Law firms"].map((chip) => (
+                <span key={chip} className="pf-chip">{chip}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="pp-section" aria-label="All products">
+          <div className="pp-grid">
+            {products.map((product, i) => (
+              <article
+                key={product.id}
+                className={`pp-card pp-v${i + 1}`}
+                style={{ "--from": product.color, "--to": product.colorDeep }}
+              >
+                <span className="pp-sheen" aria-hidden="true" />
+                <span className="pp-num">{String(i + 1).padStart(2, "0")}</span>
+                <span className="pp-icon" aria-hidden="true"><ServiceIcon name={productIcons[i]} /></span>
+                <h2>{product.name}</h2>
+                <p className="pp-summary">{product.summary}</p>
+                <p className="pp-desc">{product.description}</p>
+                <ul className="pp-features">
+                  {product.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <a className="pp-link" href={`#/product/${product.id}`}>
+                  View details <ArrowIcon />
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="ab-cta" aria-labelledby="pp-cta-heading">
+          <span className="ab-cta-orb ab-float" aria-hidden="true" />
+          <span className="ab-cta-orb2 ab-float" aria-hidden="true" />
+          <div className="ab-cta-inner">
+            <h2 id="pp-cta-heading" className="ab-cta-title">Not sure which product fits?</h2>
+            <p>Tell us about your organisation and we will show you the right product in a free demo.</p>
+            <div className="ab-hero-actions">
+              <a className="btn btn-light" href="#/contact">Request a Demo</a>
+              <a className="btn ab-ghost" href="#/services">Explore services</a>
+            </div>
+          </div>
         </section>
       </main>
 
@@ -2937,21 +3237,25 @@ function LandingPage() {
    featured highlights and reviews.
    ------------------------------------------------------------------ */
 const productPages = {
-  orderly: {
+  "restaurant-pos": {
     base: 1499,
     rating: 4.8,
     reviewCount: 1240,
     breakdown: [82, 13, 3, 1, 1],
     headline: "Restaurant POS made simple.",
     description: "Take orders at the table, send tickets to the kitchen and close bills in three clicks, with every outlet synced in real time.",
-    overview: "Orderly POS runs the front of house and the kitchen on one connected system. Staff take orders on tablets at the table, tickets reach the kitchen screens in order, and every paid bill flows into your sales reports. It keeps working during internet drops and syncs once the connection returns.",
-    facts: [{ label: "Best for", value: "Caf\u00e9s, restaurants and bars" }, { label: "Devices", value: "Tablets, desktop and kitchen screens" }, { label: "Setup time", value: "Usually live within 1 day" }, { label: "Works offline", value: "Yes, with automatic sync" }],
+    overview: "The Restaurant POS Management System runs the front of house and the kitchen on one connected system. Staff take orders on tablets, tickets reach kitchen screens in order, and every paid bill flows into your sales reports. It keeps working through internet drops and syncs once the connection returns.",
+    facts: [
+      { label: "Best for", value: "Cafes, restaurants and bars" },
+      { label: "Devices", value: "Tablets, desktop and kitchen screens" },
+      { label: "Setup time", value: "Usually live within 1 day" },
+      { label: "Works offline", value: "Yes, with automatic sync" },
+    ],
     howToUse: [
-      { title: "Set up your floor", text: "Draw your tables and sections in the layout editor, then add your menu and prices." },
+      { title: "Set up your floor", text: "Draw your tables and sections, then add your menu and prices." },
       { title: "Take orders", text: "Staff tap a table, add items and send the order to the kitchen in one step." },
       { title: "Run the kitchen", text: "Tickets appear on kitchen screens by station. Mark items ready as they are cooked." },
-      { title: "Bill and close", text: "Split or merge bills, apply discounts and take card, UPI or cash. The receipt prints or emails automatically." },
-      { title: "Review sales", text: "Check daily totals and top items on the dashboard, or compare outlets side by side." },
+      { title: "Bill and close", text: "Split or merge bills and take card, UPI or cash. Receipts print or email automatically." },
     ],
     stats: [
       { v: "1,000+", l: "outlets live" },
@@ -2963,158 +3267,162 @@ const productPages = {
       { group: "Ordering", items: ["Table and floor layout", "Table-side ordering on tablets", "Split bills and merge tables", "Discounts and coupons"] },
       { group: "Kitchen", items: ["Kitchen display tickets", "Course-wise firing", "Order status for each station"] },
       { group: "Billing and payments", items: ["GST-ready invoices", "Card, UPI and cash payments", "Print and email receipts"] },
-      { group: "Works offline", items: ["Offline order sync", "Local printing during outages", "Automatic cloud backup"] },
     ],
     featured: [
       { title: "Fast billing", text: "Punch, split and print a bill in under a minute." },
       { title: "Live sales", text: "See each outlet's sales as soon as an order is paid." },
       { title: "Built to scale", text: "Add outlets and staff without changing your setup." },
     ],
-    builtFor: ["Cafés", "Restaurants", "Bars", "Bakeries", "Cloud kitchens", "Food courts"],
+    builtFor: ["Cafes", "Restaurants", "Bars", "Bakeries", "Cloud kitchens", "Food courts"],
     addons: [
       { name: "Kitchen Display", price: 399, text: "Send orders to a screen at each station." },
       { name: "Table QR Ordering", price: 499, text: "Guests order and pay from their phones." },
       { name: "Loyalty Program", price: 299, text: "Points and rewards for repeat customers." },
-      { name: "SMS Notifications", price: 199, text: "Order updates and offers by SMS." },
     ],
     reviews: [
       { quote: "Table turns went up within the first week. Staff learned the screens in one shift.", name: "Priya Sharma", role: "Owner, Spice Route Kitchens" },
       { quote: "Billing used to be the slowest part of service. Now it is the fastest.", name: "Karan Singh", role: "Owner, Biryani House" },
     ],
   },
-  ledgerly: {
-    base: 999,
+  school: {
+    base: 2499,
     rating: 4.7,
-    reviewCount: 860,
-    breakdown: [76, 17, 4, 2, 1],
-    headline: "Billing and books that stay current.",
-    description: "Create compliant invoices in seconds, track stock as it moves and see profit and loss without waiting for month end.",
-    overview: "Ledgerly Invoice keeps billing, stock and books in step. Create GST-ready invoices, record payments as they arrive, and track stock as it sells. Profit and loss and cash flow update automatically, so your accountant gets clean records at month end.",
-    facts: [{ label: "Best for", value: "Retail, wholesale and service businesses" }, { label: "Devices", value: "Desktop, tablet and phone" }, { label: "Setup time", value: "Usually live within 2 days" }, { label: "Accounting", value: "Exports to common accountant tools" }],
+    reviewCount: 412,
+    breakdown: [78, 15, 4, 2, 1],
+    headline: "Every student, teacher and parent, connected.",
+    description: "Admissions, attendance, timetables, fees and report cards in one system, with a parent and teacher portal built in.",
+    overview: "The School Management System gives your school one record for every student. Admissions, daily attendance, timetables, exams and fee collection all share the same data, so the office, teachers and parents always see the same picture.",
+    facts: [
+      { label: "Best for", value: "Primary, secondary and senior schools" },
+      { label: "Access", value: "Admin desk, teacher app and parent portal" },
+      { label: "Setup time", value: "Usually live within 1 week" },
+      { label: "Data", value: "Student records kept safe with daily backups" },
+    ],
     howToUse: [
-      { title: "Add your business details", text: "Enter GST details, tax rates and invoice numbering once." },
-      { title: "Create products and stock", text: "Add items with prices and opening stock. Batch and expiry dates can be added where needed." },
-      { title: "Send invoices", text: "Create an invoice in seconds and send it by email or share the link. Stock updates as you bill." },
-      { title: "Get paid faster", text: "Turn on payment reminders and record payments by card, UPI or bank transfer." },
-      { title: "Close the month", text: "Download the profit and loss and cash flow reports, then export them to your accountant." },
+      { title: "Import students", text: "Bring in admissions and class lists from your existing sheets in one upload." },
+      { title: "Mark attendance", text: "Teachers mark attendance from the app in under a minute per class." },
+      { title: "Collect fees", text: "Send fee reminders, take online payments and print receipts automatically." },
+      { title: "Publish results", text: "Enter marks once and share report cards with parents through the portal." },
     ],
     stats: [
-      { v: "5 days", l: "saved every month" },
-      { v: "100%", l: "GST-compliant bills" },
-      { v: "Live", l: "stock and cash reports" },
-      { v: "3 min", l: "to send an invoice" },
+      { v: "500+", l: "schools onboarded" },
+      { v: "1 min", l: "to mark a class" },
+      { v: "99.9%", l: "uptime" },
+      { v: "24x7", l: "parent portal access" },
     ],
     featureGroups: [
-      { group: "Invoicing", items: ["GST-compliant invoices", "Recurring invoices", "Payment reminders", "Multi-currency billing"] },
-      { group: "Inventory", items: ["Live stock tracking", "Low-stock alerts", "Batch and expiry dates"] },
-      { group: "Reports", items: ["Profit and loss summary", "Cash flow overview", "Export to accountant tools"] },
-      { group: "Compliance", items: ["Audit trail on every change", "Role-based access", "Automatic tax summaries"] },
+      { group: "Admissions and records", items: ["Online admission forms", "Student and guardian profiles", "Transfer and certificate requests"] },
+      { group: "Teaching", items: ["Attendance by period", "Timetable builder", "Homework and notices"] },
+      { group: "Exams and fees", items: ["Marks entry and grading", "Report cards", "Fee plans, reminders and receipts"] },
     ],
     featured: [
-      { title: "Compliant by default", text: "Tax breakdowns and invoice numbering are handled for you." },
-      { title: "Stock that matches sales", text: "Every sale updates stock, so counts stay accurate." },
-      { title: "Accountant ready", text: "Export clean reports in the format your accountant uses." },
+      { title: "Parent portal", text: "Parents see attendance, fees and results from their phone." },
+      { title: "One record", text: "Admissions, attendance and fees share one student profile." },
+      { title: "Less paperwork", text: "Reports and receipts generate themselves at term end." },
     ],
-    builtFor: ["Retail stores", "Wholesale", "Pharmacies", "Grocery", "Services", "E-commerce"],
+    builtFor: ["Primary schools", "High schools", "Coaching centres", "Preschools", "Boarding schools", "Trusts with several branches"],
     addons: [
-      { name: "Multi-currency", price: 299, text: "Bill and report in more than one currency." },
-      { name: "E-invoicing", price: 399, text: "Send e-invoices straight to the tax portal." },
-      { name: "Bank sync", price: 349, text: "Match payments with bank statements automatically." },
-      { name: "Payment reminders", price: 149, text: "Automatic reminders for overdue invoices." },
+      { name: "Parent App", price: 299, text: "Notices, messages and alerts on mobile." },
+      { name: "Transport Tracking", price: 399, text: "Bus routes, pickups and drop alerts." },
+      { name: "Library Module", price: 249, text: "Catalogue, issue and return tracking." },
     ],
     reviews: [
-      { quote: "We closed the books in two days instead of two weeks. The stock reports are the best part.", name: "Ananya Iyer", role: "Founder, Cafe Lumiere" },
-      { quote: "Invoices look professional and tax is calculated correctly every time.", name: "Rahul Mehta", role: "Operations Lead, Urban Bites" },
+      { quote: "Fee follow-ups used to take the whole week. Now the reminders go out on their own.", name: "Meera Iyer", role: "Principal, Greenfield School" },
+      { quote: "Parents finally have one place to check attendance and results.", name: "Arjun Nair", role: "Administrator, Sunrise Public School" },
     ],
   },
-  rosterly: {
-    base: 1199,
-    rating: 4.9,
-    reviewCount: 730,
-    breakdown: [88, 9, 2, 1, 0],
-    headline: "Attendance and payroll, without spreadsheets.",
-    description: "Connect biometric punches to payroll. Shifts, leave balances and salary runs update automatically, with payslips sent by email.",
-    overview: "Rosterly Payroll brings attendance, leave and salary into one place. Staff check in on their own, leave requests go to the right manager, and salary runs use the attendance already recorded. Statutory deductions and payslips are calculated automatically.",
-    facts: [{ label: "Best for", value: "Restaurants, hotels, retail and manufacturing teams" }, { label: "Devices", value: "Web dashboard, plus an app for staff" }, { label: "Setup time", value: "Usually 3 to 5 days, including salary structures" }, { label: "Compliance", value: "Statutory filings and full audit history" }],
-    howToUse: [
-      { title: "Add your team", text: "Import staff details and assign them to outlets, shifts and salary structures." },
-      { title: "Set attendance rules", text: "Choose check-in methods such as biometric, geo-fenced or manual, and set late and overtime limits." },
-      { title: "Set leave policies", text: "Define leave types and balances. Staff request leave in the app and managers approve it." },
-      { title: "Run payroll", text: "Review attendance, then run salaries. Deductions are calculated for you." },
-      { title: "Send payslips and reports", text: "Payslips go to staff by email, and statutory reports are ready for filing." },
-    ],
-    stats: [
-      { v: "2 days", l: "saved each pay cycle" },
-      { v: "0", l: "manual salary errors" },
-      { v: "Real time", l: "attendance feed" },
-      { v: "120+", l: "staff on one system" },
-    ],
-    featureGroups: [
-      { group: "Attendance", items: ["Biometric punch integration", "Geo-fenced check-in", "Late and overtime alerts"] },
-      { group: "Leave", items: ["Custom leave policies", "Balance tracking", "Approval workflow"] },
-      { group: "Payroll", items: ["Automated salary runs", "Statutory deductions", "Payslips by email"] },
-      { group: "Compliance", items: ["Statutory filing reports", "Full audit history", "Secure document storage"] },
-    ],
-    featured: [
-      { title: "Punch to payslip", text: "Attendance flows into payroll with no manual step." },
-      { title: "Fewer errors", text: "Rules are applied the same way for every employee." },
-      { title: "Self-service", text: "Staff check leave balances and payslips from their phones." },
-    ],
-    builtFor: ["Restaurants", "Hotels", "Retail", "Healthcare", "Logistics", "Manufacturing"],
-    addons: [
-      { name: "Biometric devices", price: 599, text: "Fingerprint or face readers for each outlet." },
-      { name: "Geo attendance", price: 249, text: "Check in only from approved locations." },
-      { name: "Advance salary", price: 199, text: "Approve and track salary advances." },
-      { name: "Shift planner", price: 299, text: "Build rosters and share them with the team." },
-    ],
-    reviews: [
-      { quote: "Payroll that used to take us two days a month now runs itself every time.", name: "Meera Nair", role: "Manager, Quickfix Services" },
-      { quote: "The attendance data is accurate, and leave requests no longer get lost.", name: "Dev Patel", role: "Implementation Manager" },
-    ],
-  },
-  taskflow: {
-    base: 799,
+  university: {
+    base: 4999,
     rating: 4.6,
-    reviewCount: 510,
-    breakdown: [71, 19, 6, 3, 1],
-    headline: "Daily work, checked and done.",
-    description: "Give each team member a checklist for their shift. Supervisors verify completion with photos and get reports they can share.",
-    overview: "Taskflow turns daily checklists into verified work. Managers set recurring tasks for each shift, staff complete them on their phones with photo proof, and supervisors sign off. Reports show what was done, when and by whom, across every outlet.",
-    facts: [{ label: "Best for", value: "Restaurants, gyms, salons, hotels and venues" }, { label: "Devices", value: "Android and iOS app, plus a web dashboard" }, { label: "Setup time", value: "Usually live within 1 day" }, { label: "Proof of work", value: "Photos, comments and sign-offs" }],
+    reviewCount: 186,
+    breakdown: [74, 17, 6, 2, 1],
+    headline: "Campus operations on one platform.",
+    description: "Programmes, course registration, examinations, results, hostels and fees across every department and campus.",
+    overview: "The University Management System links academic and campus operations. Departments plan courses, students register and sit exams, results are published from one place, and hostel and fee records stay in step with the registrar.",
+    facts: [
+      { label: "Best for", value: "Universities, colleges and deemed institutes" },
+      { label: "Access", value: "Registrar, faculty, student and hostel portals" },
+      { label: "Setup time", value: "Usually 4 to 6 weeks with data migration" },
+      { label: "Compliance", value: "Audit trail for every grade and fee change" },
+    ],
     howToUse: [
-      { title: "Create task templates", text: "Build checklists for opening, closing and cleaning, and set how often they repeat." },
-      { title: "Assign by shift", text: "Tasks go to the right team on each shift, with due times and reminders." },
-      { title: "Complete and prove", text: "Staff tick tasks off in the app and add a photo where you need proof." },
-      { title: "Supervise and sign off", text: "Supervisors review each task, approve it, or reopen it with a comment." },
-      { title: "Review performance", text: "See completion by shift and outlet, and download weekly PDF summaries." },
+      { title: "Set up programmes", text: "Define departments, programmes, courses and semester structures." },
+      { title: "Register students", text: "Students pick courses online, with prerequisites and seat limits checked automatically." },
+      { title: "Run examinations", text: "Schedule exams, collect marks from faculty and publish results after approval." },
+      { title: "Manage hostels and fees", text: "Allot rooms, track dues and send fee receipts across campuses." },
     ],
     stats: [
-      { v: "40%", l: "fewer missed tasks" },
-      { v: "Photo", l: "proof on every task" },
-      { v: "1 tap", l: "to mark a task done" },
-      { v: "24/7", l: "team visibility" },
+      { v: "50+", l: "institutions served" },
+      { v: "1 place", l: "for every record" },
+      { v: "99.9%", l: "uptime" },
+      { v: "Audit", l: "trail on every change" },
     ],
     featureGroups: [
-      { group: "Tasks", items: ["Recurring task templates", "Shift-based checklists", "Due time reminders"] },
-      { group: "Verification", items: ["Photo proof of work", "Supervisor sign-off", "Re-open and comment"] },
-      { group: "Reports", items: ["Completion by shift", "Downloadable PDF reports", "Weekly summaries"] },
-      { group: "Team", items: ["Roles and permissions", "Team chat on each task", "Multi-outlet view"] },
+      { group: "Academics", items: ["Programme and course catalogue", "Course registration", "Timetables and room allocation"] },
+      { group: "Examinations", items: ["Exam scheduling", "Marks entry and moderation", "Results and transcripts"] },
+      { group: "Campus life", items: ["Hostel allotment", "Fee plans and receipts", "Student and faculty portals"] },
     ],
     featured: [
-      { title: "Checklists that repeat", text: "Opening and closing routines are set once and reused." },
-      { title: "Proof, not promises", text: "Photos and sign-offs show exactly what was done." },
-      { title: "Reports in one tap", text: "Share a clean summary with owners and auditors." },
+      { title: "Multi-campus", text: "Run several campuses and departments from one login." },
+      { title: "Approval flows", text: "Results and fee waivers go through the right approvers." },
+      { title: "Clear audit", text: "Every grade and fee change is logged with who made it." },
     ],
-    builtFor: ["Restaurants", "Gyms", "Salons and spas", "Hotels", "Cinemas", "Event venues"],
+    builtFor: ["Universities", "Colleges", "Deemed institutes", "Research centres", "Hostels", "Distance learning units"],
     addons: [
-      { name: "Photo proof", price: 149, text: "Require a photo before a task can be closed." },
-      { name: "Checklist library", price: 199, text: "Ready-made routines for common formats." },
-      { name: "WhatsApp alerts", price: 249, text: "Send task reminders and escalations on WhatsApp." },
-      { name: "Owner dashboard", price: 299, text: "See completion across every outlet." },
+      { name: "Admissions Portal", price: 699, text: "Online applications, merit lists and offers." },
+      { name: "Research Tracker", price: 499, text: "Track projects, grants and publications." },
+      { name: "Alumni Module", price: 299, text: "Keep alumni connected and updated." },
     ],
     reviews: [
-      { quote: "Opening checks used to be a phone call. Now every shift starts with a complete checklist.", name: "Sana Qureshi", role: "Customer Success Lead" },
-      { quote: "The photo proof settled a lot of arguments. Supervisors trust the reports now.", name: "Ishita Verma", role: "Design Lead" },
+      { quote: "Result publishing dropped from weeks to days, with a full audit trail for every change.", name: "Dr. Anjali Rao", role: "Registrar, Westbridge University" },
+      { quote: "Students register for courses without queuing at the office anymore.", name: "Vivek Menon", role: "Dean of Students, Kapil College" },
+    ],
+  },
+  law: {
+    base: 1999,
+    rating: 4.7,
+    reviewCount: 228,
+    breakdown: [80, 14, 4, 1, 1],
+    headline: "Every matter, hearing and invoice in one place.",
+    description: "Track cases, court dates, deadlines, client documents and billable time, with invoices generated straight from the work recorded.",
+    overview: "The Law Management System keeps your practice organised. Each matter has its own file with hearings, filings, notes and documents, reminders warn the team before deadlines, and time recorded during the week turns into accurate invoices.",
+    facts: [
+      { label: "Best for", value: "Law firms, chambers and in-house legal teams" },
+      { label: "Access", value: "Desktop, web and mobile for lawyers and clients" },
+      { label: "Setup time", value: "Usually live within 1 week" },
+      { label: "Security", value: "Role-based access and encrypted documents" },
+    ],
+    howToUse: [
+      { title: "Open a matter", text: "Record the client, case number, court and opposing party in one form." },
+      { title: "Track hearings", text: "Add hearing dates and filing deadlines. Reminders go to the whole team." },
+      { title: "Store documents", text: "Upload pleadings, notes and evidence, with versions kept for every file." },
+      { title: "Bill the work", text: "Log time against each matter and generate invoices in a few clicks." },
+    ],
+    stats: [
+      { v: "300+", l: "practices using it" },
+      { v: "0", l: "missed deadlines reported" },
+      { v: "99.9%", l: "uptime" },
+      { v: "1 click", l: "to generate an invoice" },
+    ],
+    featureGroups: [
+      { group: "Matters", items: ["Case files and parties", "Hearing calendar", "Deadline reminders"] },
+      { group: "Documents", items: ["Secure document storage", "Version history", "Client sharing with permissions"] },
+      { group: "Billing", items: ["Time tracking by matter", "Retainers and invoices", "Payment reminders"] },
+    ],
+    featured: [
+      { title: "Never miss a date", text: "Hearings and deadlines are shared with the whole team." },
+      { title: "Every file, found", text: "Search across documents, notes and matters at once." },
+      { title: "Billing from work", text: "Invoices are built from the time already recorded." },
+    ],
+    builtFor: ["Law firms", "Sole practitioners", "Chambers", "Corporate legal teams", "Notaries", "Legal clinics"],
+    addons: [
+      { name: "Client Portal", price: 299, text: "Clients view case updates and documents securely." },
+      { name: "E-sign Integration", price: 199, text: "Send documents for signature from the matter." },
+      { name: "Court Cause List Sync", price: 249, text: "Import hearing dates from published cause lists." },
+    ],
+    reviews: [
+      { quote: "The hearing reminders alone saved us from two near misses in the first month.", name: "Adv. Rohit Desai", role: "Partner, Desai and Co." },
+      { quote: "Invoices take minutes now, and clients can see exactly what they are paying for.", name: "Nisha Kulkarni", role: "Managing Associate, Kulkarni Law" },
     ],
   },
 };
@@ -3157,7 +3465,7 @@ function ProductDetail({ product }) {
       <main className="inner-main">
         <section className="pd-hero">
           <div className="pd-hero-text">
-            <a className="pd-back" href="#products">← Back to products</a>
+            <a className="pd-back" href="#/products">← Back to products</a>
             <span className="pf-cat pdp-tag" style={{ background: product.color, color: "#FFFFFF" }}>{product.name}</span>
             <h1>{d.headline}</h1>
             <p className="pd-summary">{d.description}</p>
@@ -3439,7 +3747,7 @@ function ProductDetail({ product }) {
             </span>
           </a>
 
-          <a className="pd-pager-center" href="#products" aria-label="Back to all products">
+          <a className="pd-pager-center" href="#/products" aria-label="Back to all products">
             <span className="pd-circle">
               <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                 <rect x="4" y="4" width="6" height="6" rx="1.5" />
@@ -3474,6 +3782,9 @@ function Routes() {
   const isProductRoute = hash.startsWith("#/product/");
   const productId = isProductRoute ? hash.slice("#/product/".length) : "";
   const product = products.find((p) => p.id === productId);
+  const isServiceRoute = hash.startsWith("#/services/");
+  const serviceId = isServiceRoute ? hash.slice("#/services/".length) : "";
+  const service = services.find((item) => item.id === serviceId);
 
   useEffect(() => {
     if (hash.startsWith("#/")) {
@@ -3489,6 +3800,8 @@ function Routes() {
 
   if (hash === "#/about") return <AboutPage />;
   if (hash === "#/services") return <ServicesPage />;
+  if (hash === "#/products") return <ProductsPage />;
+  if (isServiceRoute && service) return <ServiceDetailPage service={service} />;
   if (hash === "#/portfolio") return <PortfolioPage />;
   if (hash === "#/contact") return <ContactPage />;
   if (isProjectRoute && project) return <PortfolioDetail project={project} />;
@@ -3509,7 +3822,7 @@ const cursorLabels = [
   [".pf-link", "View case"],
   [".pd-shot", "Open"],
   [".svc-card, .service-card", "Book"],
-  [".ab-team-card", "Say hi"],
+  [".team-card", "Say hi"],
   [".pdp-group", "Explore"],
 ];
 
@@ -3655,6 +3968,7 @@ const styles = `
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
 .page { min-height: 100vh; overflow-x: hidden; }
+html, body { overflow-x: clip; }
 a { color: inherit; }
 img { max-width: 100%; }
 :focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; border-radius: 6px; }
@@ -5102,7 +5416,7 @@ img { max-width: 100%; }
 @media (max-width: 560px) { .pdp-facts { grid-template-columns: 1fr; } .pdp-steps { grid-template-columns: 1fr; } .pd-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Services, portfolio and contact pages ---------- */
-.svc-page, .pf-page, .ct-page { background: var(--paper); color: var(--ink); }
+.svc-page, .pf-page, .ct-page { background: var(--paper); color: var(--ink); overflow-x: hidden; }
 .svc-hero { max-width: 1180px; padding: clamp(48px, 7vw, 96px) clamp(20px, 5vw, 80px) clamp(32px, 4vw, 56px); }
 .svc-hero h1 { margin: 0 0 22px; max-width: 860px; font-size: clamp(38px, 5.5vw, 64px); line-height: 1.04; font-weight: 800; letter-spacing: -0.03em; }
 .svc-hero p { margin: 0 0 34px; max-width: 680px; font-size: 19px; line-height: 1.6; color: var(--ink-soft); }
@@ -5142,8 +5456,8 @@ img { max-width: 100%; }
 .ct-tile small { font-size: 15px; color: var(--ink-soft); }
 .ct-tile-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 16px; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #FF2D75); }
 .ct-tile-icon svg { width: 24px; height: 24px; }
-.ct-form-section { display: grid; grid-template-columns: 1.4fr .8fr; gap: 24px; align-items: start; max-width: 1180px; padding: 0 clamp(20px, 5vw, 80px) clamp(64px, 9vw, 110px); }
-.ct-card { padding: clamp(24px, 4vw, 44px); border-radius: 30px; background: #FFFFFF; box-shadow: 0 30px 70px rgba(20, 27, 51, .1); }
+.ct-form-section { display: grid; grid-template-columns: 1.4fr .8fr; gap: 24px; align-items: stretch; max-width: 1180px; padding: 0 clamp(20px, 5vw, 80px) clamp(64px, 9vw, 110px); }
+.ct-card { height: 100%; box-sizing: border-box; padding: clamp(24px, 4vw, 44px); border-radius: 30px; background: #FFFFFF; box-shadow: 0 30px 70px rgba(20, 27, 51, .1); }
 .ct-form-title { margin: 0 0 24px; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
 .ct-progress-label { margin-bottom: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
 .ct-progress { height: 8px; margin-bottom: 28px; border-radius: 99px; background: var(--line); overflow: hidden; }
@@ -5259,10 +5573,10 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 .ab-lead { margin: 0 0 16px; font-size: 18px; line-height: 1.7; color: var(--ink-soft); }
 .ab-hero .ab-lead { max-width: 560px; margin-bottom: 34px; }
 .ab-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-.ab-stack { position: relative; height: 470px; }
-.ab-pos-a { left: 0; top: 40px; width: 74%; z-index: 2; }
-.ab-pos-b { right: -12px; top: 0; width: 40%; z-index: 3; }
-.ab-pos-c { left: 12%; bottom: 0; width: 50%; z-index: 1; }
+.ab-stack { position: relative; height: 380px; }
+.ab-pos-a { left: 0; top: 28px; width: 72%; z-index: 2; }
+.ab-pos-b { right: 0; top: 0; width: 42%; z-index: 3; }
+.ab-pos-c { left: 14%; bottom: 0; width: 52%; z-index: 1; }
 .ab-float > .tilt { width: 100%; }
 .ab-glass { padding: 26px; background: rgba(255, 255, 255, .78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, .9); box-shadow: 0 30px 60px rgba(20, 27, 51, .14); }
 .ab-glass strong { display: block; margin: 12px 0 8px; font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
@@ -5299,6 +5613,7 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 
 /* Values, why us, journey, team sections */
 .ab-values, .ab-why, .ab-journey, .ab-team { padding: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) 0; }
+.ab-values { padding-bottom: clamp(80px, 10vw, 130px); }
 .ab-head { max-width: 760px; margin-bottom: 52px; }
 .ab-head.centered { margin-left: auto; margin-right: auto; text-align: center; }
 .ab-head p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--ink-soft); }
@@ -5321,36 +5636,34 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 .ab-year { display: block; margin-bottom: 8px; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(120deg, #1E5BFF, #FF2D75); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .ab-tl-inner p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
 
-/* Team: gradient portraits with a spinning ring on hover, featured founder row, social pills */
-.ab-team-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-.ab-team-lead { grid-column: 1 / -1; }
-.ab-team-lead .ab-team-card { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; padding: 44px; background: linear-gradient(135deg, #141B33, #1E2A52); color: #FFFFFF; }
-.ab-team-lead .ab-avatar-wrap { margin-bottom: 0; }
-.ab-team-lead .ab-avatar { width: 164px; height: 164px; font-size: 50px; border-radius: 48px; }
-.ab-team-lead .ab-team-body h3 { font-size: 30px; }
-.ab-team-lead .ab-bio { color: rgba(255, 255, 255, .78); font-size: 17px; max-width: 520px; }
-.ab-team-lead .ab-role { color: #66E7FF; }
-.ab-team-lead .ab-social a { background: rgba(255, 255, 255, .1); color: #FFFFFF; box-shadow: none; }
-.ab-team-lead .ab-social a:hover { background: #FFFFFF; color: #141B33; }
-.ab-team-card { position: relative; overflow: hidden; }
-.ab-team-card::before { content: ""; position: absolute; right: -60px; top: -60px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, var(--c, rgba(123, 63, 228, .10)), transparent 70%); pointer-events: none; }
-.ab-avatar-wrap { position: relative; display: inline-grid; margin-bottom: 22px; }
-.ab-avatar-wrap::before {
-  content: ""; position: absolute; inset: -6px; border-radius: 30px; z-index: 0;
-  background: conic-gradient(from 0deg, var(--from), var(--to), var(--from));
-  opacity: 0; transform: rotate(0deg); transition: opacity .4s var(--ease);
+/* Team: same card design as the home page */
+.ab-team .team-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 26px; margin-top: 52px; }
+.team-card {
+  padding: 32px 26px; border-radius: 26px; background: #FFFFFF; border: 1px solid var(--line); text-align: center;
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
 }
-.ab-team-card:hover .ab-avatar-wrap::before, .tilt:hover .ab-avatar-wrap::before { opacity: 1; animation: ab-spin 5s linear infinite; }
-.ab-avatar { position: relative; z-index: 1; display: grid; place-items: center; width: 76px; height: 76px; border-radius: 24px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); font-size: 26px; font-weight: 800; letter-spacing: -0.02em; box-shadow: 0 14px 30px rgba(20, 27, 51, .2); transition: border-radius .5s var(--ease); }
-.ab-team-card:hover .ab-avatar { border-radius: 40px; }
-.ab-team-card h3 { margin: 0 0 4px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
-.ab-role { display: inline-block; margin: 2px 0 14px; padding: 5px 12px; border-radius: 99px; font-size: 13px; font-weight: 700; color: #FFFFFF; background: linear-gradient(120deg, #1E5BFF, #7B3FE4 60%, #FF2D75); }
-.ab-bio { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
-.ab-social { display: flex; gap: 8px; margin-top: 20px; }
-.ab-social a { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 14px; font-weight: 800; text-decoration: none; box-shadow: inset 0 0 0 1px var(--line); transition: background-color .3s, color .3s, transform .3s var(--ease); }
-.ab-social a:hover { background: linear-gradient(135deg, #1E5BFF, #FF2D75); color: #FFFFFF; transform: translateY(-3px); }
-@keyframes ab-spin { to { transform: rotate(360deg); } }
-@keyframes ab-grad { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.team-card:hover { transform: translateY(-8px); box-shadow: 0 28px 56px rgba(20,27,51,.12); }
+.team-avatar {
+  width: 124px; height: 124px; margin: 0 auto 22px; border-radius: 40px;
+  display: grid; place-items: center; color: #FFFFFF; font-size: 38px; font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--from), var(--to));
+  transition: transform .5s var(--ease), border-radius .5s var(--ease);
+}
+.team-card:hover .team-avatar { transform: rotate(-6deg) scale(1.06); border-radius: 60px; }
+.team-card h3 { margin: 0; font-size: 21px; font-weight: 700; }
+.team-role {
+  margin: 6px 0 12px; font-weight: 600;
+  background: linear-gradient(120deg, #1E5BFF, #FF2D75); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.team-bio { margin: 0 0 18px; color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
+.team-social { display: flex; justify-content: center; gap: 10px; }
+.team-social a {
+  display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
+  background: var(--paper); color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none;
+  transition: background-color .3s, color .3s, transform .3s var(--ease);
+}
+.team-social a:hover { background: var(--ink); color: #FFFFFF; transform: translateY(-3px); }
 
 /* Values: large outlined numbers in each card */
 .ab-value-grid { counter-reset: ab-val; }
@@ -5486,4 +5799,157 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 
 /* Portfolio page: no gap under the header */
 .pf-page .inner-main { padding-top: 0; }
+
+/* ---------- About: image with effects, FAQ, four-up team ---------- */
+.ab-photo-wrap { position: relative; justify-self: end; width: 100%; max-width: 540px; }
+.ab-photo { width: 100%; }
+.ab-photo-frame { position: relative; overflow: hidden; aspect-ratio: 5 / 4; border-radius: 36px; background: linear-gradient(135deg, #141B33, #1E2A52); box-shadow: 0 40px 80px rgba(20, 27, 51, .28); }
+.ab-photo-frame::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .22) 50%, transparent 65%); transform: translateX(-100%); transition: transform 1.1s var(--ease); pointer-events: none; }
+.tilt:hover .ab-photo-frame::after { transform: translateX(100%); }
+.ab-photo-art { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; }
+.ab-photo-art > * { width: 100%; height: 100%; }
+.ab-photo-glow { position: absolute; left: 8%; right: 8%; bottom: -40px; height: 60%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgba(123, 63, 228, .55), rgba(255, 45, 117, .25), transparent); filter: blur(30px); animation: ab-glow 6s ease-in-out infinite; }
+@keyframes ab-glow { 0%, 100% { opacity: .7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+.ab-photo-badge, .ab-photo-badge2 { z-index: 2; padding: 14px 18px; border-radius: 18px; font-size: 14px; font-weight: 800; box-shadow: 0 24px 50px rgba(20, 27, 51, .16); }
+.ab-photo-badge { left: -18px; top: 26px; color: #FFFFFF; background: linear-gradient(120deg, #1E5BFF, #7B3FE4); }
+.ab-photo-badge2 { right: -10px; bottom: 26px; position: absolute; background: #FFFFFF; color: var(--ink); }
+.ab-faq { padding-top: clamp(80px, 10vw, 130px); padding-bottom: clamp(80px, 10vw, 130px); }
+.ab-team .team-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1024px) { .ab-team .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ab-team .team-grid { grid-template-columns: 1fr; } .ab-photo-badge { left: 0; } .ab-photo-badge2 { right: 0; } }
+
+/* ---------- Services: links on the list page ---------- */
+.svc-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.svc-link-alt { opacity: .7; }
+
+/* ---------- Service detail page ---------- */
+.sd-page .inner-main, .pp-page .inner-main { padding-top: 0; }
+.sd-hero { position: relative; overflow: hidden; isolation: isolate; padding: clamp(120px, 12vw, 150px) clamp(20px, 5vw, 80px) clamp(80px, 9vw, 120px); color: #FFFFFF; background: linear-gradient(135deg, #141B33, #1E2A52 60%, #141B33); }
+.sd-blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(90px); opacity: .55; pointer-events: none; }
+.sd-blob-a { width: 480px; height: 480px; right: -120px; top: -160px; background: var(--from); }
+.sd-blob-b { width: 380px; height: 380px; left: -140px; bottom: -200px; background: var(--to); }
+.sd-hero-inner { position: relative; z-index: 1; max-width: 720px; }
+.sd-back { display: inline-block; margin-bottom: 26px; color: #FFFFFF; opacity: .8; text-decoration: none; font-weight: 600; }
+.sd-back:hover { opacity: 1; }
+.sd-hero .pf-kicker { background: rgba(255, 255, 255, .12); color: #FFFFFF; box-shadow: none; }
+.sd-title { margin: 22px 0 20px; font-size: clamp(44px, 7vw, 96px); line-height: .98; font-weight: 800; letter-spacing: -0.035em; }
+.sd-lead { margin: 0 0 34px; max-width: 560px; font-size: 20px; line-height: 1.6; color: rgba(255, 255, 255, .82); }
+.sd-hero-icon { position: absolute; right: clamp(20px, 6vw, 90px); top: 50%; z-index: 1; width: 220px; height: 220px; display: grid; place-items: center; border-radius: 56px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 40px 80px rgba(0, 0, 0, .35); transform: translateY(-50%); animation: sd-bob 6s ease-in-out infinite; }
+.sd-hero-icon svg { width: 110px; height: 110px; }
+@keyframes sd-bob { 0%, 100% { transform: translateY(-50%) rotate(-2deg); } 50% { transform: translateY(calc(-50% - 14px)) rotate(2deg); } }
+.sd-overview { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(32px, 5vw, 72px); align-items: start; padding: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) 0; }
+.sd-overview-text h2 { margin: 14px 0 20px; font-size: clamp(30px, 4vw, 50px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+.sd-overview-text p { margin: 0; font-size: 18px; line-height: 1.7; color: var(--ink-soft); }
+.sd-deliverables { margin: 0; padding: 32px; list-style: none; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); display: grid; gap: 4px; }
+.sd-deliverables-head { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #7B3FE4; margin-bottom: 10px; }
+.sd-deliverables li { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 600; line-height: 1.5; }
+.sd-deliverables li:last-child { border-bottom: 0; }
+.sd-deliverables li svg { flex: none; width: 22px; height: 22px; margin-top: 1px; color: #1E5BFF; }
+.sd-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; padding: clamp(64px, 8vw, 100px) clamp(20px, 5vw, 80px) 0; }
+.sd-card { height: 100%; box-sizing: border-box; padding: 34px; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); }
+.sd-card-num { display: inline-grid; place-items: center; width: 58px; height: 58px; margin-bottom: 22px; border-radius: 20px; color: #FFFFFF; font-weight: 800; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 14px 30px rgba(20, 27, 51, .18); }
+.sd-card h3 { margin: 0 0 10px; font-size: 21px; font-weight: 800; }
+.sd-card p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+.sd-tech { padding: clamp(64px, 8vw, 100px) clamp(20px, 5vw, 80px) 0; }
+.sd-tech-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.sd-tech-chip { padding: 12px 20px; border-radius: 99px; font-weight: 700; background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--line), 0 10px 24px rgba(20, 27, 51, .06); }
+.sd-pager { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: stretch; margin: clamp(72px, 9vw, 110px) clamp(20px, 5vw, 80px) 0; padding-top: 40px; border-top: 1px solid var(--line); }
+.sd-pager-link { display: grid; gap: 6px; padding: 24px 28px; border-radius: 24px; background: #FFFFFF; color: var(--ink); text-decoration: none; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+.sd-pager-link:hover { transform: translateY(-4px); box-shadow: 0 30px 60px rgba(20, 27, 51, .14); }
+.sd-pager-link span { font-size: 14px; font-weight: 700; color: #7B3FE4; }
+.sd-pager-link strong { font-size: 19px; font-weight: 800; }
+.sd-pager-next { text-align: right; }
+.sd-pager-all { align-self: center; padding: 14px 22px; border-radius: 99px; font-weight: 700; color: var(--ink); text-decoration: none; box-shadow: inset 0 0 0 1.5px var(--line); white-space: nowrap; }
+@media (max-width: 760px) { .sd-pager { grid-template-columns: 1fr; } .sd-pager-next { text-align: left; } .sd-pager-all { justify-self: center; } }
+@media (max-width: 900px) { .sd-overview { grid-template-columns: 1fr; } .sd-hero-icon { position: relative; right: auto; top: auto; transform: none; margin-top: 44px; width: 160px; height: 160px; border-radius: 42px; animation: none; } .sd-hero-icon svg { width: 84px; height: 84px; } }
+
+/* ---------- Products page: four different effects ---------- */
+.pp-section { padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 80px) 0; }
+.pp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.pp-card { position: relative; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; padding: 40px; border-radius: 32px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
+.pp-num { position: absolute; right: 26px; top: 16px; z-index: -1; font-size: 96px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(20, 27, 51, .12); }
+.pp-sheen { position: absolute; inset: 0; z-index: -1; opacity: 0; pointer-events: none; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .35) 50%, transparent 70%); transform: translateX(-120%); transition: transform 1s var(--ease), opacity .3s; }
+.pp-icon { display: grid; place-items: center; width: 68px; height: 68px; margin-bottom: 24px; border-radius: 22px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 16px 34px rgba(20, 27, 51, .18); transition: transform .6s var(--ease); }
+.pp-icon svg { width: 30px; height: 30px; }
+.pp-card h2 { margin: 0 0 10px; font-size: clamp(24px, 2.6vw, 32px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; }
+.pp-summary { margin: 0 0 14px; font-size: 17px; font-weight: 700; }
+.pp-desc { margin: 0 0 22px; font-size: 16px; line-height: 1.65; }
+.pp-features { display: grid; gap: 10px; margin: 0 0 30px; padding: 0; list-style: none; }
+.pp-features li { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.pp-features li::before { content: ""; width: 8px; height: 8px; flex: none; border-radius: 50%; background: linear-gradient(135deg, var(--from), var(--to)); }
+.pp-link { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 800; text-decoration: none; color: inherit; }
+.pp-link svg { transition: transform .4s var(--ease); }
+.pp-link:hover svg { transform: translateX(6px); }
+.pp-card, .pp-card .pp-summary, .pp-card .pp-desc, .pp-card .pp-features li { color: var(--ink); }
+.pp-card .pp-desc, .pp-card .pp-features li { color: var(--ink-soft); }
+
+/* 1: lift and tilt, with a glowing corner */
+.pp-v1::before { content: ""; position: absolute; right: -80px; top: -80px; width: 240px; height: 240px; border-radius: 50%; z-index: -1; background: radial-gradient(circle, var(--from), transparent 70%); opacity: .25; transition: opacity .6s, transform .6s var(--ease); }
+.pp-v1:hover { transform: perspective(1000px) rotateX(3deg) translateY(-10px); box-shadow: 0 40px 80px rgba(20, 27, 51, .18); }
+.pp-v1:hover::before { opacity: .5; transform: scale(1.25); }
+.pp-v1:hover .pp-icon { transform: rotate(-8deg) scale(1.08); }
+
+/* 2: gradient glass with a light sweep */
+.pp-v2 { color: #FFFFFF; background: linear-gradient(140deg, var(--from), var(--to)); }
+.pp-v2 .pp-num { -webkit-text-stroke-color: rgba(255, 255, 255, .3); }
+.pp-v2 .pp-icon { background: rgba(255, 255, 255, .18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35); }
+.pp-v2 h2, .pp-v2 .pp-summary, .pp-v2 .pp-link { color: #FFFFFF; }
+.pp-v2 .pp-desc, .pp-v2 .pp-features li { color: rgba(255, 255, 255, .85); }
+.pp-v2 .pp-features li::before { background: #FFFFFF; }
+.pp-v2:hover .pp-sheen { opacity: 1; transform: translateX(120%); }
+.pp-v2:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(20, 27, 51, .22); }
+
+/* 3: dark card with a spinning border */
+.pp-v3 { background: #141B33; color: #FFFFFF; }
+.pp-v3::before { content: ""; position: absolute; inset: -40%; z-index: -2; background: conic-gradient(from 0deg, var(--from), #7B3FE4, #FF2D75, var(--from)); animation: ab-spin 9s linear infinite; opacity: .0; transition: opacity .5s; }
+.pp-v3::after { content: ""; position: absolute; inset: 2px; z-index: -1; border-radius: 30px; background: #141B33; }
+.pp-v3:hover::before { opacity: 1; }
+.pp-v3 .pp-num { -webkit-text-stroke-color: rgba(255, 255, 255, .18); }
+.pp-v3 h2, .pp-v3 .pp-summary, .pp-v3 .pp-link { color: #FFFFFF; }
+.pp-v3 .pp-desc, .pp-v3 .pp-features li { color: rgba(255, 255, 255, .72); }
+.pp-v3 .pp-icon { box-shadow: 0 0 0 6px rgba(255, 255, 255, .06), 0 16px 34px rgba(0, 0, 0, .35); }
+.pp-v3:hover { transform: translateY(-8px); }
+
+/* 4: paper card with an accent bar that grows on hover */
+.pp-v4 { background: #F7F7FB; border: 1px solid var(--line); box-shadow: none; }
+.pp-v4::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; z-index: -1; background: linear-gradient(180deg, var(--from), var(--to)); transform: scaleY(.25); transform-origin: top; transition: transform .7s var(--ease); }
+.pp-v4:hover::before { transform: scaleY(1); }
+.pp-v4:hover { box-shadow: 0 30px 60px rgba(20, 27, 51, .12); }
+.pp-v4:hover .pp-icon { transform: translateX(8px); }
+.pp-v4 .pp-icon { background: #FFFFFF; color: var(--from); box-shadow: inset 0 0 0 1.5px var(--line); }
+
+@media (max-width: 900px) { .pp-grid { grid-template-columns: 1fr; } .pp-card { padding: 32px; } }
+@media (prefers-reduced-motion: reduce) { .pp-v3::before, .sd-hero-icon, .ab-photo-glow { animation: none; } }
+
+
+/* ---------- Round 5: spacing, All services circle, demo and FAQ layouts ---------- */
+.svc-page .svc-hero-pf, .sd-hero { padding-top: clamp(88px, 8vw, 96px); }
+.sd-all { display: inline-flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 30px; color: #FFFFFF; text-decoration: none; }
+.sd-all small { font-size: 14px; font-weight: 700; }
+.sd-all:hover .pd-circle { transform: rotate(90deg) scale(1.08); }
+.sd-pager { display: none; }
+.pd-back { margin-right: 14px; }
+
+/* Home demo section: image left, form right, full width */
+.contact { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin: 0 clamp(16px, 3vw, 48px) clamp(56px, 8vw, 100px); padding: clamp(20px, 3vw, 36px); gap: clamp(24px, 3vw, 40px); align-items: stretch; }
+.contact-visual { position: relative; min-height: 380px; overflow: hidden; border-radius: 24px; background: rgba(255, 255, 255, .12); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22); display: grid; place-items: center; }
+.contact-visual > * { width: 100%; height: 100%; }
+.contact-side { display: grid; align-content: center; gap: 24px; }
+.contact-side .contact-intro p { margin-bottom: 0; }
+.contact .demo-form { padding: clamp(20px, 3vw, 32px); }
+@media (max-width: 900px) { .contact { grid-template-columns: 1fr; } .contact-visual { min-height: 240px; } }
+
+/* About FAQ: image left, FAQ box right, full width */
+.ab-faq { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: clamp(28px, 4vw, 64px); align-items: stretch; padding-left: clamp(20px, 5vw, 80px); padding-right: clamp(20px, 5vw, 80px); }
+.faq-visual { position: relative; min-height: 420px; overflow: hidden; isolation: isolate; border-radius: 36px; display: grid; place-items: center; padding: 40px; color: #FFFFFF; text-align: center; background: linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75); box-shadow: 0 40px 80px rgba(20, 27, 51, .22); }
+.faq-visual-glow { position: absolute; width: 360px; height: 360px; right: -120px; top: -120px; border-radius: 50%; background: rgba(255, 255, 255, .18); filter: blur(10px); animation: ab-glow 6s ease-in-out infinite; z-index: -1; }
+.faq-visual-card { display: grid; justify-items: center; gap: 12px; }
+.faq-visual-icon { display: grid; place-items: center; width: 96px; height: 96px; margin-bottom: 8px; border-radius: 30px; background: rgba(255, 255, 255, .2); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .4); transition: transform .6s var(--ease); }
+.faq-visual-icon svg { width: 44px; height: 44px; }
+.faq-visual:hover .faq-visual-icon { transform: rotate(-8deg) scale(1.06); }
+.faq-visual-card strong { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+.faq-visual-card span:last-child { font-size: 16px; opacity: .9; }
+.faq-box { align-self: center; padding: clamp(28px, 4vw, 48px); border-radius: 32px; background: #FFFFFF; box-shadow: 0 30px 70px rgba(20, 27, 51, .1); }
+@media (max-width: 900px) { .ab-faq { grid-template-columns: 1fr; } .faq-visual { min-height: 240px; } }
+
 `;
