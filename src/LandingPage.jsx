@@ -1797,7 +1797,7 @@ function SiteFooter() {
             <li><a href="#/portfolio">Portfolio</a></li>
             <li><a href="#/about">About us</a></li>
             <li><a href="#/contact">Contact</a></li>
-            <li><a href="#team">Team</a></li>
+            <li><a href="#/about">Team</a></li>
             <li><a href="#pricing">Pricing</a></li>
           </ul>
         </div>
@@ -2099,23 +2099,33 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* Team */}
-        <section className="ab-team" aria-labelledby="ab-team-heading">
+        {/* Team (moved here from the home page) */}
+        <section className="ab-team" id="team" aria-labelledby="ab-team-heading">
           <div className="ab-head centered ab-reveal">
             <span className="about-eyebrow">Our team</span>
-            <h2 id="ab-team-heading" className="ab-h2">The people behind SaaSio</h2>
+            <h2 id="ab-team-heading" className="ab-h2">The people behind your software</h2>
             <p>{aboutPage.teamIntro}</p>
           </div>
           <div className="ab-team-grid">
             {teamMembers.map((member, i) => (
-              <div key={member.name} className="ab-reveal" style={{ transitionDelay: `${(i % 4) * 0.08}s` }}>
-                <TiltCard innerClassName="ab-team-card">
-                  <span className="ab-avatar" style={{ background: `linear-gradient(135deg, ${member.from}, ${member.to})` }}>
-                    {member.initials}
-                  </span>
-                  <h3>{member.name}</h3>
-                  <p className="ab-role">{member.role}</p>
-                  <p className="ab-bio">{member.bio}</p>
+              <div
+                key={member.name}
+                className={`ab-reveal${i === 0 ? " ab-team-lead" : ""}`}
+                style={{ transitionDelay: `${(i % 4) * 0.08}s` }}
+              >
+                <TiltCard innerClassName="ab-team-card" radius={28}>
+                  <div className="ab-avatar-wrap" style={{ "--from": member.from, "--to": member.to }}>
+                    <span className="ab-avatar" aria-hidden="true">{member.initials}</span>
+                  </div>
+                  <div className="ab-team-body">
+                    <h3>{member.name}</h3>
+                    <span className="ab-role">{member.role}</span>
+                    <p className="ab-bio">{member.bio}</p>
+                    <div className="ab-social">
+                      <a href="#" aria-label={`${member.name} on LinkedIn`}>in</a>
+                      <a href="#" aria-label={`${member.name} on X`}>x</a>
+                    </div>
+                  </div>
                 </TiltCard>
               </div>
             ))}
@@ -2770,31 +2780,6 @@ function LandingPage() {
                 <div className="why-panel">
                   <h3>{point.title}</h3>
                   <p>{point.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="team" id="team" aria-labelledby="team-heading">
-          <div className="section-head centered">
-            <h2 id="team-heading">The people behind your software</h2>
-            <p>The team that builds, installs and supports your business every day.</p>
-          </div>
-          <div className="team-grid">
-            {teamMembers.map((member) => (
-              <article
-                className="team-card"
-                key={member.name}
-                style={{ "--from": member.from, "--to": member.to }}
-              >
-                <div className="team-avatar" aria-hidden="true">{member.initials}</div>
-                <h3>{member.name}</h3>
-                <p className="team-role">{member.role}</p>
-                <p className="team-bio">{member.bio}</p>
-                <div className="team-social">
-                  <a href="#team" aria-label={`${member.name} on LinkedIn`}>in</a>
-                  <a href="#team" aria-label={`${member.name} on X`}>x</a>
                 </div>
               </article>
             ))}
@@ -3524,7 +3509,7 @@ const cursorLabels = [
   [".pf-link", "View case"],
   [".pd-shot", "Open"],
   [".svc-card, .service-card", "Book"],
-  [".team-card", "Say hi"],
+  [".ab-team-card", "Say hi"],
   [".pdp-group", "Explore"],
 ];
 
@@ -5012,34 +4997,6 @@ img { max-width: 100%; }
   .pf-media > .art-img { transform: scale(1.12); }
 }
 
-/* ---------- Team ---------- */
-.team { position: relative; z-index: 2; padding: clamp(64px, 9vw, 110px) clamp(20px, 5vw, 80px); }
-.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 26px; margin-top: 52px; }
-.team-card {
-  padding: 32px 26px; border-radius: 26px; background: #FFFFFF; border: 1px solid var(--line); text-align: center;
-  transition: transform .4s var(--ease), box-shadow .4s var(--ease);
-}
-.team-card:hover { transform: translateY(-8px); box-shadow: 0 28px 56px rgba(20,27,51,.12); }
-.team-avatar {
-  width: 124px; height: 124px; margin: 0 auto 22px; border-radius: 40px;
-  display: grid; place-items: center; color: #FFFFFF; font-size: 38px; font-weight: 800; letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--from), var(--to));
-  transition: transform .5s var(--ease), border-radius .5s var(--ease);
-}
-.team-card:hover .team-avatar { transform: rotate(-6deg) scale(1.06); border-radius: 60px; }
-.team-card h3 { margin: 0; font-size: 21px; font-weight: 700; }
-.team-role {
-  margin: 6px 0 12px; font-weight: 600;
-  background: linear-gradient(120deg, #1E5BFF, #FF2D75); -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.team-bio { margin: 0 0 18px; color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
-.team-social { display: flex; justify-content: center; gap: 10px; }
-.team-social a {
-  display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
-  background: var(--paper); color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none;
-  transition: background-color .3s, color .3s, transform .3s var(--ease);
-}
-.team-social a:hover { background: var(--ink); color: #FFFFFF; transform: translateY(-3px); }
 
 /* ---------- Responsive (existing) ---------- */
 @media (max-width: 1024px) {
@@ -5364,14 +5321,50 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 .ab-year { display: block; margin-bottom: 8px; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(120deg, #1E5BFF, #FF2D75); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .ab-tl-inner p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-soft); }
 
-/* Team */
-.ab-avatar { display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: 20px; border-radius: 22px; color: #FFFFFF; font-size: 24px; font-weight: 800; box-shadow: 0 14px 30px rgba(20, 27, 51, .2); }
-.ab-team-card h3 { margin: 0 0 4px; font-size: 20px; font-weight: 800; }
-.ab-role { margin: 0 0 12px; font-size: 14px; font-weight: 700; color: #7B3FE4; }
+/* Team: gradient portraits with a spinning ring on hover, featured founder row, social pills */
+.ab-team-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.ab-team-lead { grid-column: 1 / -1; }
+.ab-team-lead .ab-team-card { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; padding: 44px; background: linear-gradient(135deg, #141B33, #1E2A52); color: #FFFFFF; }
+.ab-team-lead .ab-avatar-wrap { margin-bottom: 0; }
+.ab-team-lead .ab-avatar { width: 164px; height: 164px; font-size: 50px; border-radius: 48px; }
+.ab-team-lead .ab-team-body h3 { font-size: 30px; }
+.ab-team-lead .ab-bio { color: rgba(255, 255, 255, .78); font-size: 17px; max-width: 520px; }
+.ab-team-lead .ab-role { color: #66E7FF; }
+.ab-team-lead .ab-social a { background: rgba(255, 255, 255, .1); color: #FFFFFF; box-shadow: none; }
+.ab-team-lead .ab-social a:hover { background: #FFFFFF; color: #141B33; }
+.ab-team-card { position: relative; overflow: hidden; }
+.ab-team-card::before { content: ""; position: absolute; right: -60px; top: -60px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, var(--c, rgba(123, 63, 228, .10)), transparent 70%); pointer-events: none; }
+.ab-avatar-wrap { position: relative; display: inline-grid; margin-bottom: 22px; }
+.ab-avatar-wrap::before {
+  content: ""; position: absolute; inset: -6px; border-radius: 30px; z-index: 0;
+  background: conic-gradient(from 0deg, var(--from), var(--to), var(--from));
+  opacity: 0; transform: rotate(0deg); transition: opacity .4s var(--ease);
+}
+.ab-team-card:hover .ab-avatar-wrap::before, .tilt:hover .ab-avatar-wrap::before { opacity: 1; animation: ab-spin 5s linear infinite; }
+.ab-avatar { position: relative; z-index: 1; display: grid; place-items: center; width: 76px; height: 76px; border-radius: 24px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); font-size: 26px; font-weight: 800; letter-spacing: -0.02em; box-shadow: 0 14px 30px rgba(20, 27, 51, .2); transition: border-radius .5s var(--ease); }
+.ab-team-card:hover .ab-avatar { border-radius: 40px; }
+.ab-team-card h3 { margin: 0 0 4px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+.ab-role { display: inline-block; margin: 2px 0 14px; padding: 5px 12px; border-radius: 99px; font-size: 13px; font-weight: 700; color: #FFFFFF; background: linear-gradient(120deg, #1E5BFF, #7B3FE4 60%, #FF2D75); }
 .ab-bio { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.ab-social { display: flex; gap: 8px; margin-top: 20px; }
+.ab-social a { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 14px; font-weight: 800; text-decoration: none; box-shadow: inset 0 0 0 1px var(--line); transition: background-color .3s, color .3s, transform .3s var(--ease); }
+.ab-social a:hover { background: linear-gradient(135deg, #1E5BFF, #FF2D75); color: #FFFFFF; transform: translateY(-3px); }
+@keyframes ab-spin { to { transform: rotate(360deg); } }
+@keyframes ab-grad { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+/* Values: large outlined numbers in each card */
+.ab-value-grid { counter-reset: ab-val; }
+.ab-value { position: relative; overflow: hidden; }
+.ab-value::after { counter-increment: ab-val; content: "0" counter(ab-val); position: absolute; right: 22px; top: 12px; font-size: 64px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(20, 27, 51, .12); pointer-events: none; }
+
+@media (max-width: 760px) {
+  .ab-team-lead .ab-team-card { grid-template-columns: 1fr; text-align: left; padding: 32px; gap: 20px; }
+  .ab-team-lead .ab-avatar { width: 96px; height: 96px; font-size: 34px; }
+  .ab-team-lead .ab-team-body h3 { font-size: 24px; }
+}
 
 /* Call to action */
-.ab-cta { position: relative; overflow: hidden; isolation: isolate; margin: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) clamp(64px, 8vw, 110px); padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 72px); border-radius: 36px; text-align: center; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75); }
+.ab-cta { position: relative; overflow: hidden; isolation: isolate; margin: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) clamp(64px, 8vw, 110px); padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 72px); border-radius: 36px; text-align: center; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75); background-size: 200% 200%; animation: ab-grad 14s ease infinite; }
 .ab-cta-orb { width: 320px; height: 320px; left: -80px; top: -100px; border-radius: 50%; background: rgba(255, 255, 255, .14); }
 .ab-cta-orb2 { width: 260px; height: 260px; right: -60px; bottom: -90px; border-radius: 50%; background: rgba(255, 255, 255, .12); }
 .ab-cta-inner { position: relative; z-index: 1; }
@@ -5403,6 +5396,8 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .ab-word, .ab-rise { animation: none; opacity: 1; transform: none; }
   .ab-marquee-track { animation: none; }
+  .ab-cta, .ab-avatar-wrap::before, .ab-team-card:hover .ab-avatar-wrap::before { animation: none; }
+  .ab-cta, .ab-avatar-wrap::before { animation: none; }
   .ab-reveal { opacity: 1; transform: none; transition: none; }
   .tilt { transform: none !important; }
 }
