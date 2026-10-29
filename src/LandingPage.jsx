@@ -53,6 +53,7 @@ const products = [
 const navItems = [
   { label: "Services", href: "#/services" },
   { label: "Products", href: "#/products", badge: "New" },
+  { label: "Pricing", href: "#/pricing" },
   { label: "Portfolio", href: "#/portfolio" },
   { label: "About", href: "#/about" },
   { label: "Contact", href: "#/contact" },
@@ -70,12 +71,16 @@ const services = [
 ];
 
 const portfolioProjects = [
-  { id: "pf-pos", name: "Cafe Lumiere POS", category: "POS", client: "Cafe Lumiere", color: "#E8553D", colorDeep: "#9E2F1B", image: null },
-  { id: "pf-billing", name: "Urban Bites Billing", category: "Billing", client: "Urban Bites", color: "#1F7A6D", colorDeep: "#0C3B35", image: null },
-  { id: "pf-payroll", name: "Spice Route Payroll", category: "Payroll", client: "Spice Route Kitchens", color: "#4B5BD6", colorDeep: "#222F87", image: null },
-  { id: "pf-analytics", name: "Multi-outlet Dashboard", category: "Analytics", client: "Biryani House Group", color: "#C98A12", colorDeep: "#6E4A05", image: null },
-  { id: "pf-mobile", name: "Field Service App", category: "Mobile", client: "Quickfix Services", color: "#7B3FE4", colorDeep: "#3B1F80", image: null },
-  { id: "pf-retail", name: "Retail Inventory Suite", category: "Retail", client: "Mosaic Retail", color: "#FF2D75", colorDeep: "#8A1040", image: null },
+  { id: "pf-pos", name: "Cafe Lumiere POS", category: "Flutter", client: "Cafe Lumiere", color: "#E8553D", colorDeep: "#9E2F1B", image: null },
+  { id: "pf-billing", name: "Urban Bites Billing", category: "Laravel", client: "Urban Bites", color: "#1F7A6D", colorDeep: "#0C3B35", image: null },
+  { id: "pf-payroll", name: "Spice Route Payroll", category: "Laravel", client: "Spice Route Kitchens", color: "#4B5BD6", colorDeep: "#222F87", image: null },
+  { id: "pf-analytics", name: "Multi-outlet Dashboard", category: "Web", client: "Biryani House Group", color: "#C98A12", colorDeep: "#6E4A05", image: null },
+  { id: "pf-mobile", name: "Field Service App", category: "Android", client: "Quickfix Services", color: "#7B3FE4", colorDeep: "#3B1F80", image: null },
+  { id: "pf-retail", name: "Retail Inventory Suite", category: "Shopify", client: "Mosaic Retail", color: "#FF2D75", colorDeep: "#8A1040", image: null },
+  { id: "pf-website", name: "Tamarind Kitchen Website", category: "WordPress", client: "Tamarind Kitchen", color: "#FF8A2B", colorDeep: "#A8430A", image: null },
+  { id: "pf-clinic", name: "Clinic Booking App", category: "iOS", client: "CarePoint Clinics", color: "#0EA5C6", colorDeep: "#0A5D74", image: null },
+  { id: "pf-delivery", name: "Greenleaf Delivery App", category: "Flutter", client: "Greenleaf Kitchens", color: "#1F7A6D", colorDeep: "#0C3B35", image: null },
+  { id: "pf-fitness", name: "Fitcore Membership App", category: "Flutter", client: "Fitcore Gyms", color: "#7B3FE4", colorDeep: "#3B1F80", image: null },
 ];
 
 const teamMembers = [
@@ -188,34 +193,6 @@ const securityPoints = [
   { title: "Round-the-clock monitoring", text: "Systems are watched at all hours to detect and stop unauthorised access." },
 ];
 
-const pricingPlans = [
-  {
-    name: "Starter",
-    price: "₹999",
-    period: "/month",
-    blurb: "For a single outlet getting its books in order.",
-    features: ["Billing and invoicing", "Daily sales reports", "Email support"],
-    cta: "Start free trial",
-  },
-  {
-    name: "Growth",
-    price: "₹2,499",
-    period: "/month",
-    blurb: "For multi-outlet teams that need forecasts and deeper reports.",
-    features: ["Everything in Starter", "Cash flow forecasting", "Multi-outlet dashboards", "Priority support"],
-    cta: "Choose Growth",
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    blurb: "For large chains with custom integration needs.",
-    features: ["Unlimited outlets", "Custom integrations", "Dedicated account manager"],
-    cta: "Talk to sales",
-  },
-];
-
 const testimonials = [
   {
     quote: "Our month-end used to take a week. Now the numbers are ready the day after the month closes, and tax prep is far easier.",
@@ -284,20 +261,20 @@ const faqs = [
 
 const whyPoints = [
   {
-    title: "Built for daily use",
-    text: "Screens that staff can learn in a single shift, with the most common actions one tap away.",
+    title: "Fourteen years of experience",
+    text: "Fourteen years across web, mobile and business software, with senior engineers on every project.",
   },
   {
-    title: "Works without internet",
-    text: "Keep taking orders and billing during outages. Everything syncs the moment you reconnect.",
+    title: "Clear plans, no surprises",
+    text: "Fixed quotes, milestone-based payments and a delivery plan you can see from the first week.",
   },
   {
-    title: "Support that picks up",
-    text: "Call, email or chat with a real person. Setup help is included with every plan.",
+    title: "Built to last",
+    text: "Clean, documented code and tested releases, so your product stays easy to change as you grow.",
   },
   {
-    title: "Pricing you can plan around",
-    text: "Clear monthly plans with no setup fees and no surprise add-ons.",
+    title: "Support after launch",
+    text: "Updates, fixes and staff training after go-live, with a real person you can call.",
   },
 ];
 
@@ -921,9 +898,9 @@ function ReviewWall() {
    ------------------------------------------------------------------ */
 const whyStyles = [
   { icon: "bolt", from: "#FF2D75", to: "#FF8A2B" },
-  { icon: "offline", from: "#1E5BFF", to: "#66E7FF" },
-  { icon: "headset", from: "#7B3FE4", to: "#FF2D75" },
-  { icon: "tag", from: "#1F7A6D", to: "#66E7FF" },
+  { icon: "tag", from: "#1E5BFF", to: "#66E7FF" },
+  { icon: "offline", from: "#7B3FE4", to: "#FF2D75" },
+  { icon: "headset", from: "#1F7A6D", to: "#66E7FF" },
 ];
 
 function WhyIcon({ name }) {
@@ -1315,6 +1292,62 @@ function IndustriesBoard() {
    work on any static host. Section links (#portfolio) still scroll.
    ------------------------------------------------------------------ */
 const projectDetails = {
+  "pf-delivery": {
+    year: "2026",
+    duration: "7 weeks",
+    services: ["Flutter app", "Live order tracking", "Play Store launch"],
+    summary: "A cross-platform ordering app for a kitchen network, with live order tracking and a loyalty programme for repeat customers.",
+    challenge: "Orders came in through phone calls and a third-party app that took a large commission.",
+    solution: "A single Flutter codebase for Android and iOS with direct ordering, live tracking and in-app loyalty points.",
+    results: [
+      { v: "+35%", l: "direct orders" },
+      { v: "1 codebase", l: "for Android and iOS" },
+      { v: "7 wks", l: "from kickoff to launch" },
+    ],
+    captions: ["Menu and ordering", "Live order tracking", "Loyalty rewards"],
+  },
+  "pf-fitness": {
+    year: "2025",
+    duration: "9 weeks",
+    services: ["Flutter app", "Membership and payments", "Class booking"],
+    summary: "A membership app for a chain of gyms, covering class booking, digital passes and recurring payments.",
+    challenge: "Members renewed at the front desk and class bookings were handled on paper sheets.",
+    solution: "In-app membership payments, class booking with waitlists and digital passes checked at the entrance.",
+    results: [
+      { v: "-40%", l: "front-desk queues" },
+      { v: "60%", l: "classes booked in the app" },
+      { v: "9 wks", l: "from kickoff to launch" },
+    ],
+    captions: ["Class booking", "Digital membership pass", "Renewals and payments"],
+  },
+  "pf-website": {
+    year: "2026",
+    duration: "5 weeks",
+    services: ["Custom theme", "Table booking", "Content training"],
+    summary: "A WordPress website for a multi-outlet restaurant, with online table booking and a menu the staff can update themselves.",
+    challenge: "Menus and offers were changed by a developer, so every update took days and often missed the website.",
+    solution: "A custom WordPress theme with a simple menu editor, table booking and a weekly offers banner.",
+    results: [
+      { v: "3x", l: "faster menu updates" },
+      { v: "+40%", l: "online table bookings" },
+      { v: "5 wks", l: "from kickoff to launch" },
+    ],
+    captions: ["Home and menu", "Table booking", "Offers manager"],
+  },
+  "pf-clinic": {
+    year: "2026",
+    duration: "8 weeks",
+    services: ["iOS app", "Appointment booking", "App Store launch"],
+    summary: "A native iPhone app that lets patients book appointments, get reminders and see their visit summaries at a small clinic chain.",
+    challenge: "Appointments were booked by phone, which led to missed calls, double bookings and no-shows.",
+    solution: "Online booking with live time slots, reminders before each visit and a secure visit history for every patient.",
+    results: [
+      { v: "-28%", l: "no-show rate" },
+      { v: "70%", l: "bookings made in the app" },
+      { v: "8 wks", l: "from kickoff to App Store" },
+    ],
+    captions: ["Book an appointment", "Visit reminders", "Visit history"],
+  },
   "pf-pos": {
     year: "2025",
     duration: "6 weeks",
@@ -1720,7 +1753,7 @@ function SiteHeader({ solid = false }) {
       </nav>
 
       <div className="nav-actions">
-        <a className="btn btn-dark btn-small nav-cta" href="#/contact" onClick={closeMenu}>
+        <a className="btn btn-dark btn-small nav-cta" href="#contact" onClick={closeMenu}>
           Request a Demo
         </a>
         <button
@@ -1752,7 +1785,7 @@ function SiteHeader({ solid = false }) {
               ))}
           </div>
         ))}
-        <a className="btn btn-dark" href="#/contact" onClick={closeMenu}>Request a Demo</a>
+        <a className="btn btn-dark" href="#contact" onClick={closeMenu}>Request a Demo</a>
       </div>
     </header>
   );
@@ -1795,7 +1828,7 @@ function SiteFooter() {
             <li><a href="#/about">About us</a></li>
             <li><a href="#/contact">Contact</a></li>
             <li><a href="#/about">Team</a></li>
-            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#/pricing">Pricing</a></li>
             <li><a href="#/about">FAQ</a></li>
           </ul>
         </div>
@@ -1984,7 +2017,7 @@ function AboutPage() {
                 <div className="ab-photo-art" aria-hidden="true"><HeroArt /></div>
               </TiltCard>
               <span className="ab-photo-glow" aria-hidden="true" />
-              <span className="ab-photo-badge ab-float" style={{ "--d": 1 }}>Since 2018</span>
+              <span className="ab-photo-badge ab-float" style={{ "--d": 1 }}>14 years in technology</span>
               <span className="ab-photo-badge2 ab-float" style={{ "--d": -0.8 }}>10,000+ businesses</span>
             </div>
           </div>
@@ -2002,45 +2035,118 @@ function AboutPage() {
           </div>
         </div>
 
-        {/* Values */}
-        <section className="ab-values" aria-labelledby="ab-values-heading">
-          <div className="ab-head ab-reveal">
-            <span className="about-eyebrow">What we stand for</span>
-            <h2 id="ab-values-heading" className="ab-h2">Four ideas behind every product</h2>
+        {/* Company information */}
+        <section className="ab-company" aria-labelledby="ab-company-heading">
+          <div className="ab-company-lead ab-reveal">
+            <span className="about-eyebrow">Our company</span>
+            <h2 id="ab-company-heading" className="ab-h2">Fourteen years of delivering software that works.</h2>
+            <p className="ab-lead">
+              For fourteen years we have designed, built and supported software across many industries. We started with custom websites and business systems. Today we also build our own products for restaurants, schools, universities and law firms.
+            </p>
+            <p className="ab-lead">
+              Every project follows the same path: we learn how your team works, agree a clear plan and price, build in short cycles you can review, and stay on for training and support after launch.
+            </p>
+            <div className="ab-company-chips">
+              {["Web and mobile apps", "Laravel and WordPress", "Flutter, Android and iOS", "Shopify stores", "POS and management software"].map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
           </div>
-          <div className="ab-value-grid">
-            {aboutExtras.values.map((value, i) => (
-              <div key={value.title} className="ab-reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
-                <TiltCard innerClassName="ab-value">
-                  <span className="ab-value-icon" style={{ "--from": value.from, "--to": value.to }}>
-                    <ServiceIcon name={value.icon} />
-                  </span>
-                  <h3>{value.title}</h3>
-                  <p>{value.text}</p>
-                </TiltCard>
-              </div>
-            ))}
+          <div className="ab-collage ab-reveal" aria-label="Our work at a glance">
+            <div className="ab-collage-main">
+              <ImagePlaceholder label="Our team at work" hint="Photo, 900 × 1100 px" />
+            </div>
+            <div className="ab-collage-a">
+              <ImagePlaceholder label="On-site installation" hint="Photo" />
+            </div>
+            <div className="ab-collage-b">
+              <ImagePlaceholder label="Product demo" hint="Photo" />
+            </div>
+            <span className="ab-circle ab-circle-1"><strong>14</strong><small>years in technology</small></span>
+            <span className="ab-circle ab-circle-2"><strong>10k+</strong><small>businesses served</small></span>
+            <span className="ab-circle ab-circle-3"><strong>4</strong><small>products of our own</small></span>
           </div>
         </section>
 
-        {/* Why choose us */}
-        <section className="ab-why ab-dark" aria-labelledby="ab-why-heading">
+        {/* What we deliver successfully */}
+        <section className="ab-deliver" aria-labelledby="ab-deliver-heading">
           <div className="ab-head centered ab-reveal">
-            <span className="about-eyebrow">Why choose us</span>
-            <h2 id="ab-why-heading" className="ab-h2">Why teams choose SaaSio</h2>
-            <p>{aboutPage.whyIntro}</p>
+            <span className="about-eyebrow">What we deliver</span>
+            <h2 id="ab-deliver-heading" className="ab-h2">Projects we finish successfully</h2>
+            <p>Our track record comes from the same habits on every project: a clear scope, honest timelines and a team that stays until the work is in use.</p>
           </div>
-          <div className="ab-why-grid">
+          <div className="ab-deliver-grid">
+            {deliverPoints.map((item, i) => {
+              const [from, to] = serviceColors[i % serviceColors.length];
+              return (
+                <article key={item.title} className="ab-deliver-card ab-reveal" style={{ "--from": from, "--to": to, transitionDelay: `${i * 0.08}s` }}>
+                  <span className="ab-deliver-icon"><ServiceIcon name={deliverIcons[i % deliverIcons.length]} /></span>
+                  <span className="ab-deliver-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Alternate image and text sections */}
+        <section className="ab-alt" aria-label="How we work with clients">
+          <div className="ab-alt-row ab-reveal">
+            <div className="ab-alt-media">
+              <ImagePlaceholder label="Team working with a client" hint="Replace with a photo, 1200 × 900 px" />
+            </div>
+            <div className="ab-alt-text">
+              <span className="about-eyebrow">Built around your work</span>
+              <h2>We start with how your team works today.</h2>
+              <p>Before any screen is designed, we sit with the people who will use the system: the cashier, the teacher, the clerk. Their daily steps become the plan, so the software fits the work instead of changing it.</p>
+              <ul className="check-list">
+                <li><CheckIcon /> Site visits and process mapping</li>
+                <li><CheckIcon /> Clickable prototypes before any coding</li>
+                <li><CheckIcon /> Changes reviewed in short cycles</li>
+              </ul>
+            </div>
+          </div>
+          <div className="ab-alt-row is-flip ab-reveal">
+            <div className="ab-alt-media">
+              <ImagePlaceholder label="Training session on site" hint="Replace with a photo, 1200 × 900 px" />
+            </div>
+            <div className="ab-alt-text">
+              <span className="about-eyebrow">Support after launch</span>
+              <h2>Going live is the start, not the finish.</h2>
+              <p>We train your staff on site, move your data with checks at every step, and keep a support desk open after go-live so small issues never turn into outages.</p>
+              <ul className="check-list">
+                <li><CheckIcon /> Hands-on training for every role</li>
+                <li><CheckIcon /> Data checked line by line before the switch</li>
+                <li><CheckIcon /> A named contact for fixes and updates</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Why choose us (same design as the home page tiles) */}
+        <section className="why ab-why-tiles" id="why-about" aria-labelledby="why-about-heading">
+          <div className="section-head centered">
+            <h2 id="why-about-heading">Why clients choose us</h2>
+            <p>Four reasons businesses trust us with their websites, apps and software.</p>
+          </div>
+          <div className="why-tiles">
             {whyPoints.map((point, i) => (
-              <div key={point.title} className="ab-reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
-                <TiltCard innerClassName="ab-why-card">
-                  <div className="ab-why-icon" style={{ "--from": whyStyles[i].from, "--to": whyStyles[i].to }}>
-                    <WhyIcon name={whyStyles[i].icon} />
-                  </div>
+              <article
+                key={point.title}
+                className="why-tile"
+                style={{ "--from": whyStyles[i].from, "--to": whyStyles[i].to }}
+              >
+                <div className="why-tile-art" aria-hidden="true">
+                  <span className="why-tile-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="why-tile-icon"><WhyIcon name={whyStyles[i].icon} /></span>
+                  <span className="why-tile-ring" />
+                </div>
+                <div className="why-tile-body">
                   <h3>{point.title}</h3>
                   <p>{point.text}</p>
-                </TiltCard>
-              </div>
+                </div>
+              </article>
             ))}
           </div>
         </section>
@@ -2191,12 +2297,35 @@ function ServicesPage() {
                 </span>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a className="text-link" href={`#/services/${service.id}`}>
+                <a className="text-link" href={`#/services/${service.id}`} target="_blank" rel="noopener noreferrer">
                   View details <ArrowIcon />
                 </a>
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="svc-deliver" aria-labelledby="svc-deliver-heading">
+          <div className="svc-deliver-head">
+            <span className="about-eyebrow">How we deliver</span>
+            <h2 id="svc-deliver-heading">Four steps from idea to launch</h2>
+            <p>Every service follows the same clear path, so you always know what happens next.</p>
+          </div>
+          <ol className="svc-track">
+            {serviceProcess.map((step, i) => {
+              const [from, to] = serviceColors[i % serviceColors.length];
+              return (
+                <li key={step.title} className="svc-track-item" style={{ "--from": from, "--to": to }}>
+                  <span className="svc-track-node"><ServiceIcon name={step.icon} /></span>
+                  <article className="svc-track-card">
+                    <span className="svc-track-num">STEP {String(i + 1).padStart(2, "0")}</span>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </article>
+                </li>
+              );
+            })}
+          </ol>
         </section>
 
         <section className="ab-cta svc-cta" aria-labelledby="svc-cta-heading">
@@ -2625,20 +2754,22 @@ function LandingPage() {
               key={active.id}
               style={{ "--stage-color": active.color }}
             >
+              <h3 className="stage-title">{active.name}</h3>
+              <div className="stage-body">
               <div className="stage-art">
                 <ProductArt product={active} />
               </div>
               <div className="stage-copy">
-                <h3>{active.name}</h3>
                 <p className="stage-desc">{active.description}</p>
                 <ul className="feature-list">
                   {active.features.map((feature) => (
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
-                <a className="btn btn-dark" href={`#/product/${active.id}`}>
+                <a className="btn btn-dark" href={`#/product/${active.id}`} target="_blank" rel="noopener noreferrer">
                   View details <ArrowIcon />
                 </a>
+              </div>
               </div>
             </div>
           </div>
@@ -2659,8 +2790,8 @@ function LandingPage() {
                 </span>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a className="text-link" href="#/contact">
-                  Book this service <ArrowIcon />
+                <a className="text-link" href={`#/services/${service.id}`} target="_blank" rel="noopener noreferrer">
+                  View Details <ArrowIcon />
                 </a>
               </article>
             ))}
@@ -2668,6 +2799,14 @@ function LandingPage() {
           <div className="svc-more">
             <a className="btn btn-light" href="#/services">View all services <ArrowIcon /></a>
           </div>
+        </section>
+
+        <section className="industries" id="industries" aria-labelledby="industries-heading">
+          <div className="section-head centered">
+            <h2 id="industries-heading">Industries we serve</h2>
+            <p>Grab any circle and drag it. The others move out of the way and settle again.</p>
+          </div>
+          <IndustriesBoard />
         </section>
 
         <section className="svc-process" aria-labelledby="svc-process-heading">
@@ -2702,14 +2841,6 @@ function LandingPage() {
               );
             })}
           </ol>
-        </section>
-
-        <section className="industries" id="industries" aria-labelledby="industries-heading">
-          <div className="section-head centered">
-            <h2 id="industries-heading">Industries we serve</h2>
-            <p>Grab any circle and drag it. The others move out of the way and settle again.</p>
-          </div>
-          <IndustriesBoard />
         </section>
 
         <section className="features" id="features" aria-labelledby="features-heading">
@@ -2752,11 +2883,13 @@ function LandingPage() {
 
         <Portfolio />
 
+        {/* WHY SECTION MOVED TO THE ABOUT PAGE (previous home block kept as a comment):
         <section className="why" id="why" aria-labelledby="why-heading">
           <div className="section-head centered">
             <h2 id="why-heading">Why teams choose us</h2>
             <p>Hover over a card to see what it means for your team.</p>
           </div>
+          {/* PREVIOUS DESIGN (kept for reference, not shown):
           <div className="why-cards">
             {whyPoints.map((point, i) => (
               <article
@@ -2774,7 +2907,29 @@ function LandingPage() {
               </article>
             ))}
           </div>
+          * /}
+          <div className="why-tiles">
+            {whyPoints.map((point, i) => (
+              <article
+                key={point.title}
+                className="why-tile"
+                style={{ "--from": whyStyles[i].from, "--to": whyStyles[i].to }}
+              >
+                <div className="why-tile-art" aria-hidden="true">
+                  <span className="why-tile-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="why-tile-icon"><WhyIcon name={whyStyles[i].icon} /></span>
+                  <span className="why-tile-ring" />
+                </div>
+                <div className="why-tile-body">
+                  <h3>{point.title}</h3>
+                  <p>{point.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
+
+        */}
 
         <section className="security" aria-labelledby="security-heading">
           <div className="sec-grid">
@@ -2793,6 +2948,8 @@ function LandingPage() {
               <span className="sec-chip chip-c">
                 <i className="sec-live" /> All systems operational
               </span>
+              <span className="sec-chip chip-d">Daily backups</span>
+              <span className="sec-chip chip-e">Audit trail</span>
             </div>
 
             <div className="sec-content">
@@ -2816,41 +2973,11 @@ function LandingPage() {
           </div>
         </section>
 
-        <section className="pricing" id="pricing" aria-labelledby="pricing-heading">
-          <div className="section-head centered">
-            <h2 id="pricing-heading">Simple, transparent pricing</h2>
-            <p>Pick a plan for where you are today, and change it as you grow.</p>
-          </div>
-          <div className="plan-grid">
-            {pricingPlans.map((plan) => (
-              <article key={plan.name} className={`plan${plan.popular ? " is-popular" : ""}`}>
-                {plan.popular && <span className="plan-flag">Most popular</span>}
-                <h3>{plan.name}</h3>
-                <p className="plan-blurb">{plan.blurb}</p>
-                <p className="plan-price">
-                  {plan.price}
-                  {plan.period && <span>{plan.period}</span>}
-                </p>
-                <ul>
-                  {plan.features.map((feature) => (
-                    <li key={feature}>
-                      <CheckIcon /> {feature}
-                    </li>
-                  ))}
-                </ul>
-                <a className={`btn ${plan.popular ? "btn-light" : "btn-dark"} btn-full`} href="#contact">
-                  {plan.cta}
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <ReviewWall />
 
         <section className="contact" id="contact" aria-labelledby="contact-heading">
-          <div className="contact-visual" aria-hidden="true">
-            <HeroArt />
+          <div className="contact-visual">
+            <ImagePlaceholder label="Your photo here" hint="Team or office photo, 1200 × 1500 px" />
           </div>
           <div className="contact-side">
           <div className="contact-intro">
@@ -2860,28 +2987,28 @@ function LandingPage() {
             <a className="contact-line" href="tel:+910000000000">+91 00000 00000</a>
           </div>
 
-          {submitted ? (
+          {submitted && (
             <div className="thanks" role="status">
               <h3>Thanks, we have your details.</h3>
               <p>Someone from the team will reach out within one working day.</p>
             </div>
-          ) : (
-            <form className="demo-form" onSubmit={handleDemoSubmit}>
+          )}
+          <form className="demo-form" onSubmit={handleDemoSubmit}>
               <label>
                 Name
-                <input type="text" name="name" required autoComplete="name" />
+                <input type="text" name="name" required autoComplete="name" placeholder="Your full name" />
               </label>
               <label>
                 Work email
-                <input type="email" name="email" required autoComplete="email" />
+                <input type="email" name="email" required autoComplete="email" placeholder="you@company.com" />
               </label>
               <label>
                 Phone
-                <input type="tel" name="phone" autoComplete="tel" />
+                <input type="tel" name="phone" autoComplete="tel" placeholder="+91 98765 43210" />
               </label>
               <label>
                 Business name
-                <input type="text" name="business" />
+                <input type="text" name="business" placeholder="Your business or school name" />
               </label>
               <label>
                 Product you are interested in
@@ -2896,7 +3023,6 @@ function LandingPage() {
               </label>
               <button type="submit" className="btn btn-light btn-full">Request demo</button>
             </form>
-          )}
           </div>
         </section>
       </main>
@@ -3012,12 +3138,47 @@ const serviceDetails = {
 /* ------------------------------------------------------------------
    SERVICE DETAIL PAGE — route #/services/<id>, with previous and next.
    ------------------------------------------------------------------ */
+function SdInfoGraphic({ index }) {
+  if (index % 3 === 0) {
+    const heights = [70, 120, 92, 160, 130];
+    return (
+      <svg viewBox="0 0 400 240" className="sd-info-svg" aria-hidden="true">
+        {heights.map((h, i) => (
+          <rect key={i} x={40 + i * 66} y={220 - h} width="40" height={h} rx="12" fill="#FFFFFF" opacity={0.45 + i * 0.1} />
+        ))}
+        <line x1="20" y1="222" x2="380" y2="222" stroke="#FFFFFF" strokeOpacity=".6" strokeWidth="2" />
+      </svg>
+    );
+  }
+  if (index % 3 === 1) {
+    return (
+      <svg viewBox="0 0 400 240" className="sd-info-svg" aria-hidden="true">
+        <path d="M20 200 L90 150 L150 170 L220 90 L290 120 L380 40" fill="none" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+        {[[90, 150], [150, 170], [220, 90], [290, 120], [380, 40]].map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r="8" fill="#FFFFFF" />
+        ))}
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 400 240" className="sd-info-svg" aria-hidden="true">
+      <circle cx="200" cy="120" r="88" fill="none" stroke="#FFFFFF" strokeOpacity=".3" strokeWidth="22" />
+      <circle cx="200" cy="120" r="88" fill="none" stroke="#FFFFFF" strokeWidth="22" strokeDasharray="420 552" strokeLinecap="round" transform="rotate(-90 200 120)" />
+      <text x="200" y="132" textAnchor="middle" fontSize="44" fontWeight="800" fill="#FFFFFF">100%</text>
+    </svg>
+  );
+}
+
 function ServiceDetailPage({ service }) {
   const index = services.findIndex((item) => item.id === service.id);
   const prev = services[(index - 1 + services.length) % services.length];
   const next = services[(index + 1) % services.length];
   const detail = serviceDetails[service.id];
   const [from, to] = serviceColors[index % serviceColors.length];
+  const categoryName = { web: "Web", mobile: "Flutter", flutter: "Flutter", laravel: "Laravel", wordpress: "WordPress", shopify: "Shopify", ios: "iOS", android: "Android" }[service.id];
+  const relatedProjects = portfolioProjects.filter((p) => p.category === categoryName);
+  const useCases = relatedProjects.slice(0, 3);
+  const caseHeading = relatedProjects.length ? `${categoryName} case studies` : "Case studies you can learn from";
 
   return (
     <div className="page pd sd-page">
@@ -3029,68 +3190,89 @@ function ServiceDetailPage({ service }) {
         <section className="sd-hero" style={{ "--from": from, "--to": to }}>
           <span className="sd-blob sd-blob-a" aria-hidden="true" />
           <span className="sd-blob sd-blob-b" aria-hidden="true" />
+          <span className="sd-grid-bg" aria-hidden="true" />
+          <span className="sd-ring sd-ring-a" aria-hidden="true" />
           <div className="sd-hero-inner">
-            <a className="sd-all" href="#/services" aria-label="Back to all services">
-              <span className="pd-circle">
-                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                <rect x="4" y="4" width="6" height="6" rx="1.5" />
-                <rect x="14" y="4" width="6" height="6" rx="1.5" />
-                <rect x="4" y="14" width="6" height="6" rx="1.5" />
-                <rect x="14" y="14" width="6" height="6" rx="1.5" />
-              </svg>
-              </span>
-              <small>All services</small>
-            </a>
             <h1 className="sd-title">{service.title}</h1>
             <p className="sd-lead ab-rise" style={{ animationDelay: ".5s" }}>{detail.lead}</p>
             <div className="svc-hero-actions ab-rise" style={{ animationDelay: ".65s" }}>
-              <a className="btn btn-dark" href="#/contact">Book this service</a>
-              <a className="btn btn-light" href="#/portfolio">See our work</a>
+              <a className="btn btn-light" href="#/contact">Book this service</a>
+              <a className="btn ab-ghost" href="#/portfolio">See our work</a>
             </div>
           </div>
-          <div className="sd-hero-icon" aria-hidden="true">
-            <ServiceIcon name={service.icon} />
-          </div>
-        </section>
-
-        <section className="sd-overview">
-          <div className="sd-overview-text">
-            <span className="about-eyebrow">Overview</span>
-            <h2>{detail.headline}</h2>
-            <p>{detail.overview}</p>
-          </div>
-          <ul className="sd-deliverables">
-            <li className="sd-deliverables-head">What you get</li>
-            {detail.deliverables.map((item) => (
-              <li key={item}>
-                <CheckIcon />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="sd-highlights" aria-label="Highlights">
-          {detail.highlights.map((item, i) => (
-            <div key={item.title}>
-              <TiltCard innerClassName="sd-card" radius={28}>
-                <span className="sd-card-num" style={{ "--from": from, "--to": to }}>{String(i + 1).padStart(2, "0")}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </TiltCard>
+          <div className="sd-hero-panel" aria-hidden="true">
+            <span className="sd-panel-icon"><ServiceIcon name={service.icon} /></span>
+            <strong>{detail.headline}</strong>
+            <div className="sd-tech-chips">
+              {detail.tech.map((item) => (
+                <span key={item} className="sd-tech-chip">{item}</span>
+              ))}
             </div>
-          ))}
+          </div>
         </section>
 
-        <section className="sd-tech" aria-label="Technologies">
-          <span className="about-eyebrow">Built with</span>
-          <div className="sd-tech-chips">
-            {detail.tech.map((item) => (
-              <span key={item} className="sd-tech-chip">{item}</span>
+        <section className="sd-brief" style={{ "--from": from, "--to": to }} aria-labelledby="sd-brief-heading">
+          <div className="sd-brief-main">
+            <span className="about-eyebrow">About this service</span>
+            <h2 id="sd-brief-heading">{detail.headline}</h2>
+            <p className="sd-brief-lead">{detail.lead}</p>
+            <p className="sd-brief-body">{detail.overview}</p>
+          </div>
+          <aside className="sd-brief-side" aria-label="Start a project">
+            <div className="sd-side-plain">
+              <span className="sd-side-icon"><ServiceIcon name={service.icon} /></span>
+              <h3>Ready to start?</h3>
+              <p>Book a free call and we will reply with a plan, a timeline and a clear price.</p>
+              <a className="btn btn-dark btn-full" href="#/contact">Book a free call</a>
+              <div className="sd-side-links">
+                <a href="mailto:hello@example.com">hello@example.com</a>
+                <a href="tel:+910000000000">+91 00000 00000</a>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section className="sd-included" aria-labelledby="sd-included-heading">
+          <div className="sd-included-head">
+            <span className="about-eyebrow">What is included</span>
+            <h2 id="sd-included-heading">Everything you need to go live</h2>
+          </div>
+          <div className="sd-included-grid">
+            {detail.deliverables.map((item, i) => (
+              <article key={item} className="sd-tile" style={{ "--from": from, "--to": to }}>
+                <span className="sd-tile-num">{String(i + 1).padStart(2, "0")}</span>
+                <span className="sd-tile-icon"><CheckIcon /></span>
+                <p>{item}</p>
+              </article>
             ))}
           </div>
         </section>
 
+        <section className="sd-cases" aria-labelledby="sd-cases-heading">
+          <div className="section-head centered">
+            <span className="about-eyebrow">Case studies</span>
+            <h2 id="sd-cases-heading">{caseHeading}</h2>
+            <p>Real projects we have delivered, selected for this service where we can.</p>
+          </div>
+          <div className="pf-grid sd-cases-grid">
+            {useCases.map((project) => (
+              <PortfolioCard key={project.id} project={project} />
+            ))}
+          </div>
+        </section>
+
+        <section className="ab-cta sd-cta" aria-labelledby="sd-cta-heading">
+          <span className="ab-cta-orb ab-float" aria-hidden="true" />
+          <span className="ab-cta-orb2 ab-float" aria-hidden="true" />
+          <div className="ab-cta-inner">
+            <h2 id="sd-cta-heading" className="ab-cta-title">Ready to start your {service.title.toLowerCase()} project?</h2>
+            <p>Tell us what you have in mind and we will reply with a plan, a timeline and a clear price.</p>
+            <div className="ab-hero-actions">
+              <a className="btn btn-light" href="#/contact">Book a free call</a>
+              <a className="btn ab-ghost" href="#/services">Explore other services</a>
+            </div>
+          </div>
+        </section>
         <nav className="pd-pager" aria-label="Browse services">
           <a className="pd-pager-side is-prev" href={`#/services/${prev.id}`}>
             <span className="pd-arrow" aria-hidden="true">←</span>
@@ -3119,18 +3301,6 @@ function ServiceDetailPage({ service }) {
           </a>
         </nav>
 
-        <section className="ab-cta sd-cta" aria-labelledby="sd-cta-heading">
-          <span className="ab-cta-orb ab-float" aria-hidden="true" />
-          <span className="ab-cta-orb2 ab-float" aria-hidden="true" />
-          <div className="ab-cta-inner">
-            <h2 id="sd-cta-heading" className="ab-cta-title">Ready to start your {service.title.toLowerCase()} project?</h2>
-            <p>Tell us what you have in mind and we will reply with a plan, a timeline and a clear price.</p>
-            <div className="ab-hero-actions">
-              <a className="btn btn-light" href="#/contact">Book a free call</a>
-              <a className="btn ab-ghost" href="#/services">Explore other services</a>
-            </div>
-          </div>
-        </section>
       </main>
 
       <SiteFooter />
@@ -3190,7 +3360,7 @@ function ProductsPage() {
             {products.map((product, i) => (
               <article
                 key={product.id}
-                className={`pp-card pp-v${i + 1}`}
+                className="pp-card pp-v1"
                 style={{ "--from": product.color, "--to": product.colorDeep }}
               >
                 <span className="pp-sheen" aria-hidden="true" />
@@ -3204,7 +3374,7 @@ function ProductsPage() {
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
-                <a className="pp-link" href={`#/product/${product.id}`}>
+                <a className="pp-link" href={`#/product/${product.id}`} target="_blank" rel="noopener noreferrer">
                   View details <ArrowIcon />
                 </a>
               </article>
@@ -3427,6 +3597,161 @@ const productPages = {
   },
 };
 
+/* ------------------------------------------------------------------
+   PRODUCT LANDING PAGES — route #/product/<id> (landing) and
+   #/product/<id>/details (full details). Edit the copy here.
+   ------------------------------------------------------------------ */
+const landingPages = {
+  "restaurant-pos": {
+    trusted: ["Spice Route Kitchens", "Biryani House", "Cafe Aroma", "Brew and Bite", "Urban Grill"],
+    builtForTitle: "Built for all types of food business",
+    builtForIcons: ["device", "users", "chart", "setup", "cloud", "shield"],
+    features: [
+      { title: "Table and floor layout", text: "Draw your floor, sections and tables once, then move between them in a tap.", icon: "setup" },
+      { title: "Kitchen display tickets", text: "Orders reach each station in the right order, with course timing and status.", icon: "device" },
+      { title: "Offline order sync", text: "Keep taking orders during internet drops. Everything syncs when the connection returns.", icon: "cloud" },
+      { title: "Split bills and payments", text: "Split, merge and discount bills, then take card, UPI or cash.", icon: "chart" },
+      { title: "Recipes and stock", text: "Track ingredients as dishes sell, with low-stock alerts for the kitchen.", icon: "code" },
+      { title: "Staff roles and shifts", text: "Control who can void bills, give discounts or open the till.", icon: "users" },
+    ],
+  },
+  school: {
+    trusted: ["Greenfield School", "Sunrise Public School", "Oakridge Academy", "Little Scholars", "Riverside High"],
+    builtForTitle: "Built for all types of schools",
+    builtForIcons: ["users", "setup", "chart", "device", "cloud", "shield"],
+    features: [
+      { title: "Admissions and records", text: "Online admission forms and one profile for every student and guardian.", icon: "users" },
+      { title: "Attendance by period", text: "Teachers mark attendance from the app in under a minute per class.", icon: "setup" },
+      { title: "Timetable builder", text: "Build class timetables and cover for absent teachers in minutes.", icon: "chart" },
+      { title: "Fee collection", text: "Fee plans, reminders, online payments and receipts that issue themselves.", icon: "shield" },
+      { title: "Exams and report cards", text: "Enter marks once, grade automatically and publish report cards.", icon: "code" },
+      { title: "Parent portal", text: "Parents see attendance, fees and results on their phone, any time.", icon: "device" },
+    ],
+  },
+  university: {
+    trusted: ["Westbridge University", "Kapil College", "Northfield Institute", "Lakeside University", "Meridian College"],
+    builtForTitle: "Built for all types of campuses",
+    builtForIcons: ["setup", "users", "chart", "cloud", "shield", "code"],
+    features: [
+      { title: "Programmes and courses", text: "Define departments, programmes and semester structures in one catalogue.", icon: "setup" },
+      { title: "Course registration", text: "Students register online with prerequisites and seat limits checked for them.", icon: "users" },
+      { title: "Exams and results", text: "Schedule exams, collect marks and publish results after approval.", icon: "chart" },
+      { title: "Hostel allotment", text: "Allot rooms, track dues and keep hostel records across campuses.", icon: "cloud" },
+      { title: "Fees and receipts", text: "Fee plans, scholarships and receipts with a full audit trail.", icon: "shield" },
+      { title: "Student and faculty portals", text: "Self-service for students and staff, on web and mobile.", icon: "device" },
+    ],
+  },
+  law: {
+    trusted: ["Desai and Co.", "Kulkarni Law", "Mehta Chambers", "Iyer Associates", "Nair and Partners"],
+    builtForTitle: "Built for all types of legal practices",
+    builtForIcons: ["users", "setup", "shield", "chart", "code", "cloud"],
+    features: [
+      { title: "Case and matter tracking", text: "Each matter has its own file with parties, notes, filings and status.", icon: "shield" },
+      { title: "Hearing and deadline alerts", text: "Court dates and filing deadlines reach the whole team before they are due.", icon: "setup" },
+      { title: "Documents and versions", text: "Store pleadings and evidence with version history and secure sharing.", icon: "cloud" },
+      { title: "Client portal", text: "Clients see case updates and documents without calling the office.", icon: "users" },
+      { title: "Time tracking", text: "Record billable time against each matter from desktop or phone.", icon: "chart" },
+      { title: "Invoices and retainers", text: "Turn recorded time into clear invoices and track retainers.", icon: "code" },
+    ],
+  },
+};
+
+/* Cartoon illustrations for each product's landing hero. */
+function ProductCartoon({ id, from, to }) {
+  const gid = `pc-${id}`;
+  const defs = (
+    <defs>
+      <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor={from} />
+        <stop offset="1" stopColor={to} />
+      </linearGradient>
+    </defs>
+  );
+  const scene = {
+    "restaurant-pos": (
+      <>
+        <rect x="40" y="290" width="400" height="60" rx="14" fill="#7A4A2A" />
+        <rect x="60" y="260" width="360" height="34" rx="10" fill="#A8683C" />
+        <rect x="170" y="110" width="140" height="150" rx="18" fill="#FFFFFF" stroke="#141B33" strokeWidth="5" />
+        <rect x="186" y="128" width="108" height="92" rx="8" fill="#EEF2FF" />
+        <rect x="196" y="140" width="60" height="10" rx="5" fill={from} />
+        <rect x="196" y="160" width="88" height="8" rx="4" fill="#C9D2EA" />
+        <rect x="196" y="176" width="72" height="8" rx="4" fill="#C9D2EA" />
+        <rect x="196" y="192" width="50" height="8" rx="4" fill="#C9D2EA" />
+        <circle cx="240" cy="236" r="10" fill={from} />
+        <ellipse cx="110" cy="250" rx="46" ry="16" fill="#FFFFFF" stroke="#141B33" strokeWidth="4" />
+        <path d="M70 240 Q110 176 150 240" fill="#FFD166" stroke="#141B33" strokeWidth="4" />
+        <circle cx="96" cy="222" r="6" fill="#06D6A0" /><circle cx="122" cy="216" r="6" fill="#EF476F" />
+        <rect x="330" y="200" width="60" height="58" rx="10" fill="#FFFFFF" stroke="#141B33" strokeWidth="4" />
+        <path d="M344 216 H376 M344 230 H370" stroke={from} strokeWidth="5" strokeLinecap="round" />
+        <path d="M342 200 L360 176 L378 200" fill="none" stroke="#141B33" strokeWidth="4" />
+        <circle cx="72" cy="120" r="28" fill="#FFD166" stroke="#141B33" strokeWidth="4" />
+        <path d="M50 112 Q72 76 94 112" fill="#FFFFFF" stroke="#141B33" strokeWidth="4" />
+      </>
+    ),
+    school: (
+      <>
+        <rect x="70" y="60" width="340" height="190" rx="18" fill="#2F4F4F" stroke="#141B33" strokeWidth="6" />
+        <text x="120" y="130" fontSize="34" fontWeight="800" fill="#FFFFFF" fontFamily="sans-serif">A B C</text>
+        <text x="120" y="176" fontSize="28" fontWeight="800" fill="#FFD166" fontFamily="sans-serif">1 + 2 = 3</text>
+        <rect x="40" y="280" width="400" height="30" rx="12" fill="#A8683C" />
+        <rect x="120" y="250" width="120" height="30" rx="8" fill="#FFFFFF" stroke="#141B33" strokeWidth="4" />
+        <rect x="260" y="236" width="90" height="16" rx="6" fill={from} />
+        <rect x="264" y="220" width="80" height="16" rx="6" fill="#FFD166" />
+        <circle cx="360" cy="196" r="30" fill="#EF476F" stroke="#141B33" strokeWidth="4" />
+        <path d="M360 166 Q372 152 386 160" fill="none" stroke="#06D6A0" strokeWidth="6" strokeLinecap="round" />
+        <circle cx="100" cy="200" r="24" fill="#FFD166" stroke="#141B33" strokeWidth="4" />
+        <rect x="80" y="222" width="40" height="46" rx="12" fill={to} stroke="#141B33" strokeWidth="4" />
+        <rect x="40" y="10" width="120" height="8" rx="4" fill="#141B33" opacity=".1" />
+      </>
+    ),
+    university: (
+      <>
+        <path d="M60 170 L240 80 L420 170 Z" fill="#FFFFFF" stroke="#141B33" strokeWidth="6" strokeLinejoin="round" />
+        <rect x="80" y="170" width="320" height="22" fill="#E6EAF7" stroke="#141B33" strokeWidth="5" />
+        {[110, 170, 230, 290, 350].map((x) => (
+          <rect key={x} x={x} y="196" width="26" height="104" rx="6" fill="#FFFFFF" stroke="#141B33" strokeWidth="5" />
+        ))}
+        <rect x="40" y="300" width="400" height="20" rx="8" fill="#A8683C" />
+        <circle cx="240" cy="130" r="14" fill={from} />
+        <path d="M320 92 L400 118 L320 144 L240 118 Z" fill={from} stroke="#141B33" strokeWidth="4" strokeLinejoin="round" />
+        <path d="M280 132 V160 Q320 176 360 160 V132" fill="none" stroke="#141B33" strokeWidth="4" />
+        <line x1="400" y1="118" x2="400" y2="158" stroke="#141B33" strokeWidth="4" />
+        <circle cx="400" cy="162" r="6" fill="#FFD166" />
+        <rect x="70" y="260" width="34" height="40" rx="6" fill="#FFD166" stroke="#141B33" strokeWidth="4" />
+        <rect x="104" y="260" width="34" height="40" rx="6" fill="#EF476F" stroke="#141B33" strokeWidth="4" />
+      </>
+    ),
+    law: (
+      <>
+        <rect x="226" y="80" width="28" height="220" rx="10" fill="#141B33" />
+        <rect x="150" y="70" width="180" height="20" rx="10" fill="#141B33" />
+        <circle cx="240" cy="66" r="14" fill="#FFD166" stroke="#141B33" strokeWidth="4" />
+        <path d="M120 120 L360 120" stroke="#141B33" strokeWidth="6" strokeLinecap="round" />
+        <path d="M120 120 L86 220 M120 120 L154 220" stroke="#141B33" strokeWidth="4" />
+        <path d="M86 220 Q120 246 154 220 Z" fill={from} stroke="#141B33" strokeWidth="4" />
+        <path d="M360 120 L326 220 M360 120 L394 220" stroke="#141B33" strokeWidth="4" />
+        <path d="M326 220 Q360 246 394 220 Z" fill={from} stroke="#141B33" strokeWidth="4" />
+        <rect x="150" y="300" width="180" height="22" rx="10" fill="#141B33" />
+        <rect x="60" y="282" width="120" height="18" rx="6" fill="#FFFFFF" stroke="#141B33" strokeWidth="4" />
+        <rect x="70" y="264" width="110" height="18" rx="6" fill={to} stroke="#141B33" strokeWidth="4" />
+        <g transform="rotate(-30 380 230)">
+          <rect x="350" y="200" width="60" height="26" rx="8" fill="#A8683C" stroke="#141B33" strokeWidth="4" />
+          <rect x="372" y="176" width="22" height="70" rx="8" fill="#A8683C" stroke="#141B33" strokeWidth="4" />
+        </g>
+      </>
+    ),
+  };
+  return (
+    <svg viewBox="0 0 480 340" className="pl-cartoon" role="img" aria-label={`${id} illustration`}>
+      {defs}
+      <ellipse cx="240" cy="326" rx="220" ry="12" fill="#141B33" opacity=".12" />
+      <circle cx="400" cy="60" r="46" fill={`url(#${gid})`} opacity=".25" />
+      {scene[id]}
+    </svg>
+  );
+}
+
 const chipColors = ["#E8553D", "#1F7A6D", "#4B5BD6", "#C98A12", "#7B3FE4", "#FF2D75"];
 
 function groupArtFor(product, i, group) {
@@ -3438,6 +3763,574 @@ function groupArtFor(product, i, group) {
     colorDeep: flip ? product.color : product.colorDeep,
     image: group.image ?? product.image ?? null,
   };
+}
+
+/* ------------------------------------------------------------------
+   LANDING EXTRAS — showcase shots (swap `image` for a real screenshot
+   path such as "/images/pos-floor.png") and customer reviews.
+   ------------------------------------------------------------------ */
+const landingExtras = {
+  "restaurant-pos": {
+    shots: [
+      { title: "Floor and table view", text: "Every table, its status and its running bill, on one live floor plan.", image: null },
+      { title: "Kitchen display", text: "Tickets reach each station in course order, with timers that turn amber when they run late.", image: null },
+      { title: "Owner dashboard", text: "Sales, top dishes and outlet comparisons, checked from any phone.", image: null },
+    ],
+    reviews: [
+      { quote: "Table turns went up within the first week. Staff learned the screens in one shift.", name: "Priya Sharma", role: "Owner, Spice Route Kitchens" },
+      { quote: "Billing used to be the slowest part of service. Now it is the fastest.", name: "Karan Singh", role: "Owner, Biryani House" },
+      { quote: "Offline mode saved our Sunday lunch rush when the internet dropped twice.", name: "Meera Iyer", role: "Manager, Cafe Aroma" },
+      { quote: "Recipe costing finally tells us which dishes earn money. Waste dropped noticeably.", name: "Arjun Nair", role: "Owner, Urban Grill" },
+      { quote: "Setup took two days, including menu migration. The staff were comfortable by Friday.", name: "Sana Malik", role: "Operations Head, Brew and Bite" },
+      { quote: "Our cloud kitchen runs three brands from one screen. It is simple to manage.", name: "Rohit Desai", role: "Founder, Night Spice Co." },
+    ],
+  },
+  school: {
+    shots: [
+      { title: "Student records", text: "One profile per student, with guardians, documents and fee history in one place.", image: null },
+      { title: "Attendance and timetable", text: "Mark attendance in a minute and build timetables that avoid clashes.", image: null },
+      { title: "Parent and teacher apps", text: "Parents follow attendance, fees and results. Teachers see their classes and marks.", image: null },
+    ],
+    reviews: [
+      { quote: "Fee reminders went out automatically and collections improved within two terms.", name: "Ravi Menon", role: "Principal, Greenfield School" },
+      { quote: "Teachers mark attendance in seconds. The morning register is no longer a chore.", name: "Anita Joshi", role: "Class Teacher, Sunrise Public School" },
+      { quote: "Parents love the app. Half the calls to the office stopped.", name: "Farah Khan", role: "Admin Head, Oakridge Academy" },
+      { quote: "Report cards that used to take a week now go out in two days.", name: "Suresh Pillai", role: "Exam Coordinator, Riverside High" },
+      { quote: "The timetable builder handled cover for absent teachers without a single clash.", name: "Neha Bhatt", role: "Academic Coordinator, Little Scholars" },
+      { quote: "Admissions are online now, and the data stays clean from day one.", name: "Kiran Rao", role: "Registrar, Lakeside Public School" },
+    ],
+  },
+  university: {
+    shots: [
+      { title: "Course catalogue", text: "Programmes, semesters and prerequisites managed in one structure.", image: null },
+      { title: "Exams and results", text: "Schedules, mark entry and approval workflows that end in published results.", image: null },
+      { title: "Hostel and fees", text: "Room allotment, dues and receipts across every campus.", image: null },
+    ],
+    reviews: [
+      { quote: "Course registration that used to take a fortnight now takes an afternoon.", name: "Dr. Asha Verma", role: "Registrar, Westbridge University" },
+      { quote: "Results publish on schedule now. The approval trail makes audits easy.", name: "Prof. Deepak Shah", role: "Controller of Examinations, Kapil College" },
+      { quote: "Hostel allotment across two campuses is finally in one system.", name: "Nidhi Kulkarni", role: "Hostel Warden, Northfield Institute" },
+      { quote: "Students check their own fee dues and receipts. The office queue is much shorter.", name: "Rahul Mehta", role: "Accounts Head, Lakeside University" },
+      { quote: "Faculty use the portal for leave and timetables. It is clean and quick.", name: "Dr. Sneha Iyer", role: "HOD, Meridian College" },
+      { quote: "A single catalogue for every department was exactly what we needed.", name: "Vikram Joshi", role: "Academic Director, Westbridge University" },
+    ],
+  },
+  law: {
+    shots: [
+      { title: "Matter dashboard", text: "Every case with its parties, hearings, documents and status in one view.", image: null },
+      { title: "Calendar and deadlines", text: "Hearings and filing dates shared with the whole team before they fall due.", image: null },
+      { title: "Invoices and time", text: "Billable time from desktop or phone, turned into clean invoices.", image: null },
+    ],
+    reviews: [
+      { quote: "Hearing reminders have stopped us from missing a single date this year.", name: "Adv. Rajesh Desai", role: "Desai and Co." },
+      { quote: "Our clients see updates without calling. It has saved hours every week.", name: "Meghna Kulkarni", role: "Partner, Kulkarni Law" },
+      { quote: "Time tracking is finally simple, and invoices go out on time.", name: "Sameer Mehta", role: "Partner, Mehta Chambers" },
+      { quote: "Documents with version history made our filings far more reliable.", name: "Lakshmi Iyer", role: "Associate, Iyer Associates" },
+      { quote: "The matter dashboard gives me the whole case at a glance before court.", name: "Anil Nair", role: "Senior Advocate, Nair and Partners" },
+      { quote: "Retainers and billing are tracked in one place. No more spreadsheets.", name: "Priya Shetty", role: "Practice Manager, Desai and Co." },
+    ],
+  },
+};
+
+/* ------------------------------------------------------------------
+   PRICING DATA — Starter price comes from each product's base price.
+   ------------------------------------------------------------------ */
+const planNames = ["Starter", "Growth", "Enterprise"];
+
+const pricingTables = {
+  "restaurant-pos": {
+    growth: "₹3,499",
+    rows: [
+      ["Outlets", "1", "Up to 5", "Unlimited"],
+      ["Tables and floor layout", true, true, true],
+      ["Kitchen display tickets", false, true, true],
+      ["Offline order sync", false, true, true],
+      ["Recipes and stock", false, false, true],
+      ["Staff roles and shifts", true, true, true],
+      ["Support", "Email", "Priority", "Dedicated manager"],
+    ],
+  },
+  school: {
+    growth: "₹5,499",
+    rows: [
+      ["Students", "Up to 500", "Up to 2,000", "Unlimited"],
+      ["Attendance by period", true, true, true],
+      ["Fee collection and receipts", true, true, true],
+      ["Timetable builder", false, true, true],
+      ["Exams and report cards", false, true, true],
+      ["Parent portal", false, true, true],
+      ["Support", "Email", "Priority", "Dedicated manager"],
+    ],
+  },
+  university: {
+    growth: "₹9,999",
+    rows: [
+      ["Students", "Up to 2,000", "Up to 10,000", "Unlimited"],
+      ["Programmes and courses", true, true, true],
+      ["Course registration", true, true, true],
+      ["Exams and results", false, true, true],
+      ["Student and faculty portals", false, true, true],
+      ["Hostel allotment", false, false, true],
+      ["Support", "Email", "Priority", "Dedicated manager"],
+    ],
+  },
+  law: {
+    growth: "₹4,999",
+    rows: [
+      ["Users", "Up to 5", "Up to 20", "Unlimited"],
+      ["Case and matter tracking", true, true, true],
+      ["Hearing and deadline alerts", true, true, true],
+      ["Documents and versions", false, true, true],
+      ["Client portal", false, true, true],
+      ["Time tracking and invoices", true, true, true],
+      ["Support", "Email", "Priority", "Dedicated manager"],
+    ],
+  },
+};
+
+function planPrices(id) {
+  return [`₹${productPages[id].base.toLocaleString("en-IN")}`, pricingTables[id].growth, "Custom"];
+}
+
+function renderPlanCell(value) {
+  if (value === true) return <span className="pt-yes" aria-label="Included"><CheckIcon /></span>;
+  if (value === false) return <span className="pt-no" aria-label="Not included">–</span>;
+  return value;
+}
+
+const deliverIcons = ["chart", "tag", "shield", "users", "device", "headset"];
+
+const deliverPoints = [
+  { title: "On-time go-live", text: "Milestones are agreed up front, and we tell you early if a date is at risk." },
+  { title: "Fixed scope, clear price", text: "You get a written scope and quote before work starts. No surprise fees at go-live." },
+  { title: "Data moved safely", text: "Records are migrated in test runs and checked line by line before the switch." },
+  { title: "Staff trained on site", text: "Hands-on sessions for each role, with short guides your team can keep at the counter." },
+  { title: "Tested on real devices", text: "Every release is tested on the phones, tablets and browsers your customers actually use." },
+  { title: "Support after launch", text: "A named contact, fast fixes and regular updates for as long as you need them." },
+];
+
+/* ------------------------------------------------------------------
+   SHARED PLACEHOLDERS AND SLIDER
+   ------------------------------------------------------------------ */
+function ImagePlaceholder({ label, hint }) {
+  return (
+    <div className="img-ph" role="img" aria-label={label}>
+      <svg className="img-ph-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="8" y="12" width="48" height="40" rx="8" />
+        <circle cx="24" cy="26" r="5" />
+        <path d="M12 46 L26 34 L36 42 L44 36 L54 46" />
+      </svg>
+      <strong>{label}</strong>
+      <span>{hint}</span>
+    </div>
+  );
+}
+
+/* Product screenshot: a real image when `image` is set, otherwise a drawn app mock-up. */
+function ProductShot({ image, alt, from, to }) {
+  if (image) return <img src={image} alt={alt} className="pl-shot-img" loading="lazy" />;
+  return (
+    <div className="pl-mock" style={{ "--from": from, "--to": to }} role="img" aria-label={`${alt} (screenshot placeholder)`}>
+      <div className="pl-mock-bar"><i /><i /><i /></div>
+      <div className="pl-mock-body">
+        <div className="pl-mock-side"><span /><span /><span /><span /></div>
+        <div className="pl-mock-main">
+          <div className="pl-mock-cards"><span /><span /><span /></div>
+          <div className="pl-mock-chart">
+            {[38, 64, 52, 82, 58, 92, 72].map((h, i) => (
+              <i key={i} style={{ height: `${h}%` }} />
+            ))}
+          </div>
+          <div className="pl-mock-rows"><span /><span /><span /></div>
+        </div>
+      </div>
+      <span className="pl-mock-tag">Screenshot placeholder</span>
+    </div>
+  );
+}
+
+/* Review slider: three cards per view on desktop, one on phones. */
+function ReviewSlider({ reviews, label }) {
+  const trackRef = useRef(null);
+
+  const scrollByCard = (direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.firstElementChild;
+    const distance = card ? card.getBoundingClientRect().width + 24 : track.clientWidth;
+    track.scrollBy({ left: direction * distance, behavior: "smooth" });
+  };
+
+  return (
+    <div className="pl-slider" role="region" aria-label={label}>
+      <div className="pl-slider-track" ref={trackRef} tabIndex={0}>
+        {reviews.map((review) => (
+          <figure key={review.name} className="pl-review">
+            <StarRow />
+            <blockquote>&ldquo;{review.quote}&rdquo;</blockquote>
+            <figcaption>
+              <strong>{review.name}</strong>
+              <span>{review.role}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div className="pl-slider-nav">
+        <button type="button" className="pl-nav-btn" aria-label="Previous reviews" onClick={() => scrollByCard(-1)}>←</button>
+        <button type="button" className="pl-nav-btn" aria-label="Next reviews" onClick={() => scrollByCard(1)}>→</button>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------
+   PRICING PAGE — route #/pricing. Summary table, then one comparison
+   table per product with a Purchase button for each plan.
+   ------------------------------------------------------------------ */
+function PricingPage() {
+  const moveParallax = (event) => {
+    const el = event.currentTarget;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3));
+    el.style.setProperty("--my", ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3));
+  };
+  const resetParallax = (event) => {
+    event.currentTarget.style.setProperty("--mx", "0");
+    event.currentTarget.style.setProperty("--my", "0");
+  };
+
+  return (
+    <div className="page pd svc-page pr-page">
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main">
+        <section className="pf-hero pr-hero" onMouseMove={moveParallax} onMouseLeave={resetParallax}>
+          <span className="pf-blob pf-blob-a" aria-hidden="true" />
+          <span className="pf-blob pf-blob-b" aria-hidden="true" />
+          <span className="pf-ring pf-ring-a" aria-hidden="true" />
+          <div className="pf-hero-inner">
+            <span className="pf-kicker"><i aria-hidden="true" />Pricing</span>
+            <h1 className="pf-title">
+              <span className="ct-title-line">Clear prices for</span>
+              <span className="ct-title-line"><span className="pf-title-grad">every product we build.</span></span>
+            </h1>
+            <p className="ab-rise" style={{ animationDelay: ".5s" }}>
+              Compare the plans side by side, then choose the one that fits your outlet, school, campus or practice.
+            </p>
+            <div className="svc-hero-actions ab-rise" style={{ animationDelay: ".65s" }}>
+              <a className="btn btn-dark" href="#/products">Explore products</a>
+              <a className="btn btn-light" href="#/contact">Talk to sales</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="pr-compare" aria-labelledby="pr-compare-heading">
+          <div className="section-head centered">
+            <h2 id="pr-compare-heading">Compare all four products</h2>
+            <p>Starting prices per month. Open a product table below for the full feature list.</p>
+          </div>
+          <div className="pr-summary">
+            <table className="pr-summary-table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  {planNames.map((name) => (
+                    <th key={name} scope="col">{name}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product) => {
+                  const prices = planPrices(product.id);
+                  return (
+                    <tr key={product.id} style={{ "--from": product.color, "--to": product.colorDeep }}>
+                      <th scope="row"><span className="pr-dot" aria-hidden="true" />{product.name}</th>
+                      {prices.map((price, i) => (
+                        <td key={planNames[i]}>
+                          <strong>{price}</strong>
+                          {price !== "Custom" && <small>/month</small>}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="pr-tables" aria-label="Plan comparison tables">
+          {products.map((product) => {
+            const table = pricingTables[product.id];
+            const prices = planPrices(product.id);
+            return (
+              <article key={product.id} className="pt-card" style={{ "--from": product.color, "--to": product.colorDeep }}>
+                <header className="pt-head">
+                  <span className="pt-dot" aria-hidden="true" />
+                  <div>
+                    <h3>{product.name}</h3>
+                    <p>{product.summary}</p>
+                  </div>
+                </header>
+                <div className="pt-scroll">
+                  <table className="pt-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">What you get</th>
+                        {planNames.map((name, i) => (
+                          <th key={name} scope="col" className={i === 1 ? "is-pop" : undefined}>
+                            {name}
+                            {i === 1 && <span className="pt-flag">Most popular</span>}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="pt-price">
+                        <th scope="row">Price</th>
+                        {prices.map((price, i) => (
+                          <td key={planNames[i]} className={i === 1 ? "is-pop" : undefined}>
+                            <strong>{price}</strong>
+                            {price !== "Custom" && <small>/month</small>}
+                          </td>
+                        ))}
+                      </tr>
+                      {table.rows.map((row) => (
+                        <tr key={row[0]}>
+                          <th scope="row">{row[0]}</th>
+                          {row.slice(1).map((value, i) => (
+                            <td key={i} className={i === 1 ? "is-pop" : undefined}>{renderPlanCell(value)}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th scope="row" aria-hidden="true" />
+                        {planNames.map((name, i) => (
+                          <td key={name} className={i === 1 ? "is-pop" : undefined}>
+                            <a className={`btn ${i === 1 ? "btn-dark" : "btn-light"} pt-buy`} href="#/contact" aria-label={`Purchase ${name} plan for ${product.name}`}>
+                              Purchase
+                            </a>
+                          </td>
+                        ))}
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </article>
+            );
+          })}
+        </section>
+
+        <p className="pr-note">Prices are starting rates per month. Add-ons are billed separately, and the final quote is confirmed after a short discovery call.</p>
+
+        <section className="ab-cta pr-cta" aria-labelledby="pr-cta-heading">
+          <span className="ab-cta-orb ab-float" aria-hidden="true" />
+          <span className="ab-cta-orb2 ab-float" aria-hidden="true" />
+          <div className="ab-cta-inner">
+            <h2 id="pr-cta-heading" className="ab-cta-title">Need a plan that is not listed?</h2>
+            <p>Tell us how many outlets, students or users you have and we will put together a tailored price.</p>
+            <div className="ab-hero-actions">
+              <a className="btn btn-light" href="#/contact">Talk to sales</a>
+              <a className="btn ab-ghost" href="#/products">Compare products</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------
+   PRODUCT LANDING PAGE — route #/product/<id>. Hero, trusted by,
+   features and add-ons tabs, built for, statistics, reviews and CTA.
+   ------------------------------------------------------------------ */
+function ProductLanding({ product }) {
+  const d = productPages[product.id];
+  const L = landingPages[product.id];
+  const X = landingExtras[product.id];
+  const [tab, setTab] = useState("features");
+  const detailsHref = `#/product/${product.id}/details`;
+
+  const moveParallax = (event) => {
+    const el = event.currentTarget;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3));
+    el.style.setProperty("--my", ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3));
+  };
+  const resetParallax = (event) => {
+    event.currentTarget.style.setProperty("--mx", "0");
+    event.currentTarget.style.setProperty("--my", "0");
+  };
+
+  return (
+    <div className="page pd pl-page" style={{ "--from": product.color, "--to": product.colorDeep }}>
+      <style>{styles}</style>
+
+      <SiteHeader solid />
+
+      <main className="inner-main">
+        <section className="pl-hero" onMouseMove={moveParallax} onMouseLeave={resetParallax}>
+          <span className="pl-blob pl-blob-a" aria-hidden="true" />
+          <span className="pl-blob pl-blob-b" aria-hidden="true" />
+          <div className="pl-hero-grid">
+            <div className="pl-hero-text">
+              <a className="pl-back" href="#/products">← All products</a>
+              <h1 className="pl-title">{product.name}</h1>
+              <p className="pl-lead">{product.description}</p>
+              <div className="pl-actions">
+                <a className="btn btn-dark" href="#/contact">Request a Demo <ArrowIcon /></a>
+                <a className="btn btn-light" href={detailsHref}>View full details</a>
+              </div>
+            </div>
+            <div className="pl-hero-art" aria-hidden="true">
+              <ProductCartoon id={product.id} from={product.color} to={product.colorDeep} />
+            </div>
+          </div>
+        </section>
+
+        <section className="pl-trusted" aria-label="Trusted by">
+          <span className="pl-trusted-label">Trusted by</span>
+          <div className="pl-logos">
+            {L.trusted.map((name) => (
+              <span key={name} className="pl-logo">{name}</span>
+            ))}
+          </div>
+        </section>
+
+        <section className="pl-features" aria-labelledby="pl-features-heading">
+          <div className="pl-section-head">
+            <span className="about-eyebrow">Features</span>
+            <h2 id="pl-features-heading">Everything {product.name} does for you</h2>
+          </div>
+          <div className="pl-tabs" role="tablist" aria-label="Features and add-ons">
+            {[
+              { id: "features", label: "Features" },
+              { id: "addons", label: "Add-ons" },
+            ].map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={tab === item.id}
+                className={`pl-tab${tab === item.id ? " is-active" : ""}`}
+                onClick={() => setTab(item.id)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+
+          {tab === "features" ? (
+            <div className="pl-feature-grid" role="tabpanel">
+              {L.features.map((feature, i) => (
+                <article key={feature.title} className="pl-feature">
+                  <span className="pl-feature-icon"><ServiceIcon name={feature.icon} /></span>
+                  <span className="pl-feature-num">{String(i + 1).padStart(2, "0")}</span>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.text}</p>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="pl-addon-grid" role="tabpanel">
+              {d.addons.map((addon) => (
+                <article key={addon.name} className="pl-addon">
+                  <div>
+                    <h3>{addon.name}</h3>
+                    <p>{addon.text}</p>
+                  </div>
+                  <span className="pl-price">₹{addon.price}<small>/month</small></span>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+
+        <section className="pl-showcase" aria-labelledby="pl-showcase-heading">
+          <div className="pl-section-head">
+            <span className="about-eyebrow">Inside the product</span>
+            <h2 id="pl-showcase-heading">See {product.name} in action</h2>
+          </div>
+          {X.shots.map((shot, i) => (
+            <article key={shot.title} className={`pl-shot-row${i % 2 === 1 ? " is-flip" : ""}`}>
+              <figure className="pl-shot-media">
+                <ProductShot image={shot.image} alt={shot.title} from={product.color} to={product.colorDeep} />
+              </figure>
+              <div className="pl-shot-text">
+                <span className="pl-shot-num">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{shot.title}</h3>
+                <p>{shot.text}</p>
+                <ul className="pl-shot-list">
+                  {L.features.slice(i * 2, i * 2 + 2).map((feature) => (
+                    <li key={feature.title}>
+                      <span className="pl-shot-check"><CheckIcon /></span>
+                      <div>
+                        <strong>{feature.title}</strong>
+                        <span>{feature.text}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="pl-built" aria-labelledby="pl-built-heading">
+          <div className="pl-section-head centered">
+            <span className="about-eyebrow">Who it is for</span>
+            <h2 id="pl-built-heading">{L.builtForTitle}</h2>
+          </div>
+          <div className="pl-built-grid">
+            {d.builtFor.map((name, i) => (
+              <article key={name} className="pl-built-card">
+                <span className="pl-built-icon"><ServiceIcon name={L.builtForIcons[i % L.builtForIcons.length]} /></span>
+                <h3>{name}</h3>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="pl-stats" aria-label="Statistics">
+          {d.stats.map((stat) => (
+            <div key={stat.l} className="pl-stat">
+              <strong>{stat.v}</strong>
+              <span>{stat.l}</span>
+            </div>
+          ))}
+        </section>
+
+        <section className="pl-reviews" aria-labelledby="pl-reviews-heading">
+          <div className="pl-section-head centered">
+            <span className="about-eyebrow">Reviews</span>
+            <h2 id="pl-reviews-heading">What customers say</h2>
+          </div>
+          <ReviewSlider reviews={X.reviews} label={`${product.name} customer reviews`} />
+        </section>
+
+        <section className="ab-cta pl-cta" aria-labelledby="pl-cta-heading">
+          <span className="ab-cta-orb ab-float" aria-hidden="true" />
+          <span className="ab-cta-orb2 ab-float" aria-hidden="true" />
+          <div className="ab-cta-inner">
+            <h2 id="pl-cta-heading" className="ab-cta-title">Ready to try {product.name}?</h2>
+            <p>Book a free demo and we will show you how it fits your daily work.</p>
+            <div className="ab-hero-actions">
+              <a className="btn btn-light" href="#/contact">Request a Demo</a>
+              <a className="btn ab-ghost" href={detailsHref}>View full details</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
 }
 
 function ProductDetail({ product }) {
@@ -3715,7 +4608,7 @@ function ProductDetail({ product }) {
             >
               <label>
                 Name
-                <input type="text" name="name" required autoComplete="name" />
+                <input type="text" name="name" required autoComplete="name" placeholder="Your full name" />
               </label>
               <label>
                 Phone
@@ -3739,7 +4632,7 @@ function ProductDetail({ product }) {
         </section>
 
         <nav className="pd-pager" aria-label="Product navigation">
-          <a className="pd-pager-side is-prev" href={`#/product/${prevProduct.id}`}>
+          <a className="pd-pager-side is-prev" href={`#/product/${prevProduct.id}/details`}>
             <span className="pd-arrow" aria-hidden="true">←</span>
             <span>
               <small>Previous product</small>
@@ -3759,7 +4652,7 @@ function ProductDetail({ product }) {
             <small>All products</small>
           </a>
 
-          <a className="pd-pager-side is-next" href={`#/product/${nextProduct.id}`}>
+          <a className="pd-pager-side is-next" href={`#/product/${nextProduct.id}/details`}>
             <span>
               <small>Next product</small>
               <strong>{nextProduct.name}</strong>
@@ -3780,7 +4673,7 @@ function Routes() {
   const projectId = isProjectRoute ? hash.slice("#/portfolio/".length) : "";
   const project = portfolioProjects.find((p) => p.id === projectId);
   const isProductRoute = hash.startsWith("#/product/");
-  const productId = isProductRoute ? hash.slice("#/product/".length) : "";
+  const [productId, productView] = isProductRoute ? hash.slice("#/product/".length).split("/") : ["", ""];
   const product = products.find((p) => p.id === productId);
   const isServiceRoute = hash.startsWith("#/services/");
   const serviceId = isServiceRoute ? hash.slice("#/services/".length) : "";
@@ -3803,9 +4696,11 @@ function Routes() {
   if (hash === "#/products") return <ProductsPage />;
   if (isServiceRoute && service) return <ServiceDetailPage service={service} />;
   if (hash === "#/portfolio") return <PortfolioPage />;
+  if (hash === "#/pricing") return <PricingPage />;
   if (hash === "#/contact") return <ContactPage />;
   if (isProjectRoute && project) return <PortfolioDetail project={project} />;
-  if (isProductRoute && product) return <ProductDetail product={product} />;
+  if (isProductRoute && product && productView === "details") return <ProductDetail product={product} />;
+  if (isProductRoute && product) return <ProductLanding product={product} />;
   return <LandingPage />;
 }
 
@@ -5951,5 +6846,472 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 .faq-visual-card span:last-child { font-size: 16px; opacity: .9; }
 .faq-box { align-self: center; padding: clamp(28px, 4vw, 48px); border-radius: 32px; background: #FFFFFF; box-shadow: 0 30px 70px rgba(20, 27, 51, .1); }
 @media (max-width: 900px) { .ab-faq { grid-template-columns: 1fr; } .faq-visual { min-height: 240px; } }
+
+
+/* ---------- Round 6 ---------- */
+.stage { display: block; }
+.stage-title { margin: 0 0 clamp(18px, 2.4vw, 28px); font-size: clamp(28px, 3.2vw, 42px); letter-spacing: -0.02em; font-weight: 800; color: var(--ink); }
+.stage-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: center; }
+@media (max-width: 900px) { .stage-body { grid-template-columns: 1fr; } }
+.contact .thanks { padding: 20px 24px; border-radius: 20px; background: rgba(255, 255, 255, .18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .3); }
+.demo-form input::placeholder { color: rgba(255, 255, 255, .75); }
+
+.why-tiles { display: flex; gap: 16px; height: 480px; margin-top: 52px; }
+.why-tile {
+  position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; border-radius: 32px; color: #FFFFFF;
+  background: linear-gradient(165deg, var(--from), var(--to));
+  transition: flex-grow .8s var(--ease), box-shadow .6s var(--ease);
+}
+.why-tile:hover { flex-grow: 2.6; box-shadow: 0 40px 80px rgba(20, 27, 51, .28); }
+.why-tile-art { position: absolute; inset: 0; z-index: -1; }
+.why-tile-art::before {
+  content: ""; position: absolute; inset: 0; opacity: .22;
+  background-image: radial-gradient(rgba(255, 255, 255, .95) 1.6px, transparent 1.9px); background-size: 16px 16px;
+}
+.why-tile-ring { position: absolute; right: -90px; top: -90px; width: 260px; height: 260px; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, .35); transition: transform 1.2s var(--ease); }
+.why-tile:hover .why-tile-ring { transform: rotate(120deg) scale(1.15); }
+.why-tile-icon { position: absolute; left: 50%; top: 38%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 112px; height: 112px; border-radius: 36px; background: rgba(255, 255, 255, .18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .4); transition: transform .8s var(--ease); }
+.why-tile-icon svg { width: 52px; height: 52px; }
+.why-tile:hover .why-tile-icon { transform: translate(-50%, -50%) rotate(-10deg) scale(1.1); }
+.why-tile-num { position: absolute; left: 24px; top: 16px; font-size: 64px; font-weight: 800; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, .45); }
+.why-tile-body { position: relative; }
+.why-tile-body h3 { margin: 0 0 8px; font-size: clamp(20px, 2vw, 26px); font-weight: 800; line-height: 1.15; white-space: normal; }
+.why-tile-body p { margin: 0; max-height: 0; opacity: 0; overflow: hidden; font-size: 16px; line-height: 1.6; color: rgba(255, 255, 255, .92); transition: max-height .8s var(--ease), opacity .6s; }
+.why-tile:hover .why-tile-body p { max-height: 160px; opacity: 1; }
+@media (max-width: 900px) {
+  .why-tiles { flex-direction: column; height: auto; }
+  .why-tile { flex: none; min-height: 220px; }
+  .why-tile:hover { flex-grow: 1; }
+  .why-tile-body p { max-height: none; opacity: 1; }
+  .why-tile-icon { top: 34%; width: 92px; height: 92px; }
+}
+
+
+/* ---------- Round 7 ---------- */
+.ab-company { padding-bottom: clamp(40px, 5vw, 60px); }
+.sd-hero { align-items: start; }
+.sd-hero-panel { margin-top: 8px; padding: 28px; }
+.sd-panel-icon { width: 72px; height: 72px; border-radius: 24px; }
+.sd-panel-icon svg { width: 36px; height: 36px; }
+.sd-hero-panel strong { margin: 18px 0 16px; font-size: 22px; }
+.demo-form input::placeholder { color: #141B33; opacity: .55; }
+
+.ab-why-tiles .why-tiles { height: 400px; }
+.why-tile-body p { max-height: none; opacity: 1; font-size: 15px; }
+.why-tile:hover .why-tile-body p { max-height: none; }
+@media (max-width: 900px) { .ab-why-tiles .why-tiles { height: auto; } }
+
+.sec-chip.chip-d { top: 44%; left: -10%; animation-delay: -1s; }
+.sec-chip.chip-e { top: 23%; left: 63%; animation-delay: -2.5s; }
+
+.ab-company { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(32px, 5vw, 80px); align-items: start; padding: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) 0; }
+.ab-company-lead .ab-h2 { margin-bottom: 26px; }
+.ab-company-lead .ab-lead { margin-bottom: 18px; }
+.ab-company-side { display: grid; gap: 28px; }
+.ab-years { display: grid; gap: 4px; padding: 36px; border-radius: 32px; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75); box-shadow: 0 40px 80px rgba(123, 63, 228, .25); }
+.ab-years strong { font-size: clamp(72px, 9vw, 120px); font-weight: 800; line-height: .9; letter-spacing: -0.05em; }
+.ab-years span { font-size: 18px; font-weight: 700; opacity: .92; }
+.ab-pillars { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.ab-pillars li { display: flex; gap: 18px; align-items: flex-start; padding: 22px; border-radius: 24px; background: #FFFFFF; box-shadow: 0 20px 44px rgba(20, 27, 51, .08); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
+.ab-pillars li:hover { transform: translateX(8px); box-shadow: 0 30px 60px rgba(20, 27, 51, .12); }
+.ab-pillar-icon { display: grid; place-items: center; flex: none; width: 54px; height: 54px; border-radius: 18px; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #FF2D75); }
+.ab-pillar-icon svg { width: 26px; height: 26px; }
+.ab-pillars h3 { margin: 0 0 6px; font-size: 18px; font-weight: 800; }
+.ab-pillars p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+@media (max-width: 900px) { .ab-company { grid-template-columns: 1fr; } }
+
+.sd-hero { padding-bottom: clamp(88px, 9vw, 120px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.sd-hero-inner { max-width: 640px; }
+.sd-grid-bg { position: absolute; inset: 0; z-index: -1; opacity: .35; background-image: linear-gradient(rgba(255, 255, 255, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(circle at 60% 40%, #000, transparent 70%); }
+.sd-ring { position: absolute; z-index: -1; left: 40%; top: 12%; width: 360px; height: 360px; border-radius: 50%; border: 1.5px dashed rgba(255, 255, 255, .28); animation: pf-spin 40s linear infinite; }
+.sd-hero-panel { position: relative; justify-self: end; width: 100%; max-width: 420px; padding: 36px; border-radius: 32px; color: #FFFFFF; background: rgba(255, 255, 255, .1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25), 0 40px 80px rgba(0, 0, 0, .3); animation: sd-panel-bob 7s ease-in-out infinite; }
+@keyframes sd-panel-bob { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
+.sd-hero-panel strong { display: block; margin: 22px 0 20px; font-size: 24px; font-weight: 800; line-height: 1.25; }
+.sd-panel-icon { display: grid; place-items: center; width: 88px; height: 88px; border-radius: 28px; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 20px 40px rgba(0, 0, 0, .3); }
+.sd-panel-icon svg { width: 44px; height: 44px; }
+.sd-hero .sd-tech-chip { background: rgba(255, 255, 255, .14); color: #FFFFFF; box-shadow: none; }
+@media (max-width: 900px) { .sd-hero { grid-template-columns: 1fr; } .sd-hero-panel { justify-self: start; } }
+
+.sd-give { padding: clamp(80px, 10vw, 130px) clamp(20px, 5vw, 80px) 0; }
+.sd-give-head { max-width: 760px; margin-bottom: 56px; }
+.sd-give-head h2, .sd-included-head h2 { margin: 14px 0 18px; font-size: clamp(32px, 4vw, 52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.06; }
+.sd-give-head p { margin: 0; font-size: 18px; line-height: 1.7; color: var(--ink-soft); }
+.sd-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; margin-bottom: clamp(48px, 6vw, 80px); }
+.sd-row.is-flip .sd-row-visual { order: 2; }
+.sd-row-visual { position: relative; overflow: hidden; isolation: isolate; aspect-ratio: 16 / 10; border-radius: 36px; display: grid; place-items: center; padding: 24px; background: linear-gradient(150deg, var(--from), var(--to)); box-shadow: 0 40px 80px rgba(20, 27, 51, .18); transition: transform .6s var(--ease); }
+.sd-row-visual:hover { transform: translateY(-6px) rotate(-.6deg); }
+.sd-row-visual::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .2; background-image: radial-gradient(rgba(255, 255, 255, .95) 1.5px, transparent 1.8px); background-size: 18px 18px; }
+.sd-row-glow { position: absolute; width: 300px; height: 300px; right: -100px; top: -110px; border-radius: 50%; background: rgba(255, 255, 255, .2); filter: blur(8px); z-index: -1; animation: ab-glow 6s ease-in-out infinite; }
+.sd-info-svg { width: 100%; height: 100%; max-height: 100%; }
+.sd-row-num { display: inline-block; margin-bottom: 12px; font-size: 14px; font-weight: 800; letter-spacing: .08em; color: #7B3FE4; }
+.sd-row-text h3 { margin: 0 0 14px; font-size: clamp(24px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.sd-row-text p { margin: 0; font-size: 18px; line-height: 1.7; color: var(--ink-soft); }
+@media (max-width: 900px) { .sd-row, .sd-row.is-flip { grid-template-columns: 1fr; } .sd-row.is-flip .sd-row-visual { order: 0; } }
+
+.sd-included { padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 80px) 0; }
+.sd-included-head { max-width: 760px; margin-bottom: 48px; }
+.sd-included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.sd-tile { position: relative; overflow: hidden; display: grid; gap: 18px; padding: 30px; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .09); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.sd-tile::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: linear-gradient(90deg, var(--from), var(--to)); transform: scaleX(.15); transform-origin: left; transition: transform .6s var(--ease); }
+.sd-tile:hover { transform: translateY(-8px); box-shadow: 0 34px 70px rgba(20, 27, 51, .16); }
+.sd-tile:hover::after { transform: scaleX(1); }
+.sd-tile-num { position: absolute; right: 20px; top: 12px; font-size: 56px; font-weight: 800; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(20, 27, 51, .12); }
+.sd-tile-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 18px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.sd-tile-icon svg { width: 24px; height: 24px; }
+.sd-tile p { margin: 0; font-size: 17px; line-height: 1.6; font-weight: 600; }
+
+
+/* ---------- Product landing pages ---------- */
+.pl-page .inner-main { padding-top: 0; }
+.pl-hero { position: relative; overflow: hidden; isolation: isolate; padding: clamp(88px, 8vw, 96px) clamp(20px, 5vw, 80px) clamp(72px, 8vw, 110px); background: linear-gradient(180deg, #F5F6FB 0%, #ECEEFA 100%); }
+.pl-blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(90px); opacity: .45; pointer-events: none; transform: translate3d(calc(var(--mx, 0) * -40px), calc(var(--my, 0) * -40px), 0); transition: transform .8s var(--ease); }
+.pl-blob-a { width: 520px; height: 520px; right: -140px; top: -180px; background: var(--from); }
+.pl-blob-b { width: 420px; height: 420px; left: -160px; bottom: -220px; background: var(--to); }
+.pl-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; max-width: 1240px; margin: 0 auto; }
+.pl-back { display: inline-block; margin-bottom: 22px; font-weight: 700; color: var(--ink-soft); text-decoration: none; }
+.pl-back:hover { color: var(--ink); }
+.pl-title { margin: 0 0 22px; font-size: clamp(40px, 5.6vw, 72px); line-height: 1.02; font-weight: 800; letter-spacing: -0.035em; background: linear-gradient(100deg, var(--ink) 30%, var(--from)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pl-lead { margin: 0 0 32px; max-width: 540px; font-size: 19px; line-height: 1.7; color: var(--ink-soft); }
+.pl-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.pl-hero-art { position: relative; }
+.pl-cartoon { width: 100%; height: auto; display: block; filter: drop-shadow(0 30px 40px rgba(20, 27, 51, .18)); animation: pl-float 6s ease-in-out infinite; }
+@keyframes pl-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@media (max-width: 900px) { .pl-hero-grid { grid-template-columns: 1fr; } }
+
+.pl-trusted { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 18px 26px; padding: 34px clamp(20px, 5vw, 80px); background: #FFFFFF; border-block: 1px solid var(--line); }
+.pl-trusted-label { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.pl-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.pl-logo { padding: 10px 18px; border-radius: 99px; font-weight: 800; color: var(--ink); background: #F5F6FB; box-shadow: inset 0 0 0 1px var(--line); transition: transform .3s var(--ease), background-color .3s; }
+.pl-logo:hover { transform: translateY(-3px); background: linear-gradient(120deg, var(--from), var(--to)); color: #FFFFFF; }
+
+.pl-features, .pl-built, .pl-reviews { padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 80px) 0; }
+.pl-section-head { max-width: 760px; margin-bottom: 44px; }
+.pl-section-head.centered { margin-left: auto; margin-right: auto; text-align: center; }
+.pl-section-head h2 { margin: 14px 0 0; font-size: clamp(30px, 4vw, 50px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+.pl-tabs { display: inline-flex; gap: 8px; padding: 6px; margin-bottom: 36px; border-radius: 99px; background: #FFFFFF; box-shadow: 0 16px 36px rgba(20, 27, 51, .08); }
+.pl-tab { padding: 12px 26px; border: 0; border-radius: 99px; font: inherit; font-weight: 800; color: var(--ink-soft); background: transparent; cursor: pointer; transition: background-color .3s, color .3s; }
+.pl-tab.is-active { color: #FFFFFF; background: linear-gradient(120deg, var(--from), var(--to)); box-shadow: 0 12px 26px rgba(20, 27, 51, .2); }
+.pl-feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.pl-feature { position: relative; overflow: hidden; padding: 32px; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.pl-feature:hover { transform: translateY(-8px); box-shadow: 0 34px 70px rgba(20, 27, 51, .14); }
+.pl-feature-icon { display: grid; place-items: center; width: 62px; height: 62px; margin-bottom: 22px; border-radius: 20px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 14px 30px rgba(20, 27, 51, .18); transition: transform .6s var(--ease); }
+.pl-feature:hover .pl-feature-icon { transform: rotate(-8deg) scale(1.08); }
+.pl-feature-icon svg { width: 28px; height: 28px; }
+.pl-feature-num { position: absolute; right: 22px; top: 12px; font-size: 52px; font-weight: 800; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(20, 27, 51, .1); }
+.pl-feature h3 { margin: 0 0 10px; font-size: 20px; font-weight: 800; }
+.pl-feature p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+.pl-addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.pl-addon { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; padding: 30px; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); border-left: 6px solid var(--from); transition: transform .4s var(--ease); }
+.pl-addon:hover { transform: translateY(-6px); }
+.pl-addon h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+.pl-addon p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.pl-price { flex: none; font-size: 26px; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(120deg, var(--from), var(--to)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pl-price small { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); -webkit-text-fill-color: var(--ink-soft); }
+
+.pl-built-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 900px) { .pl-built-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .pl-built-grid { grid-template-columns: 1fr; } }
+.pl-built-card { display: grid; justify-items: center; gap: 16px; padding: 32px 20px; border-radius: 26px; background: #FFFFFF; box-shadow: 0 22px 46px rgba(20, 27, 51, .08); text-align: center; transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.pl-built-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 34px 60px rgba(20, 27, 51, .14); }
+.pl-built-icon { display: grid; place-items: center; width: 70px; height: 70px; border-radius: 24px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.pl-built-icon svg { width: 30px; height: 30px; }
+.pl-built-card h3 { margin: 0; font-size: 18px; font-weight: 800; }
+
+.pl-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 80px) 0; padding: clamp(36px, 5vw, 56px); border-radius: 36px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 40px 80px rgba(20, 27, 51, .2); }
+.pl-stat { display: grid; gap: 6px; text-align: center; }
+.pl-stat strong { font-size: clamp(34px, 4vw, 52px); font-weight: 800; letter-spacing: -0.03em; }
+.pl-stat span { font-size: 15px; font-weight: 600; opacity: .9; }
+.pl-review-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.pl-review { margin: 0; padding: 36px; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); }
+.pl-review blockquote { margin: 18px 0; font-size: 19px; line-height: 1.6; font-weight: 600; }
+.pl-review figcaption { display: grid; gap: 2px; }
+.pl-review figcaption span { font-size: 14px; color: var(--ink-soft); }
+.pl-cta { margin-top: clamp(80px, 10vw, 120px); background: linear-gradient(135deg, var(--from), var(--to) 60%, #FF2D75); }
+@media (max-width: 900px) { .pl-feature-grid, .pl-review-grid { grid-template-columns: 1fr; } .pl-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- Shared image placeholder ---------- */
+.img-ph { width: 100%; height: 100%; min-height: 100%; display: grid; place-content: center; justify-items: center; gap: 10px; padding: 28px; text-align: center; color: #3A4670; background: linear-gradient(135deg, #E4E9F7 0%, #CBD5EE 100%); border-radius: inherit; }
+.img-ph-icon { width: 72px; height: 72px; opacity: .65; }
+.img-ph strong { font-size: 18px; font-weight: 800; }
+.img-ph span { font-size: 14px; opacity: .8; }
+
+/* ---------- Product landing: showcase, screenshots, review slider ---------- */
+.pl-showcase { padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 80px) 0; }
+.pl-shot-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 64px); align-items: center; max-width: 1240px; margin: 0 auto 80px; }
+.pl-shot-row.is-flip .pl-shot-media { order: 2; }
+.pl-shot-media { margin: 0; position: relative; }
+.pl-shot-media::before { content: ""; position: absolute; inset: 10% -6% -6% 10%; border-radius: 32px; background: linear-gradient(135deg, var(--from), var(--to)); opacity: .18; z-index: -1; }
+.pl-shot-text { max-width: 520px; }
+.pl-shot-num { font-size: 14px; font-weight: 800; letter-spacing: .1em; color: var(--from); }
+.pl-shot-text h3 { margin: 10px 0 12px; font-size: clamp(26px, 3vw, 36px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.pl-shot-text > p { margin: 0 0 26px; font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
+.pl-shot-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.pl-shot-list li { display: flex; gap: 14px; align-items: flex-start; }
+.pl-shot-check { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.pl-shot-check svg { width: 16px; height: 16px; }
+.pl-shot-list strong { display: block; margin-bottom: 2px; font-size: 16px; font-weight: 800; }
+.pl-shot-list li > div > span { font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.pl-shot-img { width: 100%; height: auto; display: block; border-radius: 28px; box-shadow: 0 30px 60px rgba(20, 27, 51, .18); }
+
+.pl-mock { aspect-ratio: 4 / 3; display: flex; flex-direction: column; position: relative; overflow: hidden; border-radius: 28px; background: #FFFFFF; box-shadow: 0 30px 60px rgba(20, 27, 51, .18); }
+.pl-mock-bar { display: flex; gap: 7px; padding: 14px 18px; background: #EEF1FA; }
+.pl-mock-bar i { width: 11px; height: 11px; border-radius: 50%; background: #C5CDE6; }
+.pl-mock-bar i:first-child { background: var(--from); }
+.pl-mock-body { flex: 1; display: grid; grid-template-columns: 26% 1fr; min-height: 0; }
+.pl-mock-side { display: grid; align-content: start; gap: 12px; padding: 18px; background: linear-gradient(180deg, var(--from), var(--to)); }
+.pl-mock-side span { height: 12px; border-radius: 6px; background: rgba(255, 255, 255, .5); }
+.pl-mock-side span:first-child { background: #FFFFFF; }
+.pl-mock-main { display: grid; align-content: start; gap: 14px; padding: 18px; }
+.pl-mock-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pl-mock-cards span { height: 52px; border-radius: 12px; background: linear-gradient(135deg, color-mix(in srgb, var(--from) 22%, #FFFFFF), color-mix(in srgb, var(--to) 22%, #FFFFFF)); }
+.pl-mock-chart { display: flex; align-items: flex-end; gap: 8px; height: 130px; padding: 12px; border-radius: 14px; background: #F5F6FB; }
+.pl-mock-chart i { flex: 1; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, var(--from), var(--to)); }
+.pl-mock-rows { display: grid; gap: 10px; }
+.pl-mock-rows span { height: 12px; border-radius: 6px; background: #E4E8F4; }
+.pl-mock-rows span:nth-child(2) { width: 78%; }
+.pl-mock-rows span:nth-child(3) { width: 58%; }
+.pl-mock-tag { position: absolute; right: 14px; bottom: 14px; padding: 6px 12px; border-radius: 99px; font-size: 12px; font-weight: 800; color: #FFFFFF; background: rgba(20, 27, 51, .72); }
+
+.pl-slider { position: relative; max-width: 1240px; margin: 0 auto; }
+.pl-slider-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 12px 4px 28px; scrollbar-width: none; }
+.pl-slider-track::-webkit-scrollbar { display: none; }
+.pl-slider-track:focus-visible { outline: 3px solid var(--from); outline-offset: 4px; border-radius: 16px; }
+.pl-slider-track > .pl-review { flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; display: flex; flex-direction: column; }
+.pl-slider-track > .pl-review figcaption { margin-top: auto; }
+.pl-slider-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 8px; }
+.pl-nav-btn { width: 54px; height: 54px; border: 0; border-radius: 50%; font-size: 20px; font-weight: 800; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 14px 26px rgba(20, 27, 51, .2); cursor: pointer; transition: transform .3s var(--ease); }
+.pl-nav-btn:hover { transform: scale(1.08); }
+@media (max-width: 900px) { .pl-slider-track > .pl-review { flex-basis: 84%; } }
+@media (max-width: 900px) { .pl-shot-row { grid-template-columns: 1fr; } .pl-shot-row.is-flip .pl-shot-media { order: 0; } }
+
+/* ---------- Services: process strip and service detail brief ---------- */
+.svc-steps { list-style: none; max-width: 1240px; margin: 44px auto 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+.svc-step { display: grid; gap: 10px; padding: 32px 28px; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); transition: transform .5s var(--ease); }
+.svc-step:hover { transform: translateY(-8px); }
+.svc-step-num { font-size: 46px; font-weight: 800; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(20, 27, 51, .15); }
+.svc-step-icon { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 18px; color: #FFFFFF; background: linear-gradient(135deg, #1E5BFF, #7B3FE4); }
+.svc-step-icon svg { width: 26px; height: 26px; }
+.svc-step h3 { margin: 4px 0 0; font-size: 19px; font-weight: 800; }
+.svc-step p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+@media (max-width: 1000px) { .svc-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .svc-steps { grid-template-columns: 1fr; } }
+
+.sd-brief { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: start; max-width: 1240px; margin: clamp(80px, 10vw, 120px) auto 0; padding: 0 clamp(20px, 5vw, 80px); }
+.sd-brief-text h2 { margin: 14px 0 16px; font-size: clamp(30px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.sd-brief-text p { margin: 0 0 28px; font-size: 18px; line-height: 1.75; color: var(--ink-soft); }
+.sd-brief-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.sd-brief-steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 18px; align-items: start; padding: 22px; border-radius: 22px; background: #FFFFFF; box-shadow: 0 18px 40px rgba(20, 27, 51, .07); }
+.sd-brief-steps li > span { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 18px; font-size: 16px; font-weight: 800; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.sd-brief-steps h3 { margin: 2px 0 4px; font-size: 17px; font-weight: 800; }
+.sd-brief-steps p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+@media (max-width: 900px) { .sd-brief { grid-template-columns: 1fr; } }
+
+/* ---------- Pricing page ---------- */
+.pr-compare { padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 80px) 0; }
+.pr-summary { max-width: 1040px; margin: 0 auto; overflow: hidden; border-radius: 28px; background: #FFFFFF; box-shadow: 0 30px 60px rgba(20, 27, 51, .1); }
+.pr-summary-table, .pt-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.pr-summary-table th, .pr-summary-table td { padding: 20px 26px; text-align: center; border-bottom: 1px solid var(--line); font-size: 17px; }
+.pr-summary-table thead th { background: #141B33; color: #FFFFFF; font-weight: 800; }
+.pr-summary-table tbody th { text-align: left; font-weight: 800; }
+.pr-summary-table tbody tr { transition: background-color .3s; }
+.pr-summary-table tbody tr:hover { background: #F5F6FB; }
+.pr-summary-table td strong { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+.pr-summary-table td small { display: block; font-size: 12px; color: var(--ink-soft); }
+.pr-dot { display: inline-block; width: 12px; height: 12px; margin-right: 12px; border-radius: 4px; vertical-align: middle; background: linear-gradient(135deg, var(--from), var(--to)); }
+
+.pr-tables { display: grid; gap: 40px; max-width: 1240px; margin: clamp(72px, 9vw, 110px) auto 0; padding: 0 clamp(20px, 5vw, 80px); }
+.pt-card { overflow: hidden; border-radius: 32px; background: #FFFFFF; box-shadow: 0 30px 60px rgba(20, 27, 51, .1); }
+.pt-head { display: flex; align-items: center; gap: 16px; padding: 28px 32px; color: #FFFFFF; background: linear-gradient(120deg, var(--from), var(--to)); }
+.pt-head h3 { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.01em; }
+.pt-head p { margin: 4px 0 0; font-size: 15px; opacity: .9; }
+.pt-dot { flex: none; width: 14px; height: 14px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 6px rgba(255, 255, 255, .25); }
+.pt-scroll { overflow-x: auto; }
+.pt-table { min-width: 640px; }
+.pt-table th, .pt-table td { padding: 18px 22px; text-align: center; border-bottom: 1px solid var(--line); font-size: 16px; }
+.pt-table thead th { background: #F5F6FB; color: var(--ink); font-weight: 800; }
+.pt-table tbody th { text-align: left; font-weight: 700; color: var(--ink); }
+.pt-table tbody tr:hover th, .pt-table tbody tr:hover td { background: #FAFBFF; }
+.pt-table td.is-pop, .pt-table th.is-pop { background: color-mix(in srgb, var(--from) 7%, #FFFFFF); }
+.pt-table thead th.is-pop { background: color-mix(in srgb, var(--from) 16%, #FFFFFF); }
+.pt-flag { display: block; margin-top: 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--from); }
+.pt-price td strong { display: block; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
+.pt-price td small { font-size: 13px; color: var(--ink-soft); }
+.pt-yes { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.pt-yes svg { width: 16px; height: 16px; }
+.pt-no { font-size: 20px; color: #A3ACC8; }
+.pt-table tfoot th, .pt-table tfoot td { padding: 24px 22px 30px; border-bottom: 0; }
+.pt-buy { width: 100%; min-width: 0; }
+.pr-note { max-width: 1040px; margin: 28px auto 0; padding: 0 clamp(20px, 5vw, 80px); font-size: 15px; line-height: 1.6; color: var(--ink-soft); text-align: center; }
+.pr-cta { margin-top: clamp(80px, 10vw, 120px); }
+@media (max-width: 700px) { .pr-summary-table th, .pr-summary-table td { padding: 14px 10px; font-size: 14px; } .pr-summary-table td strong { font-size: 17px; } }
+
+/* ---------- About: company, deliverables, alternating sections ---------- */
+.ab-company-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.ab-company-chips span { padding: 9px 16px; border-radius: 99px; font-size: 14px; font-weight: 700; background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--line); }
+.ab-deliver { max-width: 1240px; margin: clamp(80px, 10vw, 120px) auto 0; padding: 0 clamp(20px, 5vw, 80px); }
+.ab-deliver-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 44px; }
+.ab-deliver-card { position: relative; padding: 32px; border-radius: 28px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); }
+.ab-deliver-num { display: block; font-size: 14px; font-weight: 800; letter-spacing: .1em; color: #7B3FE4; }
+.ab-deliver-card h3 { margin: 12px 0 10px; font-size: 20px; font-weight: 800; }
+.ab-deliver-card p { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+.ab-alt { display: grid; gap: clamp(64px, 8vw, 100px); max-width: 1240px; margin: clamp(80px, 10vw, 120px) auto 0; padding: 0 clamp(20px, 5vw, 80px); }
+.ab-alt-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.ab-alt-row.is-flip .ab-alt-media { order: 2; }
+.ab-alt-media { height: 420px; overflow: hidden; border-radius: 32px; box-shadow: 0 30px 60px rgba(20, 27, 51, .12); }
+.ab-alt-text h2 { margin: 14px 0 16px; font-size: clamp(28px, 3.4vw, 42px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; }
+.ab-alt-text p { margin: 0 0 22px; font-size: 17px; line-height: 1.75; color: var(--ink-soft); }
+@media (max-width: 900px) { .ab-deliver-grid { grid-template-columns: 1fr 1fr; } .ab-alt-row { grid-template-columns: 1fr; } .ab-alt-row.is-flip .ab-alt-media { order: 0; } }
+@media (max-width: 560px) { .ab-deliver-grid { grid-template-columns: 1fr; } .ab-alt-media { height: 300px; } }
+
+
+/* Contact page: balanced top and bottom spacing */
+.ct-page .ct-hero { padding-top: clamp(120px, 12vw, 150px); padding-bottom: clamp(40px, 5vw, 64px); }
+.ct-page .ct-form-section { padding-top: clamp(24px, 3vw, 40px); padding-bottom: clamp(64px, 8vw, 96px); }
+
+
+/* Review slider: room for card shadows so they are not clipped */
+.pl-slider-track { padding: 16px 14px 48px; }
+
+
+/* ---------- Round 12 ---------- */
+/* Home "How we work": bottom spacing */
+.svc-process { padding-bottom: clamp(120px, 14vw, 170px); }
+
+/* Services: four steps on a light band, flip cards */
+.svc-deliver { padding: clamp(80px, 10vw, 120px) clamp(20px, 5vw, 80px) clamp(64px, 8vw, 100px); background: #EEF1FA; }
+.svc-deliver .section-head { margin-bottom: 52px; }
+.svc-deliver .svc-steps { margin-top: 0; }
+.svc-deliver .svc-steps li { min-width: 0; }
+.svc-flip { position: relative; height: 300px; perspective: 1200px; outline: none; }
+.svc-flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .8s var(--ease); }
+.svc-flip:hover .svc-flip-inner, .svc-flip:focus-visible .svc-flip-inner { transform: rotateY(180deg); }
+.svc-flip:focus-visible { box-shadow: 0 0 0 3px var(--from); border-radius: 28px; }
+.svc-flip-face { position: absolute; inset: 0; display: grid; align-content: center; justify-items: start; gap: 14px; padding: 30px; border-radius: 28px; backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 24px 50px rgba(20, 27, 51, .1); }
+.svc-flip-front { background: #FFFFFF; box-shadow: inset 0 0 0 2px #FFFFFF, 0 24px 50px rgba(20, 27, 51, .1); }
+.svc-flip-front h3 { margin: 0; font-size: 21px; font-weight: 800; }
+.svc-flip-back { transform: rotateY(180deg); color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); align-content: center; }
+.svc-flip-back h3 { margin: 0; font-size: 21px; font-weight: 800; color: #FFFFFF; }
+.svc-flip-back p { margin: 0; font-size: 16px; line-height: 1.65; color: rgba(255, 255, 255, .95); }
+.svc-flip-hint { margin-top: auto; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--from); }
+.svc-deliver .svc-step-num { font-size: 40px; }
+.svc-deliver .svc-step-icon { background: linear-gradient(135deg, var(--from), var(--to)); }
+@media (prefers-reduced-motion: reduce) { .svc-flip-inner { transition: none; } }
+
+/* Service detail: large intro text, sticky sidebar */
+.sd-brief { grid-template-columns: minmax(0, 1.5fr) minmax(0, .8fr); align-items: start; }
+.sd-brief-main h2 { margin: 14px 0 18px; font-size: clamp(32px, 4.2vw, 52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+.sd-brief-lead { margin: 0 0 22px; font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; line-height: 1.4; color: var(--ink); }
+.sd-brief-body { margin: 0; font-size: clamp(18px, 1.8vw, 21px); line-height: 1.85; color: var(--ink-soft); }
+.sd-brief-side { position: sticky; top: 110px; }
+.sd-side-card { display: grid; gap: 14px; padding: 34px; border-radius: 30px; color: #FFFFFF; background: linear-gradient(150deg, var(--from), var(--to)); box-shadow: 0 30px 60px rgba(20, 27, 51, .18); }
+.sd-side-icon { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 18px; background: rgba(255, 255, 255, .18); }
+.sd-side-icon svg { width: 28px; height: 28px; }
+.sd-side-card h3 { margin: 6px 0 0; font-size: 24px; font-weight: 800; }
+.sd-side-card p { margin: 0 0 6px; font-size: 16px; line-height: 1.6; opacity: .92; }
+.sd-side-links { display: grid; gap: 8px; margin-top: 8px; font-weight: 700; }
+.sd-side-links a { color: #FFFFFF; text-decoration: none; }
+.sd-cases { max-width: 1240px; margin: clamp(80px, 10vw, 120px) auto 0; padding: 0 clamp(20px, 5vw, 80px); }
+.sd-cases-grid { margin-top: 8px; }
+.sd-included { padding-bottom: clamp(72px, 9vw, 120px); }
+.sd-page .sd-cta { margin-top: clamp(32px, 4vw, 56px); }
+@media (max-width: 900px) { .sd-brief { grid-template-columns: 1fr; } .sd-brief-side { position: static; } }
+
+/* Pricing: merged table */
+.pm-card { max-width: 1240px; margin: 0 auto; overflow: hidden; border-radius: 32px; background: #FFFFFF; box-shadow: 0 30px 60px rgba(20, 27, 51, .1); }
+.pm-table { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 0; }
+.pm-table th, .pm-table td { padding: 16px 22px; text-align: center; border-bottom: 1px solid var(--line); font-size: 16px; }
+.pm-table thead th { padding: 24px 22px; background: #141B33; color: #FFFFFF; font-weight: 800; }
+.pm-table thead th.is-pop { background: linear-gradient(120deg, #E8553D, #FF2D75); }
+.pm-table thead .pt-flag { color: #FFFFFF; opacity: .9; }
+.pm-table tbody th { text-align: left; font-weight: 700; color: var(--ink); }
+.pm-table td.is-pop { background: color-mix(in srgb, var(--from) 6%, #FFFFFF); }
+.pm-product th { padding: 22px 26px; text-align: left; font-size: 19px; font-weight: 800; color: #FFFFFF; background: linear-gradient(120deg, var(--from), var(--to)); }
+.pm-product th .pr-dot { background: #FFFFFF; }
+.pm-group:not(:first-of-type) .pm-product th { border-top: 14px solid #F5F6FB; }
+.pm-price td strong { display: block; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
+.pm-price td small { font-size: 13px; color: var(--ink-soft); }
+.pm-buy th, .pm-buy td { padding: 22px 22px 30px; border-bottom: 0; }
+.pm-buy .pt-buy { width: 100%; min-width: 0; }
+.pm-table .pt-yes { display: inline-grid; }
+@media (max-width: 700px) { .pm-table th, .pm-table td { padding: 12px 10px; font-size: 14px; } }
+
+/* About: company collage with circle stats */
+.ab-collage { position: relative; height: 560px; }
+.ab-collage-main { position: absolute; left: 0; top: 0; width: 64%; height: 72%; overflow: hidden; border-radius: 32px; box-shadow: 0 30px 60px rgba(20, 27, 51, .14); }
+.ab-collage-a { position: absolute; right: 0; top: 6%; width: 40%; height: 40%; overflow: hidden; border-radius: 28px; box-shadow: 0 24px 50px rgba(20, 27, 51, .14); }
+.ab-collage-b { position: absolute; right: 8%; bottom: 0; width: 54%; height: 38%; overflow: hidden; border-radius: 28px; box-shadow: 0 24px 50px rgba(20, 27, 51, .14); }
+.ab-circle { position: absolute; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 2px; width: 150px; height: 150px; padding: 12px; border-radius: 50%; text-align: center; background: linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(135deg, #1E5BFF, #7B3FE4 55%, #FF2D75) border-box; border: 6px solid transparent; box-shadow: 0 24px 50px rgba(20, 27, 51, .2); animation: ab-float-circle 6s ease-in-out infinite; }
+.ab-circle strong { font-size: 34px; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(120deg, #1E5BFF, #FF2D75); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ab-circle small { font-size: 13px; font-weight: 700; line-height: 1.3; color: var(--ink-soft); }
+.ab-circle-1 { left: 40%; top: -4%; }
+.ab-circle-2 { left: -4%; bottom: 4%; width: 136px; height: 136px; animation-delay: -2s; }
+.ab-circle-3 { right: 2%; top: 42%; animation-delay: -4s; }
+@keyframes ab-float-circle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@media (max-width: 900px) { .ab-collage { height: 460px; } .ab-circle { width: 118px; height: 118px; } .ab-circle strong { font-size: 26px; } .ab-circle small { font-size: 11px; } .ab-circle-2 { width: 110px; height: 110px; } }
+
+/* About: "What we deliver" cards */
+.ab-deliver-card { position: relative; overflow: hidden; padding: 34px 30px; border-radius: 30px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.ab-deliver-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: linear-gradient(90deg, var(--from), var(--to)); }
+.ab-deliver-card::after { content: ""; position: absolute; right: -50px; bottom: -50px; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, var(--from), var(--to)); opacity: .08; }
+.ab-deliver-card:hover { transform: translateY(-8px); box-shadow: 0 34px 70px rgba(20, 27, 51, .14); }
+.ab-deliver-icon { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 20px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 14px 28px rgba(20, 27, 51, .18); }
+.ab-deliver-icon svg { width: 28px; height: 28px; }
+.ab-deliver-num { position: absolute; right: 24px; top: 16px; font-size: 48px; font-weight: 800; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(20, 27, 51, .1); }
+.ab-deliver-card h3 { margin: 24px 0 10px; font-size: 20px; font-weight: 800; }
+.ab-deliver-card p { position: relative; z-index: 1; }
+
+/* About: less space above the team, and above the CTA */
+.ab-team { padding-top: clamp(40px, 5vw, 64px); }
+.ab-page .ab-cta { margin-top: clamp(40px, 5vw, 64px); }
+
+
+/* ---------- Round 13 ---------- */
+/* How we deliver: connected timeline */
+.svc-deliver { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, #F4F6FD 0%, #E9EEFA 100%); padding: clamp(88px, 10vw, 128px) clamp(20px, 5vw, 80px) clamp(72px, 9vw, 110px); }
+.svc-deliver::before { content: ""; position: absolute; z-index: -1; right: -240px; top: -200px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(123, 63, 228, .18), rgba(123, 63, 228, 0) 65%); }
+.svc-deliver-head { max-width: 760px; margin: 0 auto 72px; text-align: center; }
+.svc-deliver-head h2 { margin: 14px 0 16px; font-size: clamp(32px, 4.2vw, 52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+.svc-deliver-head p { margin: 0; font-size: 18px; line-height: 1.65; color: var(--ink-soft); }
+.svc-track { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; max-width: 1240px; margin: 0 auto; padding: 0; list-style: none; }
+.svc-track::before { content: ""; position: absolute; left: 12.5%; right: 12.5%; top: 33px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, #1E5BFF, #7B3FE4, #FF2D75, #FF8A2B); opacity: .5; }
+.svc-track-item { position: relative; display: grid; justify-items: center; align-content: start; }
+.svc-track-node { position: relative; z-index: 1; display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); box-shadow: 0 0 0 10px #EEF1FA, 0 18px 36px rgba(20, 27, 51, .2); transition: transform .5s var(--ease); }
+.svc-track-node svg { width: 28px; height: 28px; }
+.svc-track-item:hover .svc-track-node { transform: scale(1.1) rotate(-6deg); }
+.svc-track-card { position: relative; width: 100%; margin-top: 30px; padding: 32px 26px 28px; overflow: hidden; border-radius: 26px; background: #FFFFFF; box-shadow: 0 24px 50px rgba(20, 27, 51, .08); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+.svc-track-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: linear-gradient(90deg, var(--from), var(--to)); }
+.svc-track-item:hover .svc-track-card { transform: translateY(-8px); box-shadow: 0 34px 64px rgba(20, 27, 51, .14); }
+.svc-track-num { display: block; font-size: 12px; font-weight: 800; letter-spacing: .14em; color: var(--from); }
+.svc-track-card h3 { margin: 10px 0 10px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+.svc-track-card p { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+@media (max-width: 1000px) { .svc-track { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 56px; } .svc-track::before { display: none; } }
+@media (max-width: 560px) { .svc-track { grid-template-columns: 1fr; } }
+
+/* Service detail: align with the logo, unboxed sidebar */
+.sd-brief { max-width: none; }
+.sd-side-plain { display: grid; gap: 14px; justify-items: start; padding: 4px 0 4px 24px; border-left: 3px solid var(--from); }
+.sd-side-plain .sd-side-icon { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 18px; color: #FFFFFF; background: linear-gradient(135deg, var(--from), var(--to)); }
+.sd-side-plain h3 { margin: 4px 0 0; font-size: 24px; font-weight: 800; }
+.sd-side-plain p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--ink-soft); }
+.sd-side-plain .sd-side-links a { color: var(--ink); }
+
+/* About: "What we deliver" aligns with the logo */
+.ab-deliver { max-width: none; }
+
+/* Landing page: lighter review cards and smaller "Who it is for" boxes */
+.pl-slider-track > .pl-review { background: transparent; box-shadow: none; padding: 12px 8px; }
+.pl-built-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.pl-built-card { gap: 10px; padding: 20px 12px; border-radius: 18px; box-shadow: 0 12px 26px rgba(20, 27, 51, .07); }
+.pl-built-card:hover { transform: translateY(-4px); }
+.pl-built-icon { width: 48px; height: 48px; border-radius: 16px; }
+.pl-built-icon svg { width: 22px; height: 22px; }
+.pl-built-card h3 { font-size: 14px; line-height: 1.3; }
+@media (max-width: 1000px) { .pl-built-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .pl-built-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+
+.svc-track-item { grid-template-rows: auto 1fr; }
+.svc-track-card { height: 100%; }
 
 `;
